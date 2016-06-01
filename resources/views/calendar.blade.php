@@ -25,6 +25,6 @@
     </div>
     <br/>
 
-    {!! $calender->render() !!}
+    {!! $calender !!}
 
 @stop

@@ -11,6 +11,6 @@ class CalendarController extends Controller
 {
     function view(){
         $calendar = new BootstrapCalendar();
-        return view('/calendar', ['calender' => $calendar]);
+        return view('/calendar', ['calender' => $calendar->render()]);
     }
 }
