@@ -10,7 +10,6 @@ use App\Elements\BootstrapCalendar;
 class CalendarController extends Controller
 {
     function view(){
-        $calendar = new BootstrapCalendar();
-        return view('/calendar', ['calender' => $calendar->render()]);
+        return view('/calendar');
     }
 }
