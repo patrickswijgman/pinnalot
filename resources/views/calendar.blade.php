@@ -26,10 +26,17 @@
     <br/>
 
     <div id="calendar"></div>
+    <div id="source" data-events="{{$events}}" ></div>
+
     <script type="text/javascript" src="js/vendor/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
     <script type="text/javascript" src="js/language/nl-NL.js"></script>
     <script type="text/javascript" src="js/calendar.js"></script>
+
+    <script type="text/javascript">
+        var source_of_events = $('#source').data("events");
+    </script>
+
     <script type="text/javascript" src="js/app.js"></script>
 
 @stop

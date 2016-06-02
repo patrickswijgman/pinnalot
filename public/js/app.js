@@ -3,16 +3,7 @@
 	"use strict";
 
 	var options = {
-		events_source: [
-			{
-				"id": 1,
-				"title": "Event 1",
-				"url": "/calendar/" + 1,
-				"class": "event-important",
-				"start": new Date().getTime(), // Milliseconds
-				"end": new Date().getTime() // Milliseconds
-			}
-		],
+		events_source: source_of_events,
 		view: 'month',
 		language: 'nl-NL',
 		tmpl_path: 'tmpls/',
