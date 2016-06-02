@@ -35,7 +35,7 @@
                 <div class="modal-body" style="height: 400px">
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                    <button data-dismiss="modal" class="btn btn-default">Close</button>
                 </div>
             </div>
         </div>
