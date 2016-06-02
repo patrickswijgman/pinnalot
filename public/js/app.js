@@ -6,6 +6,7 @@
 		events_source: source_of_events,
 		view: 'month',
 		language: 'en-EN',
+		modal: "#events-modal",
 		tmpl_path: 'tmpls/',
 		tmpl_cache: false,
 		onAfterEventsLoad: function(events) {

@@ -25,10 +25,31 @@
     </div>
     <br/>
 
+    <div class="modal fade" id="events-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Event</h3>
+                </div>
+                <div class="modal-body" style="height: 400px">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="calendar"></div>
     <div id="source" data-events="{{$events}}" ></div>
 
+@stop
+
+@section('footer')
+
     <script type="text/javascript" src="/js/vendor/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/vendor/underscore-min.js"></script>
     <script type="text/javascript" src="/js/language/nl-NL.js"></script>
     <script type="text/javascript" src="/js/calendar.js"></script>
