@@ -48,15 +48,15 @@
 
 @section('footer')
 
-    <script type="text/javascript" src="/js/vendor/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="/js/vendor/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/vendor/underscore-min.js"></script>
-    <script type="text/javascript" src="/js/calendar.js"></script>
+    {{ Html::script("js/vendor/jquery-1.12.4.min.js") }}
+    {{ Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js") }}
+    {{ Html::script("js/vendor/underscore-min.js") }}
+    {{ Html::script("js/language/nl-NL.js") }}
+    {{ Html::script("js/calendar.js") }}
 
     <script type="text/javascript">
         var source_of_events = $('#source').data("events");
     </script>
-
-    <script type="text/javascript" src="/js/app.js"></script>
+    {{ Html::script("js/app.js") }}
 
 @stop

@@ -8,18 +8,19 @@
     <title>Pinnalot</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    {{ Html::style("css/bootstrap.min.css") }}
 
     <!-- Custom -->
-    <link href="/css/bootstrap-custom.css" rel="stylesheet">
+    {{ Html::style('css/bootstrap-custom.css') }}
 
     @yield('header')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
+
+    {{ Html::script('js/html5shiv.min.js') }}
+    {{ Html::script("js/respond.min.js") }}
     <![endif]-->
 </head>
 <body>
@@ -32,9 +33,9 @@
 </div> <!-- Div opens in header -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/js/jquery.min.js"></script>
+{{ Html::script("js/jquery.min.js") }}
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/js/bootstrap.min.js"></script>
+{{ Html::script('js/bootstrap.min.js') }}
 
 @yield('footer')
 

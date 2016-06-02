@@ -9,11 +9,11 @@
                 </div>
             </div>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </a></li>
-                <li><a href="/calendar"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </a></li>
+                <li><a href={{ url('/') }}><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </a></li>
+                <li><a href={{ url('/calendar') }}><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a></li>
+                <li><a href={{ url('/') }}><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a></li>
             </ul>
         </div>
     </div>
