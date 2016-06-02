@@ -9,9 +9,14 @@ body {
     min-height: 100%;
 }
 
-.main-page h1 {
+.main-page h1, h2, h3, p{
     text-align: center;
 }
+
+.main-page p {
+    font-size: 16px;
+}
+
 
 #custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 1);

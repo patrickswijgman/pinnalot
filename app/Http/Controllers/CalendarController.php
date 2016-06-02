@@ -9,16 +9,12 @@ use App\Http\Requests;
 
 class CalendarController extends Controller
 {
-    function view(){
-
-        $event = new Event();
-        $event->title = "Event 1";
-        $event->class = "event-important";
-        $event->start = round(microtime(true) * 1000);
-        $event->end = round(microtime(true) * 1000);
-        $event->save();
+    function show(){
 
         $events = Event::all();
+        foreach($events as $event) {
+            $event->makeUrl();
+        }
 
         return view('/calendar', ['events' => $events]);
     }

@@ -5,7 +5,7 @@
 	var options = {
 		events_source: source_of_events,
 		view: 'month',
-		language: 'nl-NL',
+		language: 'en-EN',
 		tmpl_path: 'tmpls/',
 		tmpl_cache: false,
 		onAfterEventsLoad: function(events) {
