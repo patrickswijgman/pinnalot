@@ -13,6 +13,7 @@ $(function(){
     }
 });
 
+//Custom functions
 $("#togglenavbar").click(function(){
 
     if (localStorage['navbarvis'] === 'true') {
@@ -22,7 +23,6 @@ $("#togglenavbar").click(function(){
     }
 });
 
-//Custom functions
 function showNavbar(){
     var n = $("#navsidebar");
     $("#togglenavbar").css("color", "rgba(255, 255, 255, 1)");
