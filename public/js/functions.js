@@ -1,9 +1,9 @@
 /**
  * Created by Patrick on 5-6-2016.
  */
-$(function(){
-    var n = $("#navsidebar");
 
+//Code that executes when the page loads
+$(function(){
     if (localStorage.getItem("navbarvis") === null) {
         localStorage['navbarvis'] = true;
     }
@@ -22,6 +22,7 @@ $("#togglenavbar").click(function(){
     }
 });
 
+//Custom functions
 function showNavbar(){
     var n = $("#navsidebar");
     $("#togglenavbar").css("color", "rgba(255, 255, 255, 1)");
