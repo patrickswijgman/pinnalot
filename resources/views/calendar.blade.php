@@ -12,9 +12,13 @@
 
     <div style="text-align: center">
         <div class="btn-group">
-            <button class="btn btn-primary" data-calendar-nav="prev"><< Previous</button>
+            <button class="btn btn-primary" data-calendar-nav="prev" style="text-align: right;">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </button>
             <button class="btn btn-primary" data-calendar-nav="today">Today</button>
-            <button class="btn btn-primary" data-calendar-nav="next">Next >></button>
+            <button class="btn btn-primary" data-calendar-nav="next" style="text-align: left;">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button>
         </div>
         <div class="btn-group">
             <button class="btn btn-default" data-calendar-view="year">Year</button>
