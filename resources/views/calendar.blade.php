@@ -49,9 +49,8 @@
 @section('footer')
 
     {{ Html::script("js/vendor/jquery-1.12.4.min.js") }}
-    {{ Html::script("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js") }}
+    {{ Html::script("js/vendor/bootstrap.min.js") }}
     {{ Html::script("js/vendor/underscore-min.js") }}
-    {{ Html::script("js/language/nl-NL.js") }}
     {{ Html::script("js/calendar.js") }}
 
     <script type="text/javascript">
