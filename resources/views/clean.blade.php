@@ -18,12 +18,12 @@
 
 <div class="main-page"> <!-- Div end in footer -->
 
+    @yield('navbar')
     <div id="page-content" class="col-md-8 col-md-offset-2">
 
         @yield('content')
 
     </div>
-    @yield('navbar')
 
 </div> <!-- Div opens in header -->
 
