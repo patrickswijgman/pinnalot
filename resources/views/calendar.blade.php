@@ -45,7 +45,9 @@
         </div>
     </div>
 
-    <div id="calendar"></div>
+    <div style="width: 70%; margin: auto;">
+        <div id="calendar"></div>
+    </div>
     <div id="source" data-events="{{$events}}" ></div>
 
 @stop
