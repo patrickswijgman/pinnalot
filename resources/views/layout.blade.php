@@ -4,10 +4,8 @@
     <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation"
          xmlns="http://www.w3.org/1999/html">
         <div class="collapse navbar-collapse navbar-menubuilder">
-            <div style="position: absolute; left: 50%;">
-                <div style="position: relative; left: -50%; font-size: 24px; top: 10px; color: rgb(255,255,255); ">
-                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Pinnalot
-                </div>
+            <div class="navbar-title" style="position: absolute; left: 50%;">
+                <a href="{{ url('/') }}" ><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Pinnalot</a>
             </div>
             <ul class="nav navbar-nav navbar-left">
             </ul>

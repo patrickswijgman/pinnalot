@@ -21,6 +21,20 @@ body {
     margin-bottom: 0px;
 }
 
+.navbar-title a {
+    position: relative;
+    left: -50%;
+    font-size: 24px;
+    top: 10px;
+    color: rgba(255,255,255, 0.6);
+}
+
+.navbar-title a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(255,255,255, 1);
+}
+
 .sidebar {
     background-color: rgba(24, 117, 174, 1);
     padding-left: 0px;
