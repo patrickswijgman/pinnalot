@@ -5,7 +5,7 @@ $(function(){
     var n = $("#navsidebar");
 
     if (localStorage.getItem("navbarvis") === null) {
-        localStorage['navbarvis'] = false;
+        localStorage['navbarvis'] = true;
     }
 
     if (localStorage['navbarvis'] === 'false') {
@@ -20,7 +20,6 @@ $("#hideshownavbar").click(function(){
     if (localStorage['navbarvis'] === 'true') {
         n.animate({
             left: "+=" + 400
-
         }, 250, function(){
             n.hide();
         });
@@ -29,7 +28,6 @@ $("#hideshownavbar").click(function(){
         n.show();
         n.animate({
             left: "-=" + 400
-
         }, 250);
         localStorage['navbarvis'] = true;
     }
