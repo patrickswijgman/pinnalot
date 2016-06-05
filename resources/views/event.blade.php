@@ -1,5 +1,11 @@
 @extends('clean')
 
+@section('header')
+
+    {{ Html::style('css/bootstrap-custom-clean.css') }}
+
+@stop
+
 @section('content')
 
     <h1>{{ $event->title }}</h1>
