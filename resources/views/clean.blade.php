@@ -27,8 +27,8 @@
         @endif
 
         @yield('content')
-
     </div>
+    @yield('sidebar')
 
 </div> <!-- Div opens in header -->
 

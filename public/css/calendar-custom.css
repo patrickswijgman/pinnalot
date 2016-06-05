@@ -1,5 +1,7 @@
 #calendar {
   background-color: white;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
 }
 [class*="cal-cell"] {
   float: left;
