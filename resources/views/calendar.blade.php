@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('header')
-
-    <link href="css/calendar-custom.css" rel="stylesheet">
+    
+    {{ Html::style("css/calendar-custom.css") }}
 
 @stop
 
