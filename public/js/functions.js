@@ -8,27 +8,35 @@ $(function(){
         localStorage['navbarvis'] = true;
     }
 
-    if (localStorage['navbarvis'] === 'false') {
-        n.css('display', 'none');
-        n.css('left', '400px');
+    if (localStorage['navbarvis'] === 'true') {
+        showNavbar();
     }
 });
 
-$("#hideshownavbar").click(function(){
-    var n = $("#navsidebar");
+$("#togglenavbar").click(function(){
 
     if (localStorage['navbarvis'] === 'true') {
-        n.animate({
-            left: "+=" + 400
-        }, 250, function(){
-            n.hide();
-        });
-        localStorage['navbarvis'] = false;
+        hideNavbar();
     } else {
-        n.show();
-        n.animate({
-            left: "-=" + 400
-        }, 250);
-        localStorage['navbarvis'] = true;
+        showNavbar();
     }
 });
+
+function showNavbar(){
+    var n = $("#navsidebar");
+    n.show();
+    n.animate({
+        left: "-=" + 400
+    }, 250);
+    localStorage['navbarvis'] = true;
+}
+
+function hideNavbar(){
+    var n = $("#navsidebar");
+    n.animate({
+        left: "+=" + 400
+    }, 250, function(){
+        n.hide();
+    });
+    localStorage['navbarvis'] = false;
+}
