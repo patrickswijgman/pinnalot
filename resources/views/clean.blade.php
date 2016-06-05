@@ -9,26 +9,21 @@
 
     <!-- Bootstrap -->
     {{ Html::style("css/bootstrap.min.css") }}
-
     <!-- Custom -->
     {{ Html::style('css/bootstrap-custom.css') }}
 
     @yield('header')
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-
-    {{ Html::script('js/html5shiv.min.js') }}
-    {{ Html::script("js/respond.min.js") }}
-    <![endif]-->
 </head>
 <body>
 
 <div class="main-page"> <!-- Div end in footer -->
 
     @yield('navbar')
-    @yield('content')
+    <div id="page-content" class="col-md-8 col-md-offset-2">
+
+        @yield('content')
+
+    </div>
 
 </div> <!-- Div opens in header -->
 
@@ -36,6 +31,15 @@
 {{ Html::script("js/jquery.min.js") }}
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 {{ Html::script('js/bootstrap.min.js') }}
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>-->
+{{ Html::script('js/html5shiv.min.js') }}
+{{ Html::script("js/respond.min.js") }}
+<!--[endif]-->
+
+@yield('hideshownavbar')
 
 @yield('footer')
 

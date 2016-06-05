@@ -1,11 +1,5 @@
 @extends('layout')
 
-@section('header')
-    
-    {{ Html::style("css/calendar-custom.css") }}
-
-@stop
-
 @section('content')
 
     <h1><div class="dateTitle"></div></h1>
@@ -45,14 +39,14 @@
         </div>
     </div>
 
-    <div style="width: 70%; margin: auto;">
-        <div id="calendar"></div>
-    </div>
+    <div id="calendar"></div>
     <div id="source" data-events="{{$events}}" ></div>
 
 @stop
 
 @section('footer')
+
+    {{ Html::style("css/calendar-custom.css") }}
 
     {{ Html::script("js/vendor/jquery-1.12.4.min.js") }}
     {{ Html::script("js/vendor/bootstrap.min.js") }}
