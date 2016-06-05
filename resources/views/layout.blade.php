@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div id="navsidebar" class="col-md-2 col-md-offset-10 sidebar " style="position: absolute;">
+    <div id="navsidebar" class="col-md-2 col-md-offset-10 sidebar " style="position: absolute; display:none; left:400px;">
         <ul class="nav nav-sidebar">
             <li><a href={{ url('/') }}><span class="glyphicon glyphicon-home" aria-hidden="true" style="float: right; font-size: 20px;"></span> Home</a></li>
             <li><a href={{ url('/calendar') }}><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="float: right; font-size: 20px;"></span> My calendar</a></li>

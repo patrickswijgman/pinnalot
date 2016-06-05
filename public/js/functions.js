@@ -8,9 +8,9 @@ $(function(){
         localStorage['navbarvis'] = true;
     }
 
-    if (localStorage['navbarvis'] === 'false') {
-        n.css('display', 'none');
-        n.css('left', '400px');
+    if (localStorage['navbarvis'] === 'true') {
+        n.css('display', 'block');
+        n.css('left', '0px');
     }
 });
 
