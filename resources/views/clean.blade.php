@@ -39,7 +39,7 @@
 {{ Html::script("js/respond.min.js") }}
 <!--[endif]-->
 
-@yield('hideshownavbar')
+{{ Html::script("js/functions.js") }}
 
 @yield('footer')
 
