@@ -21,6 +21,11 @@
     @yield('navbar')
     <div id="page-content" class="col-md-8 col-md-offset-2">
 
+        @if(!empty($page))
+            <h2 style="color: grey">{{$page}}</h2>
+            <hr>
+        @endif
+
         @yield('content')
 
     </div>
