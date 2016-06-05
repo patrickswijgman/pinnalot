@@ -13,14 +13,14 @@
     <div style="text-align: center">
         <div class="btn-group">
             <button class="btn btn-primary" data-calendar-nav="prev"><< Previous</button>
-            <button class="btn" data-calendar-nav="today">Today</button>
+            <button class="btn btn-primary" data-calendar-nav="today">Today</button>
             <button class="btn btn-primary" data-calendar-nav="next">Next >></button>
         </div>
         <div class="btn-group">
-            <button class="btn btn-info" data-calendar-view="year">Year</button>
-            <button class="btn btn-info active" data-calendar-view="month">Month</button>
-            <button class="btn btn-info" data-calendar-view="week">Week</button>
-            <button class="btn btn-info" data-calendar-view="day">Day</button>
+            <button class="btn" data-calendar-view="year">Year</button>
+            <button class="btn active" data-calendar-view="month">Month</button>
+            <button class="btn" data-calendar-view="week">Week</button>
+            <button class="btn" data-calendar-view="day">Day</button>
         </div>
     </div>
     <br/>
