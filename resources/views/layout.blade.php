@@ -10,7 +10,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="{{ url('#') }}"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" data-toggle="offcanvas"></span> </a></li>
+                    <li><a href="{{ url('#') }}" data-toggle="offcanvas"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> </a></li>
                     <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </a></li>
                     <li><a href="{{ url('/calendar') }}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </a></li>
                 </ul>
@@ -33,19 +33,19 @@
                             <span class="glyphicon glyphicon-home" aria-hidden="true" style="float: right; font-size: 20px;"></span>
                         </div>
                     </a>
-                    <a href="{{ url('/') }}" class="list-group-item">
+                    <a href="{{ url('/calendar') }}" class="list-group-item">
                         <div class="item-text">My calendar
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true" style="float: right; font-size: 20px;"></span>
                         </div>
                     </a>
                     <br/>
-                    <a href="{{ url('/') }}" class="list-group-item not-active">
+                    <a href="" class="list-group-item not-active">
                         <div class="item-text">Family groups
                             <span class="glyphicon glyphicon-user" aria-hidden="true" style="float: right; font-size: 20px;"></span>
                         </div>
                     </a>
                     <br/>
-                    <a href="{{ url('/') }}" class="list-group-item not-active">
+                    <a href="" class="list-group-item not-active">
                         <div class="item-text">Friend groups
                             <span class="glyphicon glyphicon-user" aria-hidden="true" style="float: right; font-size: 20px;"></span>
                         </div>
@@ -53,7 +53,7 @@
                 </div>
             </div><!--/span-->
 
-            <div class=" col-xs-12 col-sm-9 content">
+            <div id="page-content" class=" col-xs-12 col-sm-9 content">
                 <div class="col-md-10 col-md-offset-1">
                     @unless(empty($page))
                         <h2 style="color: grey">{{$page}}</h2>

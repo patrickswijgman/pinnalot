@@ -184,7 +184,8 @@ footer {
 
 .row-offcanvas-left .sidebar-offcanvas {
     padding-top: 30px;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .list-group-item {
