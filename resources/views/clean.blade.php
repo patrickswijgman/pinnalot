@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Pinnalot</title>
-
-    <!-- Bootstrap -->
-    {{ Html::style("css/bootstrap.min.css") }}
-    <!-- Custom -->
-    {{ Html::style('css/bootstrap-custom.css') }}
+    <title>Pinnalot {{ isset($page)? '- '.$page: ''}}</title>
+    {{Html::style('css/bootstrap.min.css')}}
+    {{Html::style('css/bootstrap-custom.css')}}
 
     @yield('header')
 </head>
+
 <body>
 
-<div class="main-page"> <!-- Div end in footer -->
+@yield('navbar')
+@yield('sidebar')
 
-    @yield('navbar')
-    <div id="page-content" class="col-md-8 col-md-offset-2">
-
-        @if(!empty($page))
-            <h2 style="color: grey">{{$page}}</h2>
-            <hr>
-        @endif
-
-        @yield('content')
-    </div>
-    @yield('sidebar')
-
-</div> <!-- Div opens in header -->
+<!-- extend this when the page does not extends 'sidebar' -->
+@yield('clean-content')
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 {{ Html::script("js/jquery.min.js") }}
@@ -39,14 +25,16 @@
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>-->
+<!--[if lt IE 9]>
 {{ Html::script('js/html5shiv.min.js') }}
 {{ Html::script("js/respond.min.js") }}
-<!--[endif]-->
+<![endif]-->
 
-{{ Html::script("js/functions.js") }}
+{{ Html::script("js/sidebar.js") }}
 
 @yield('footer')
 
 </body>
+<footer>
+</footer>
 </html>

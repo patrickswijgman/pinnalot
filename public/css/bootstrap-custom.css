@@ -1,57 +1,204 @@
-
 body {
     background-color: rgb(255, 255, 255);
     font-family: "Arial", serif;
 }
 
-.main-page {
+.content {
     color: rgb(0,0,0);
     width: 100%;
     min-height: 100%;
 }
 
-.main-page h1, h2, h3, p{
+.content h1, h2, h3, p{
     text-align: center;
 }
 
-.main-page p {
+.content p {
     font-size: 16px;
-}
-
-.navbar {
-    margin-bottom: 0px;
 }
 
 .navbar-title a {
     position: relative;
+    font-weight: bold;
     left: -50%;
+    top: -1px;
     font-size: 24px;
-    top: 10px;
     color: rgba(255,255,255, 0.6);
 }
 
-.navbar-title a:hover {
+.navbar-title a:hover,
+.navbar-title a:focus {
     cursor: pointer;
     text-decoration: none;
     color: rgba(255,255,255, 1);
 }
 
-.sidebar {
-    background-color: rgba(24, 117, 174, 1);
-    padding-left: 0px;
-    padding-right: 0px;
-    height: calc(100% - 56px);
+.navbar {
+    background-color: rgba(18, 99, 146, 1);
+    border: none;
 }
 
-.sidebar a{
+.navbar-inverse .navbar-nav>li>a {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(18, 99, 146, 1);
+    color: rgba(255,255,255, 0.6);
+}
+
+.navbar-inverse {
+    border-radius: 0;
+    margin : 0;
+}
+
+.navbar-collapse {
+    padding-left: 0;
+}
+
+html,
+body {
+    overflow-x: hidden; /* Prevent scroll on narrow devices */
+    height: 100%;
+}
+footer {
+    /*padding: 30px 0;*/
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ * Greater thav 768px shows the menu by default and also flips the semantics
+ * The issue is to show menu for large screens and to hide for small
+ * Also need to do something clever to turn off the tabs for when the navigation is hidden
+ * Otherwise keyboard users cannot find the focus point
+ * (For now I will ignore that for mobile users and also not worry about
+ * screen re-sizing popping the menu out.)
+ */
+@media screen and (min-width: 768px) {
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-right {
+        right: 25%;
+    }
+
+    .row-offcanvas-left {
+        left: 25%;
+    }
+
+    .row-offcanvas-right .sidebar-offcanvas {
+        right: -25%; /* 3 columns */
+        background-color: rgb(255, 255, 255);
+    }
+
+    .row-offcanvas-left .sidebar-offcanvas {
+        left: -25%; /* 3 columns */
+        background-color: rgb(255, 255, 255);
+    }
+
+    .row-offcanvas-right.active {
+        right: 0; /* 3 columns */
+    }
+
+    .row-offcanvas-left.active {
+        left: 0; /* 3 columns */
+    }
+
+    .row-offcanvas-right.active .sidebar-offcanvas {
+        background-color: rgb(254, 254, 254);
+    }
+    .row-offcanvas-left.active .sidebar-offcanvas {
+        background-color: rgb(254, 254, 254);
+    }
+
+    .row-offcanvas .content {
+        width: 75%; /* 9 columns */
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+
+    }
+
+    .row-offcanvas.active .content {
+        width: 100%; /* 12 columns */
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 25%; /* 3 columns */
+    }
+}
+@media screen and (max-width: 767px) {
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+        -moz-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-right {
+        right: 0;
+    }
+
+    .row-offcanvas-left {
+        left: 0;
+    }
+
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        right: -50%; /* 6 columns */
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -50%; /* 6 columns */
+    }
+
+    .row-offcanvas-right.active {
+        right: 50%; /* 6 columns */
+    }
+
+    .row-offcanvas-left.active {
+        left: 50%; /* 6 columns */
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 50%; /* 6 columns */
+    }
+}
+
+
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-group-item:first-child {
+    border-radius: 0;
+}
+
+.row-offcanvas-left .sidebar-offcanvas {
+    padding-top: 30px;
+    height: 100vh;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none;
+}
+
+a.list-group-item {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.6);
 }
 
-.nav-sidebar>li>a:hover,
-.nav-sidebar>li>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(18, 99, 146, 1);
+a.list-group-item .item-text {
+    margin-left: 10px;
 }
 
 .not-active {
@@ -60,51 +207,14 @@ body {
     cursor: default;
 }
 
-.sidebar>ul {
-    margin-top: 10px;
-    margin-bottom: 20px;
+a.list-group-item:hover,
+a.list-group-item:focus {
+    background-color: rgba(18, 99, 146, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
-#custom-bootstrap-menu.navbar-default .navbar-brand {
-    color: rgba(255, 255, 255, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-menubuilder {
-    padding-left:0px;
-}
-#custom-bootstrap-menu.navbar-default {
-    font-size: 24px;
-    font-weight: bold;
-    background-color: rgba(18, 99, 146, 1);
-    border-width: 0px;
-    border-radius: 0px;
-    height: 56px;
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(248, 248, 248, 0);
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(18, 99, 146, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(83, 144, 188, 1);
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle {
-    border-color: #5390bc;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
-#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
-    background-color: #5390bc;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
-    background-color: #5390bc;
-}
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
-#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #126392;
+#sidebar {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: rgba(24, 117, 174, 1);
 }
