@@ -3,10 +3,6 @@ header.custom-header {
     /*background:  rgb(18, 99, 146);*/
 }
 
-.mdl-layout__content {
-    padding-top: 70px;
-}
-
 .page-content {
     width: 70%;
     margin: auto;
