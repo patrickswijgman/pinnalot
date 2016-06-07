@@ -21,6 +21,4 @@ Route::get('/', function(){
 
 Route::get('calendar', 'CalendarController@show');
 
-Route::get('event/{id}', 'EventController@show');
-
 
