@@ -19,8 +19,8 @@ class Event extends Model
         $this->attributes['borderColor'] = $this->attributes['backgroundColor'];
     }
 
-    static function getAll() {
-        $events = Event::all();
+    static function all($columns = ['*']) {
+        $events = parent::all($columns);
 
         /** @var Event $event */
         foreach($events as $event) {

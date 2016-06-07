@@ -38,59 +38,12 @@
     <div id="source" data-events="{{$events}}" ></div>
 
     <!-- event popup dialog -->
-    <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title"></h4>
-        <hr>
-        <div class="mdl-dialog__content">
-            <p class="mdl-dialog__desc"></p>
-            <br/>
-            <p><strong>From</strong></p>
-            <p class="mdl-dialog__start"></p>
-            <p><strong>Till</strong></p>
-            <p class="mdl-dialog__end"></p>
-        </div>
-        <div class="mdl-dialog__actions">
-            <button type="button" class="mdl-button close">Close</button>
-        </div>
-    </dialog>
+    @include('event_dialog')
 
 @stop
 
 @section('footer')
 
-    <script>
-        var dialog = document.querySelector('dialog');
-        if (! dialog.showModal) {
-            dialogPolyfill.registerDialog(dialog);
-        }
-        dialog.querySelector('.close').addEventListener('click', function() {
-            dialog.close();
-        });
-
-        $(document).ready(function() {
-            $('#calendar').fullCalendar({
-                events: $('#source').data("events"),
-                header: {
-                    left: '',
-                    center: 'title',
-                    right: ''
-                },
-                eventClick: function(event) {
-                    if (event.url) {
-                        var timeStart = new Date(event.start.format());
-                        var timeEnd = new Date(event.end.format());
-
-                        $('.mdl-dialog__title').html("").append(event.title);
-                        $('.mdl-dialog__desc').html("").append(event.description);
-                        $('.mdl-dialog__start').html("").append(timeStart);
-                        $('.mdl-dialog__end').html("").append(timeEnd);
-
-                        dialog.showModal();
-                        return false;
-                    }
-                }
-            });
-        });
-    </script>
+    {{ Html::script('js/init.fullcalendar.js') }}
 
 @stop
