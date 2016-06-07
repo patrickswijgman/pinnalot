@@ -6,7 +6,7 @@
         <header class="mdl-layout__header custom-header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Pinnalot</span>
+                <span class="mdl-layout-title"><i class="mdi mdi-pin"></i> Pinnalot</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
@@ -16,7 +16,7 @@
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Pinnalot</span>
+            <span class="mdl-layout-title"><i class="mdi mdi-pin"></i> Pinnalot</span>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="{{ url('/') }}">
                     Home
@@ -28,19 +28,17 @@
                 </a>
             </nav>
         </div>
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <br/>
-                @unless(empty($page))
-                    <h3 style="text-align: center">{{$page}}</h3>
-                @endunless
-                <hr>
-                @yield('content')
-                <br/>
-                <br/>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-        </main>
+        <!-- Uncomment for sidebar on the right
+        <style>
+            .mdl-layout__drawer-button, .mdl-layout__drawer{
+                left: initial;
+                right: 0;
+            }
+
+            .mdl-layout__drawer{
+                transform:translateX(250px);
+            }
+        </style>-->
     </div>
 @stop
 

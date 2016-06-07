@@ -14,10 +14,8 @@ class EventController extends Controller
         /** @var Event $event */
         $event = Event::find($id);
         if (isset($event)) {
-            $event->start = Event::convertTimestampToDateTime($event->start);
-            $event->end = Event::convertTimestampToDateTime($event->end);
-
             return view('event', ['event' => $event]);
         }
+        return null;
     }
 }
