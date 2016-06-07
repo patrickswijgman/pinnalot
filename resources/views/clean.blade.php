@@ -24,22 +24,10 @@
 
 <body>
 
-@yield('navbar')
+@yield('layout')
 
-<main class="mdl-layout__content">
-    <div class="page-content">
-
-        @unless(empty($page))
-            <h3 style="text-align: center">{{$page}}</h3>
-            <hr>
-        @endunless
-
-        @yield('content')
-
-        <br/>
-        <br/>
-    </div>
-</main>
+<!-- use clean content when not extending layout.blade.php -->
+@yield('clean-content')
 
 @yield('footer')
 

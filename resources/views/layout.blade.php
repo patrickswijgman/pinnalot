@@ -1,6 +1,6 @@
 @extends('clean')
 
-@section('navbar')
+@section('layout')
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header custom-header">
@@ -39,6 +39,18 @@
                 transform:translateX(250px);
             }
         </style>-->
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                @unless(empty($page))
+                    <h3 style="text-align: center">{{$page}}</h3>
+                    <hr>
+                @endunless
+                @yield('content')
+                <br/>
+                <br/>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </main>
     </div>
 @stop
 
