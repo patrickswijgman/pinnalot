@@ -17,7 +17,7 @@ class EventController extends Controller
             $event->start = Event::convertTimestampToDateTime($event->start);
             $event->end = Event::convertTimestampToDateTime($event->end);
 
-            return view('/event', ['event' => $event]);
+            return view('event', ['event' => $event]);
         }
     }
 }

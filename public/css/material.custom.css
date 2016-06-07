@@ -1,3 +1,4 @@
+
 header.custom-header {
     /*background:  rgb(18, 99, 146);*/
 }
@@ -14,3 +15,12 @@ header.custom-header {
 .custom-header .material-icons:hover {
     color: rgba(255, 255, 255, 1);
 }
+
+.custom-header .mdi {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-header .mdi:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
