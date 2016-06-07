@@ -1,0 +1,16 @@
+header.custom-header {
+    /*background:  rgb(18, 99, 146);*/
+}
+
+.page-content {
+    width: 70%;
+    margin: auto;
+}
+
+.custom-header .material-icons {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-header .material-icons:hover {
+    color: rgba(255, 255, 255, 1);
+}

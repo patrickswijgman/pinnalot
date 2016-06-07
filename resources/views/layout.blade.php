@@ -3,21 +3,17 @@
 @section('navbar')
     <div class="navbar navbar-inverse">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-title navbar-brand" style="position: absolute; left: 50%;">
-                    <a href="{{ url('/') }}" ><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Pinnalot</a>
-                </div>
+            <div class="navbar-title navbar-brand" style="position: absolute; left: 50%;">
+                <a href="{{ url('/') }}" ><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Pinnalot</a>
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="{{ url('#') }}" data-toggle="offcanvas"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> </a></li>
-                    <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </a></li>
-                    <li><a href="{{ url('/calendar') }}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="{{ url('#') }}" data-toggle="offcanvas"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> </a></li>
+                <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> </a></li>
+                <li><a href="{{ url('/calendar') }}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a></li>
+            </ul>
         </div>
     </div>
 @stop
