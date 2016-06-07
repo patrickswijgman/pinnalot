@@ -9,6 +9,7 @@
 
 @section('content')
 
+    <!-- navigation and control buttons for the calendar -->
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:left;"
             onclick="$('#calendar').fullCalendar('prev');">
         <i class="material-icons">keyboard_arrow_left</i>
@@ -36,6 +37,7 @@
     <div id='calendar' ></div>
     <div id="source" data-events="{{$events}}" ></div>
 
+    <!-- event popup dialog -->
     <dialog class="mdl-dialog">
         <h4 class="mdl-dialog__title"></h4>
         <hr>
@@ -57,7 +59,6 @@
 @section('footer')
 
     <script>
-
         var dialog = document.querySelector('dialog');
         if (! dialog.showModal) {
             dialogPolyfill.registerDialog(dialog);
@@ -76,10 +77,14 @@
                 },
                 eventClick: function(event) {
                     if (event.url) {
+                        var timeStart = new Date(event.start.format());
+                        var timeEnd = new Date(event.end.format());
+
                         $('.mdl-dialog__title').html("").append(event.title);
                         $('.mdl-dialog__desc').html("").append(event.description);
-                        $('.mdl-dialog__start').html("").append(event.start);
-                        $('.mdl-dialog__end').html("").append(event.end);
+                        $('.mdl-dialog__start').html("").append(timeStart);
+                        $('.mdl-dialog__end').html("").append(timeEnd);
+
                         dialog.showModal();
                         return false;
                     }

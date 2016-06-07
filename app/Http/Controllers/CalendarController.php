@@ -11,12 +11,7 @@ class CalendarController extends Controller
 {
     function show(){
 
-        $events = Event::all();
-        
-        /** @var Event $event */
-        foreach($events as $event) {
-            $event->makeUrl();
-        }
+        $events = Event::getAll();
 
         return view('calendar', ['events' => $events, 'page' => 'Calendar']);
     }
