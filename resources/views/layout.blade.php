@@ -52,7 +52,6 @@
                 @yield('content')
                 <br/>
                 <br/>
-                <div class="mdl-layout-spacer"></div>
             </div>
         </main>
     </div>
