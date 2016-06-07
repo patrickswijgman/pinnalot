@@ -11,7 +11,6 @@ if (dialog !== null) {
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         events: $('#source').data("events"),
-        displayEventTime: false,
         header: {
             left: '',
             center: 'title',
@@ -19,11 +18,8 @@ $(document).ready(function() {
         },
         eventClick: function(event) {
             if (event.url) {
-                var timeStart = (event.start.format());
-                var timeEnd = (event.end.format());
-
-                timeStart = convertISOtoDateTime(timeStart);
-                timeEnd = convertISOtoDateTime(timeEnd);
+                var timeStart = new Date(event.start.format());
+                var timeEnd = new Date(event.end.format());
 
                 $('.mdl-dialog__title').html("").append(event.title);
                 $('.mdl-dialog__desc').html("").append(event.description);
