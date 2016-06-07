@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
+    <link rel="shortcut icon" href="{{ url('img/fav.png') }}" type="image/png"/>
+
     {{Html::style('https://fonts.googleapis.com/icon?family=Material+Icons')}}
     {{Html::style('http://cdn.materialdesignicons.com/1.6.50/css/materialdesignicons.min.css')}}
     {{Html::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700')}}
@@ -24,8 +26,20 @@
 
 @yield('navbar')
 
-<!-- use clean content when not extending 'navbar' -->
-@yield('clean-content')
+<main class="mdl-layout__content">
+    <div class="page-content">
+
+        @unless(empty($page))
+            <h3 style="text-align: center">{{$page}}</h3>
+            <hr>
+        @endunless
+
+        @yield('content')
+
+        <br/>
+        <br/>
+    </div>
+</main>
 
 @yield('footer')
 
