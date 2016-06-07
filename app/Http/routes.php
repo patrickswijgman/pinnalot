@@ -19,8 +19,8 @@ Route::get('/', function(){
     return view('home');
 });
 
-Route::get('/calendar', 'CalendarController@show');
+Route::get('calendar', 'CalendarController@show');
 
-Route::get('/event/{id}', 'EventController@show');
+Route::get('event/{id}', 'EventController@show');
 
 
