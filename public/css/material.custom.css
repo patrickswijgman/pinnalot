@@ -3,6 +3,10 @@ header.custom-header {
     /*background:  rgb(18, 99, 146);*/
 }
 
+.mdl-layout__content {
+    padding-top: 70px;
+}
+
 .page-content {
     width: 70%;
     margin: auto;
@@ -17,10 +21,14 @@ header.custom-header {
 }
 
 .custom-header .mdi {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
 }
 
-.custom-header .mdi:hover {
-    color: rgba(255, 255, 255, 1);
+.mdl-layout-title {
+    cursor: default;
+}
+
+.mdl-layout__drawer-button:focus {
+    outline:0;
 }
 
