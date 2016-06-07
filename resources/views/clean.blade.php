@@ -1,40 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Pinnalot {{ isset($page)? '- '.$page: ''}}</title>
-    {{Html::style('css/bootstrap.min.css')}}
-    {{Html::style('css/bootstrap-custom.css')}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    {{Html::style('css/material.custom.css')}}
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+    {{Html::script('js/jquery.min.js')}}
+    {{Html::script('js/moment.min.js')}}
 
     @yield('header')
+
+    <title>Pinnalot {{ isset($page)? '- '.$page: ''}}</title>
 </head>
 
 <body>
 
 @yield('navbar')
-@yield('sidebar')
 
-<!-- extend this when the page does not extends 'sidebar' -->
+<!-- use clean content when not extending 'navbar' -->
 @yield('clean-content')
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-{{ Html::script("js/jquery.min.js") }}
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-{{ Html::script('js/bootstrap.min.js') }}
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-{{ Html::script('js/html5shiv.min.js') }}
-{{ Html::script("js/respond.min.js") }}
-<![endif]-->
-
-{{ Html::script("js/sidebar.js") }}
 
 @yield('footer')
 
 </body>
-<footer>
-</footer>
-</html>
