@@ -18,8 +18,8 @@ $(document).ready(function() {
         },
         eventClick: function(event) {
             if (event.url) {
-                var timeStart = new Date(event.start.format());
-                var timeEnd = new Date(event.end.format());
+                var timeStart = (event.start.format());
+                var timeEnd = (event.end.format());
 
                 $('.mdl-dialog__title').html("").append(event.title);
                 $('.mdl-dialog__desc').html("").append(event.description);
