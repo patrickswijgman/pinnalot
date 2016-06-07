@@ -18,6 +18,6 @@ class CalendarController extends Controller
             $event->makeUrl();
         }
 
-        return view('calendar', ['events' => $events, 'page' => 'My calendar']);
+        return view('calendar', ['events' => $events, 'page' => 'Calendar']);
     }
 }

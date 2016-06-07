@@ -23,7 +23,7 @@
                     <i class="material-icons" style="float:right">home</i>
                 </a>
                 <a class="mdl-navigation__link" href="{{ url('/calendar') }}">
-                    My Calendar
+                    Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
             </nav>
@@ -31,6 +31,10 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <br/>
+                @unless(empty($page))
+                    <h3 style="text-align: center">{{$page}}</h3>
+                @endunless
+                <hr>
                 @yield('content')
                 <br/>
                 <br/>
