@@ -9,31 +9,29 @@
 
 @section('content')
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:left;"
             onclick="$('#calendar').fullCalendar('prev');">
-        Prev
+        <i class="material-icons">keyboard_arrow_left</i>
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:left;"
             onclick="$('#calendar').fullCalendar('today');">
         Today
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:left;"
             onclick="$('#calendar').fullCalendar('next');">
-        Next
+        <i class="material-icons">keyboard_arrow_right</i>
     </button>
-    <br/>
-    <br/>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick="$('#calendar').fullCalendar('changeView', 'month');">
-        Month
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
+            onclick="$('#calendar').fullCalendar('changeView', 'agendaDay');">
+        Day
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
             onclick="$('#calendar').fullCalendar('changeView', 'agendaWeek');">
         Week
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick="$('#calendar').fullCalendar('changeView', 'agendaDay');">
-        Day
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
+            onclick="$('#calendar').fullCalendar('changeView', 'month');">
+        Month
     </button>
     <br/>
     <br/>
