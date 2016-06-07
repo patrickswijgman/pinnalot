@@ -1,13 +1,7 @@
 @extends('clean')
 
-@section('header')
-
-    {{ Html::style('css/bootstrap-custom-clean.css') }}
-
-@stop
-
 @section('clean-content')
-    <div class="content">
+    <div style="text-align: center">
         <h1>{{ $event->title }}</h1>
         <hr/>
 

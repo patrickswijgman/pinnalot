@@ -36,14 +36,17 @@
     <br/>
     <br/>
     <div id='calendar' ></div>
+    <div id="source" data-events="{{$events}}" ></div>
 
 @stop
 
 @section('footer')
 
     <script>
+        var source_of_events = $('#source').data("events");
         $(document).ready(function() {
             $('#calendar').fullCalendar({
+                events: source_of_events,
                 header: {
                     left: '',
                     center: 'title',
