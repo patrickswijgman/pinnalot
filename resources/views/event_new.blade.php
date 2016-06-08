@@ -3,9 +3,10 @@
 @section('content')
 {{ Form::open(array('action' => 'EventController@create')) }}
 
-{!! MdlForm::text('title', 'Title') !!}
-{!! MdlForm::textArea('description', 'Description') !!}
+{{ MdlForm::text('title', 'Title') }}
+{{ MdlForm::textArea('description', 'Description') }}
+{{ Form::datetime('dateTime') }}
 
-{!! MdlForm::submit('submit', 'Submit') !!}
+{{ MdlForm::submit('submit', 'Submit') }}
 {{ Form::close() }}
 @stop
