@@ -3,6 +3,10 @@ header.custom-header {
     /*background:  rgb(18, 99, 146);*/
 }
 
+h3 {
+    color: gray;
+}
+
 .page-content {
     width: 70%;
     margin: auto;
