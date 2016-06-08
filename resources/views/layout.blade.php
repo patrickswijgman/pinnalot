@@ -26,6 +26,9 @@
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
+                    Settings
+                    <i class="material-icons" style="float:right">settings</i>
+                </a>
             </nav>
         </div>
         <main class="mdl-layout__content">

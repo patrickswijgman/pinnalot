@@ -23,4 +23,7 @@ Route::get('calendar', 'CalendarController@show');
 
 Route::get('event/{id}', 'EventController@show');
 
+Route::get('settings', 'SettingsController@show');
+
+Route::get('settings/{id}', 'SettingsController@index');
 
