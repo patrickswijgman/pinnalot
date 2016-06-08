@@ -29,12 +29,12 @@ header.custom-header {
     outline:0;
 }
 
-.mdl-navigation__link {
+.mdl-layout__header-row .mdl-navigation__link {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.mdl-navigation__link:hover,
-.mdl-navigation__link:focus {
+.mdl-layout__header-row .mdl-navigation__link:hover,
+.mdl-layout__header-row .mdl-navigation__link:focus {
     color: rgba(255, 255, 255, 1);
 }
 
