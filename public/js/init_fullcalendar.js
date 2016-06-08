@@ -11,6 +11,7 @@ if (dialog !== null) {
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         events: $('#source').data("events"),
+        displayEventTime: false,
         header: {
             left: '',
             center: 'title',
