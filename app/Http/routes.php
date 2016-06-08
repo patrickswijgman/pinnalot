@@ -27,3 +27,4 @@ Route::get('settings', 'SettingsController@show');
 
 Route::get('settings/{id}', 'SettingsController@index');
 
+Route::get('changepw', 'SettingsController@changepw');

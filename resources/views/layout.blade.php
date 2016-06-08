@@ -26,6 +26,7 @@
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
+                <a class="mdl-navigation__link" href="{{ url('/settings/1') }}">
                     Settings
                     <i class="material-icons" style="float:right">settings</i>
                 </a>

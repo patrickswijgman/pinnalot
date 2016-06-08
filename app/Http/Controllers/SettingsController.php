@@ -26,6 +26,11 @@ class SettingsController extends Controller
         return view('settings', compact('user'), ['page' => 'Settings']);
     }
 
+    function changepw(){
+        
+        return view('changepw', ['page'=> 'Change Password']);
+    }
+    
 
 }
 
