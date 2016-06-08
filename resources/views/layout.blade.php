@@ -49,7 +49,7 @@
             }
         </style>-->
         <main class="mdl-layout__content">
-            <div class="page-content">
+            <div class="page-content" style="min-height: 100vh;">
                 @unless(empty($page))
                     <h3 style="text-align: center">{{$page}}</h3>
                     <hr>
@@ -57,8 +57,20 @@
                 @yield('content')
                 <br/>
                 <br/>
-                <div class="mdl-layout-spacer"></div>
             </div>
+            <div class="mdl-layout-spacer"></div>
+            <footer class=" mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">
+                        Unicor
+                    </div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy and Terms</a></li>
+                        <li><a href="#">User Agreement</a></li>
+                    </ul>
+                </div>
+            </footer>
         </main>
     </div>
 @stop

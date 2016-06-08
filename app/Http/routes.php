@@ -21,10 +21,9 @@ Route::get('/', function(){
 
 Route::get('calendar', 'CalendarController@show');
 
+
 Route::get('event/{id}', 'EventController@show');
 
-
-
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
+Route::get('/group', 'GroupController@test');
