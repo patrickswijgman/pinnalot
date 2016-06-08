@@ -1,12 +1,5 @@
 @extends('layout')
 
-@section('header')
-
-    {{ Html::style("css/fullcalendar.css") }}
-    {{ Html::script("js/fullcalendar.js") }}
-
-@stop
-
 @section('content')
 
     <!-- navigation and control buttons for the calendar -->
@@ -44,6 +37,8 @@
 
 @section('footer')
 
+    {{ Html::style("css/fullcalendar.css") }}
+    {{ Html::script("js/fullcalendar.js") }}
     {{ Html::script('js/init_fullcalendar.js') }}
 
 @stop
