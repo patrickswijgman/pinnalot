@@ -8,6 +8,13 @@ if (dialog !== null) {
     });
 }
 
+function convertISOtoDateTime(timeString) {
+    var dateTime = timeString.split("T");
+    var date = dateTime[0].split("-");
+    var time = dateTime[1].split(":");
+    return date[2] + ' ' + date[1] + ' ' + date[0] + '<br/>' + time[0] + ':' + time[1];
+}
+
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         events: $('#source').data("events"),
@@ -21,6 +28,9 @@ $(document).ready(function() {
             if (event.url) {
                 var timeStart = (event.start.format());
                 var timeEnd = (event.end.format());
+
+                timeStart = convertISOtoDateTime(timeStart);
+                timeEnd = convertISOtoDateTime(timeEnd);
 
                 $('.mdl-dialog__title').html("").append(event.title);
                 $('.mdl-dialog__desc').html("").append(event.description);
