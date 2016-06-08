@@ -52,6 +52,14 @@ return [
             'prefix' => '',
         ],
 
+        'neo4j' => [
+            'driver' => 'neo4j',
+            'host'   => env('DB_HOST', 'localhost'),
+            'port'   => env('NEO_PORT', '7474'),
+            'username' => env('NEO_USERNAME', null),
+            'password' => env('NEO_PASSWORD', null)
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
