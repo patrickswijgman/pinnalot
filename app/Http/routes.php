@@ -21,6 +21,9 @@ Route::get('/', function(){
 
 Route::get('calendar', 'CalendarController@show');
 
+Route::post('event/new', 'EventController@create');
+Route::get('event/new', 'EventController@show');
+
 
 Route::get('event/{id}', 'EventController@show');
 
