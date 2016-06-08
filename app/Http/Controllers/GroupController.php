@@ -10,7 +10,7 @@ class GroupController extends Controller {
         Group::create(
             [
                 'name'=>'testGroup',
-                'omschrijving'=> 'This is a testGroup',
+                'description'=> 'This is a testGroup',
                 'kind' => 'family']
         );
 
