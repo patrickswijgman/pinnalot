@@ -1,40 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Pinnalot {{ isset($page)? '- '.$page: ''}}</title>
-    {{Html::style('css/bootstrap.min.css')}}
-    {{Html::style('css/bootstrap-custom.css')}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    {{Html::favicon('img/fav.png')}}
+
+    {{Html::style('https://fonts.googleapis.com/icon?family=Material+Icons')}}
+    {{Html::style('http://cdn.materialdesignicons.com/1.6.50/css/materialdesignicons.min.css')}}
+    {{Html::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700')}}
+    {{Html::style('https://code.getmdl.io/1.1.3/material.blue_grey-red.min.css')}}
+    {{Html::style('css/material_custom.css')}}
+
 
     @yield('header')
+
+    <title>Pinnalot {{ isset($page)? '- '.$page: ''}}</title>
 </head>
 
 <body>
 
-@yield('navbar')
-@yield('sidebar')
+@yield('layout')
 
-<!-- extend this when the page does not extends 'sidebar' -->
+<!-- use clean content when not extending layout.blade.php -->
 @yield('clean-content')
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-{{ Html::script("js/jquery.min.js") }}
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-{{ Html::script('js/bootstrap.min.js') }}
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-{{ Html::script('js/html5shiv.min.js') }}
-{{ Html::script("js/respond.min.js") }}
-<![endif]-->
-
-{{ Html::script("js/sidebar.js") }}
+{{Html::script('https://code.getmdl.io/1.1.3/material.min.js')}}
+{{Html::script('js/jquery.min.js')}}
+{{Html::script('js/moment.min.js')}}
+{{Html::script('js/helperfunctions.js')}}
 
 @yield('footer')
 
 </body>
-<footer>
-</footer>
-</html>
