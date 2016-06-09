@@ -10,7 +10,7 @@ function makeDropdown(options){
     button.id = numberOfDropdowns; // this is how Material Design associates option/button
     button.setAttribute('class', 'mdl-button mdl-js-button');
     button.setAttribute('type', 'button');
-    button.innerHTML = 'Default';
+    button.innerHTML = options[0];
     document.getElementById(insertPoint).appendChild(button);
 
     // add the options to the button (unordered list)
