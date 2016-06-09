@@ -12,30 +12,37 @@
         {{ Form::open(array('url' => url('/login'))) }}
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
+            {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
 
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                {{  MdlForm::text('password', 'Password', '', 'password') }}
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
+            {{  MdlForm::text('password', 'Password', '', 'password') }}
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
 
-            <div class="form-group">
-                <br>
-                {{  MdlForm::submit('login', 'Login') }}
-                <br>
-                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-            </div>
+            <div id="dropdowns"></div>
+
+            <br>
+            {{  MdlForm::submit('login', 'Login') }}
+            <br>
+            <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
         {{ Form::close() }}
     </div>
 @endsection
+
+@section('footer')
+
+    {{ Html::script('js/dropdown.js') }}
+
+    <script>
+        var options = ["a", "b", "c", "d"];
+        makeDropdown(options);
+    </script>
+
+@stop

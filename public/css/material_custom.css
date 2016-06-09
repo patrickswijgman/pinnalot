@@ -3,7 +3,12 @@ header.custom-header {
     /*background:  rgb(18, 99, 146);*/
 }
 
+h1, h2 {
+    cursor: pointer;
+}
+
 h3 {
+    cursor: pointer;
     color: gray;
 }
 
