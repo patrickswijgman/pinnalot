@@ -66,10 +66,10 @@ h3 {
 
 .mdl-textfield--file .mdl-textfield__input {
     box-sizing: border-box;
-    width: calc(100% - 32px);
+    width: 100%;
 }
 .mdl-textfield--file .mdl-button--file {
-    right: 0;
+    right: -32px;
 }
 
 

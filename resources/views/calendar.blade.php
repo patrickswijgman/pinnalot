@@ -3,6 +3,8 @@
 @section('header')
 
     {{ Html::style("css/fullcalendar.css") }}
+    {{ Html::script("js/fullcalendar.js") }}
+    {{ Html::script('js/init_fullcalendar.js') }}
     
 @stop
 
@@ -38,12 +40,5 @@
 
     <!-- event popup dialog -->
     @include('event_dialog')
-
-@stop
-
-@section('footer')
-
-    {{ Html::script("js/fullcalendar.js") }}
-    {{ Html::script('js/init_fullcalendar.js') }}
 
 @stop

@@ -46,7 +46,7 @@ class MdlForm
         ');
     }
 
-    static function submitFile($name, $label){
+    static function uploadFile($name, $label){
         return new HtmlString('
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
                 <input class="mdl-textfield__input" placeholder="'.$label.'" type="text" id="'.$name.'File" readonly/>
@@ -59,6 +59,21 @@ class MdlForm
                     document.getElementById("'.$name.'File").value = this.files[0].name;
                 };
             </script>
+        ');
+    }
+
+    static function dropdown($name, $label, $values=array(), $labels=array()) {
+        return new HtmlString('
+        <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="'.$name.'" name="'.$name.'" readonly />
+            <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+        </div>
+        <script>
+            $("#'.$name.'").mdlselect({
+                value: '.json_encode($values).',
+                label: '.json_encode($labels).'
+            });
+        </script>
         ');
     }
 

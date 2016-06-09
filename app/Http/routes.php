@@ -25,6 +25,7 @@ Route::get('calendar', 'CalendarController@show');
 Route::get('event/{id}', 'EventController@show');
 
 Route::get('settings/{id}', 'SettingsController@index');
+Route::post('settings/{id}', 'SettingsController@save');
 
 Route::get('changepw', 'SettingsController@changepw');
 
