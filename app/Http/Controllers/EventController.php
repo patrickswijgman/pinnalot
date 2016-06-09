@@ -33,7 +33,7 @@ class EventController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
+        
         $data['start'] = DateTimeHelper::dateToIsoString($data['start']);
         $data['end'] = DateTimeHelper::dateToIsoString($data['end']);
         Event::create($data);

@@ -174,6 +174,7 @@ var jsc = {
 			// IE
 			document.attachEvent('onreadystatechange', function () {
 				if (document.readyState === 'complete') {
+					//noinspection JSAnnotator
 					document.detachEvent('onreadystatechange', arguments.callee);
 					fireOnce();
 				}
@@ -983,7 +984,7 @@ var jsc = {
 		this.styleElement = targetElement; // element that will preview the picked color using CSS backgroundColor
 		this.required = true; // whether the associated text <input> can be left empty
 		this.refine = true; // whether to refine the entered color code (e.g. uppercase it and remove whitespace)
-		this.hash = false; // whether to prefix the HEX color code with # symbol
+		this.hash = true; // whether to prefix the HEX color code with # symbol
 		this.uppercase = true; // whether to uppercase the color code
 		this.onFineChange = null; // called instantly every time the color changes (value can be either a function or a string with javascript code)
 		this.activeClass = 'jscolor-active'; // class to be set to the target element when a picker window is open on it
@@ -999,7 +1000,7 @@ var jsc = {
 
 		// Color Picker options
 		//
-		this.width = 181; // width of color palette (in px)
+		this.width = 241; // width of color palette (in px)
 		this.height = 101; // height of color palette (in px)
 		this.showOnClick = true; // whether to display the color picker when user clicks on its target element
 		this.mode = 'HSV'; // HSV | HVS | HS | HV - layout of the color picker controls
@@ -1015,11 +1016,11 @@ var jsc = {
 		this.backgroundColor = '#FFFFFF'; // CSS color
 		this.borderWidth = 1; // px
 		this.borderColor = '#BBBBBB'; // CSS color
-		this.borderRadius = 8; // px
+		this.borderRadius = 0; // px
 		this.insetWidth = 1; // px
 		this.insetColor = '#BBBBBB'; // CSS color
 		this.shadow = true; // whether to display shadow
-		this.shadowBlur = 15; // px
+		this.shadowBlur = 5; // px
 		this.shadowColor = 'rgba(0,0,0,0.2)'; // CSS color
 		this.pointerColor = '#4C4C4C'; // px
 		this.pointerBorderColor = '#FFFFFF'; // px
@@ -1107,7 +1108,7 @@ var jsc = {
 				if (this.styleElement) {
 					this.styleElement.style.backgroundImage = 'none';
 					this.styleElement.style.backgroundColor = '#' + this.toString();
-					this.styleElement.style.color = this.isLight() ? '#000' : '#FFF';
+					this.styleElement.style.color = this.styleElement.style.backgroundColor;
 				}
 			}
 			if (!(flags & jsc.leavePad) && isPickerOwner()) {
@@ -1435,7 +1436,7 @@ var jsc = {
 
 			// wrap
 			p.wrap.style.clear = 'both';
-			p.wrap.style.width = (dims[0] + 2 * THIS.borderWidth) + 'px';
+			p.wrap.style.width = 300 + 'px';
 			p.wrap.style.height = (dims[1] + 2 * THIS.borderWidth) + 'px';
 			p.wrap.style.zIndex = THIS.zIndex;
 
