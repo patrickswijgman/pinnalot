@@ -51,7 +51,7 @@ class MdlForm
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
                 <input class="mdl-textfield__input" placeholder="'.$label.'" type="text" id="'.$name.'File" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                    <i class="material-icons">attach_file</i><input type="file" id="'.$name.'Btn">
+                    <i class="material-icons">attach_file</i><input type="file" id="'.$name.'Btn" name="'.$name.'">
                 </div>
             </div>
             <script>

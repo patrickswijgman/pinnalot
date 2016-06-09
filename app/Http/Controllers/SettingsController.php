@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Html;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\HtmlString;
 
 class SettingsController extends Controller
 {
@@ -37,7 +35,11 @@ class SettingsController extends Controller
     }
 
     function save($id) {
-        return Input::all();
+        if (isset($_FILES['profileimage'])) {
+            $aExtraInfo = getimagesize($_FILES['profileimage']['tmp_name']);
+            $sImage = "data:" . $aExtraInfo["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['profileimage']['tmp_name']));
+            return new HtmlString(json_encode(Input::all()) . '<br/><img src="' . $sImage . '" alt="Your Image" />');
+        }
     }
     
 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {{ Form::open(array('url' => url('/settings/'.$id))) }}
+    {{ Form::open(array('url' => url('/settings/'.$id), 'files' => 'true')) }}
 
     <input type="hidden" name="id" value="{{ $id }}" >
 
