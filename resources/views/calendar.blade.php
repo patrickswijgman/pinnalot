@@ -21,15 +21,15 @@
             onclick="$('#calendar').fullCalendar('next');">
         <i class="material-icons">keyboard_arrow_right</i>
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="float:right;"
             onclick="$('#calendar').fullCalendar('changeView', 'agendaDay');">
         Day
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="float:right;"
             onclick="$('#calendar').fullCalendar('changeView', 'agendaWeek');">
         Week
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:right;"
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="float:right;"
             onclick="$('#calendar').fullCalendar('changeView', 'month');">
         Month
     </button>
