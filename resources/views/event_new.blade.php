@@ -11,16 +11,18 @@
 
 
 @section('content')
-{{ Form::open(array('action' => 'EventController@create')) }}
 
-{{ MdlForm::text('title', 'Title') }}
+    {{ Form::open(array('action' => 'EventController@create')) }}
 
-{{ MdlForm::textArea('description', 'Description') }}
+    {{ MdlForm::text('title', 'Title') }}
 
-{{ MdlForm::datetime('start', 'Start date and time') }}
+    {{ MdlForm::textArea('description', 'Description') }}
 
-{{ MdlForm::datetime('end', 'End date and time') }}
+    {{ MdlForm::datetime('start', 'Start date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
 
-{{ MdlForm::submit('submit', 'Submit') }}
-{{ Form::close() }}
+    {{ MdlForm::datetime('end', 'End date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
+
+    {{ MdlForm::submit('submit', 'Submit') }}
+    {{ Form::close() }}
+
 @stop

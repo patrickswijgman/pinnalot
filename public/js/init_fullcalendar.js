@@ -18,9 +18,12 @@ $(document).ready(function() {
             center: 'title',
             right: ''
         },
+        dayClick: function(date, jsEvent, view) {
+            $date = date.format().split('-');
+            window.location.href = 'event/new?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
+        },
         eventClick: function(event) {
             if (event.url) {
-
                 timeStart = new Date(event.start.toString());
                 timeEnd = new Date(event.end.toString());
 

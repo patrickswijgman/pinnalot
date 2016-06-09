@@ -7,21 +7,21 @@ use Illuminate\Support\HtmlString;
 class MdlForm
 {
     
-    static function text($name, $label, $value="", $type="text", $readonly=null){
+    static function text($name, $label, $value="", $type="text", $readonly=null, $required=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.$value.'" '.$readonly.'>
+                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$readonly.' '.$required.'>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>');
     }
 
-    static function textArea($name, $label) {
+    static function textArea($name, $label, $value="") {
         return new HtmlString('
         <div>  
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <textarea name="'.$name.'" class="mdl-textfield__input" rows= "5" id="'.$name.'" ></textarea>
+                <textarea name="'.$name.'" class="mdl-textfield__input" rows= "5" id="'.$name.'" >'.(($value != "")? $value: old($name)).'</textarea>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>');
@@ -78,11 +78,11 @@ class MdlForm
         ');
     }
 
-    static function datetime($name, $label) {
+    static function datetime($name, $label, $value="", $required=null) {
         return new HtmlString('
         <div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input" type="text" id="'.$name.'" readonly>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label datetime-field">
+                <input name="'.$name.'" class="mdl-textfield__input" type="text" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$required.' readonly>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
