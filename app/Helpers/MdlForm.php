@@ -46,4 +46,20 @@ class MdlForm
         ');
     }
 
+    static function submitFile($name, $label){
+        return new HtmlString('
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+                <input class="mdl-textfield__input" placeholder="'.$label.'" type="text" id="'.$name.'File" readonly/>
+                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                    <i class="material-icons">attach_file</i><input type="file" id="'.$name.'Btn">
+                </div>
+            </div>
+            <script>
+                document.getElementById("'.$name.'Btn").onchange = function () {
+                    document.getElementById("'.$name.'File").value = this.files[0].name;
+                };
+            </script>
+        ');
+    }
+
 }
