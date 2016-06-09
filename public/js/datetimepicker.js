@@ -1148,6 +1148,7 @@
               },
               hide: function ()
               {
+                 this.unfocusParent();
                  $(window).off('keydown', null, null, this._onKeydown.bind(this));
                  this.$dtpElement.addClass('hidden');
               },
@@ -1170,6 +1171,12 @@
                           }).off("click");
                        }
                     });
+                 }
+              },
+              unfocusParent: function ()
+              {
+                 if (this.$element.val() === '') {
+                    this.$element.parent().removeClass('is-focused');
                  }
               }
 

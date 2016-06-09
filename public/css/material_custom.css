@@ -72,4 +72,17 @@ h3 {
     right: -32px;
 }
 
+.datetime-field:hover {
+    cursor: pointer;
+}
+
+.help-block {
+    font-weight: bold;
+    color: #DF3A27;
+}
+
+.help-block strong {
+    color: #DF3A27;
+}
+
 

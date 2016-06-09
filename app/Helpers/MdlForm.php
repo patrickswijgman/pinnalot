@@ -14,7 +14,8 @@ class MdlForm
                 <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$readonly.' '.$required.'>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
-        </div>');
+        </div>
+        ');
     }
 
     static function textArea($name, $label, $value="") {
@@ -29,6 +30,7 @@ class MdlForm
     
     static function submit($name, $label) {
         return new HtmlString('
+        <br/><br/>
         <div>
             <input name="'.$name.'" type="submit" value="'.$label.'" 
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
@@ -81,8 +83,8 @@ class MdlForm
     static function datetime($name, $label, $value="", $required=null) {
         return new HtmlString('
         <div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label datetime-field">
-                <input name="'.$name.'" class="mdl-textfield__input" type="text" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$required.' readonly>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input name="'.$name.'" class="mdl-textfield__input datetime-field" type="text" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$required.' readonly>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
