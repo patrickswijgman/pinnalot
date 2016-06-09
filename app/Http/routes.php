@@ -21,4 +21,23 @@ Route::get('/', function(){
 
 Route::get('calendar', 'CalendarController@show');
 
+
+Route::get('event/{id}', 'EventController@show');
+
+Route::get('settings/{id}', 'SettingsController@index');
+Route::post('settings/{id}', 'SettingsController@save');
+
+Route::get('changepw', 'SettingsController@changepw');
+
 Route::get('/group', 'GroupController@test');
+
+Route::post('event/new', 'EventController@create');
+Route::get('event/new', 'EventController@show');
+
+
+Route::get('event/{id}', 'EventController@show');
+
+Route::auth();
+Route::get('/home', 'HomeController@index');
+Route::get('/group', 'GroupController@test');
+

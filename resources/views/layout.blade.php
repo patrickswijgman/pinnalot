@@ -13,7 +13,12 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="{{ url('/logout') }}"><i class="material-icons">exit_to_app</i></a>
+                    @if (Auth::guest())
+                        <a class="mdl-navigation__link" href="{{ url('/login') }}">Login</a>
+                        <a class="mdl-navigation__link" href="{{ url('/register') }}">Register</a>
+                    @else
+                        <a class="mdl-navigation__link" href="{{ url('/logout') }}"><i class="material-icons">exit_to_app</i></a>
+                    @endif
                 </nav>
             </div>
         </header>
@@ -30,6 +35,10 @@
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
+                <a class="mdl-navigation__link" href="{{ url('/settings/2') }}">
+                    Settings
+                    <i class="material-icons" style="float:right">settings</i>
+                </a>
             </nav>
         </div>
         <!-- Uncomment for sidebar on the right
@@ -44,7 +53,7 @@
             }
         </style>-->
         <main class="mdl-layout__content">
-            <div class="page-content" style="min-height: 100vh;">
+            <div class="page-content" style="min-height: 100vh; text-align: center;">
                 @unless(empty($page))
                     <h3 style="text-align: center">{{$page}}</h3>
                     <hr>
