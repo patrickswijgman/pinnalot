@@ -7,11 +7,11 @@ use Illuminate\Support\HtmlString;
 class MdlForm
 {
     
-    static function text($name, $label, $value="", $type="text"){
+    static function text($name, $label, $value="", $type="text", $readonly=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.$value.'">
+                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.$value.'" '.$readonly.'>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>');

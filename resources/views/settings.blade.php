@@ -7,70 +7,47 @@
 
     <div class="right">
         <input type="file" id="profile_image"  algin ="center"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-        <input type="button" value="Opslaan" align="center" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         <br>
     </div><br><br>
 
-    <table>
-    <tr>
-        <td>Name:</td>
-        <td>Iris</td>
-        </tr>
-        <tr class="blank_row">
-            <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-        <td>Userame:</td>
-            <td>{{ $user->name }}</td>
-            </tr>
-        <tr class="blank_row">
-            <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-        <td>Password:</td>
-            <td><a href="{{url('changepw')}}"> Change Password</a></td>
-            </tr>
-        <tr class="blank_row">
-            <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-        <td>Country:</td>
-            <td> <select>
-                    <option value="GER"> Germany</option>
-                    <option value="NLD" selected>Netherlands</option>
-                    <option value="GB"> Great Britain</option>
-                </select></td>
+    {{  MdlForm::text('name', 'Name', 'Iris', 'text', 'readonly') }}
+    {{  MdlForm::text('username', 'Username', $user->name ,  'text', 'readonly') }}
+    <a href="{{url('changepw')}}"> Change Password</a><br><br>
 
-            </tr>
-        <tr class="blank_row">
-            <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-        <td>Timezone:</td>
-            <td><select>
-                    <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
-                    <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                    <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
-                    <option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00) Alaska</option>
-                </select></td>
+    <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="country" name="select" readonly />
+        <label class="mdl-textfield__label" for="country">Country:</label>
+    </div>
+    <br>
+    <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="timezone" name="select" readonly />
+        <label class="mdl-textfield__label" for="timezone">Timezone:</label>
+    </div>
 
-            </tr>
-        <tr class="blank_row">
-            <td bgcolor="#FFFFFF" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
 
-        <td>E-mail:</td>
-            <td>{{ $user->email }}</td>
-    </tr>
+    {{  MdlForm::text('email', 'Email', $user->email ,  'text', 'readonly') }}
 
-    </table>
-    <br><br>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="margin-left:auto;margin-right:50%;"> Edit <i class="material-icons">done</i>
+
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" align="center"> Edit <i class="material-icons">done</i>
     </button>
+@stop
 
+@section('footer')
 
+    {{ Html::script('js/dropdown.js') }}
 
+    <script>
+        $("#country").mdlselect({
+            value: ["0", "1", "2", "3"],
+            label: ["The Netherlands", "Germany", "Austria", "Great Britain"],
+        });
+
+        $("#timezone").mdlselect({
+            value: ["0", "1", "2", "3"],
+            label: ["(GMT-12:00) International Date Line West", "Andere tijd", "Nog meer tijd", "Heel veel tijd"],
+        });
+    </script>
 
 @stop
