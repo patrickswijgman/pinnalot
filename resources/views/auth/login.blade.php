@@ -26,7 +26,10 @@
                 </span>
             @endif
 
-            <div id="dropdowns"></div>
+            <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="select" name="select" readonly />
+                <label class="mdl-textfield__label" for="select">Select your option</label>
+            </div>
 
             <br>
             {{  MdlForm::submit('login', 'Login') }}
@@ -41,8 +44,10 @@
     {{ Html::script('js/dropdown.js') }}
 
     <script>
-        var options = ["a", "b", "c", "d"];
-        makeDropdown(options);
+        $("#select").mdlselect({
+            value: ["0", "1", "2", "3"],
+            label: ["n/a", "Option 1", "Option 2", "Option 2"],
+        });
     </script>
 
 @stop

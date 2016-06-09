@@ -4,11 +4,11 @@ header.custom-header {
 }
 
 h1, h2 {
-    cursor: pointer;
+    cursor: default;
 }
 
 h3 {
-    cursor: pointer;
+    cursor: default;
     color: gray;
 }
 
@@ -45,5 +45,10 @@ h3 {
 .mdl-layout__header-row .mdl-navigation__link:hover,
 .mdl-layout__header-row .mdl-navigation__link:focus {
     color: rgba(255, 255, 255, 1);
+}
+
+.mdl-mdlselect-hoverable:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }
 
