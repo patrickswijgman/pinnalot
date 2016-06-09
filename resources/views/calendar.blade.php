@@ -3,12 +3,12 @@
 @section('header')
 
     {{ Html::style("css/fullcalendar.css") }}
-    {{ Html::script("js/fullcalendar.js") }}
-
+    
 @stop
 
 @section('content')
 
+    <!-- navigation and control buttons for the calendar -->
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="float:left;"
             onclick="$('#calendar').fullCalendar('prev');">
         <i class="material-icons">keyboard_arrow_left</i>
@@ -33,27 +33,17 @@
             onclick="$('#calendar').fullCalendar('changeView', 'month');">
         Month
     </button>
-    <br/>
-    <br/>
     <div id='calendar' ></div>
     <div id="source" data-events="{{$events}}" ></div>
+
+    <!-- event popup dialog -->
+    @include('event_dialog')
 
 @stop
 
 @section('footer')
 
-    <script>
-        var source_of_events = $('#source').data("events");
-        $(document).ready(function() {
-            $('#calendar').fullCalendar({
-                events: source_of_events,
-                header: {
-                    left: '',
-                    center: 'title',
-                    right: ''
-                }
-            })
-        });
-    </script>
+    {{ Html::script("js/fullcalendar.js") }}
+    {{ Html::script('js/init_fullcalendar.js') }}
 
 @stop
