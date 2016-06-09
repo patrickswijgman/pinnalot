@@ -39,7 +39,7 @@ class MdlForm
         return new HtmlString('
         <div>
             <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="'.$name.'">
-                <input type="checkbox" id="'.$name.'" class="mdl-switch__input">
+                <input type="checkbox" name="'.$name.'" id="'.$name.'" class="mdl-switch__input">
                 <span class="mdl-switch__label">'.$label.'</span>
             </label>
         </div>
@@ -62,7 +62,7 @@ class MdlForm
         ');
     }
 
-    static function dropdown($name, $label, $labels=array()) {
+    static function dropdown($name, $label, $labels=array(), $maxHeight='null') {
         return new HtmlString('
         <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="'.$name.'" name="'.$name.'" readonly />
@@ -70,9 +70,24 @@ class MdlForm
         </div>
         <script>
             $("#'.$name.'").mdlselect({
-                value: '.json_encode($labels).',
-                label: '.json_encode($labels).'
+                value: '.$labels.',
+                label: '.$labels.',
+                fixedHeight: '.$maxHeight.'
             });
+        </script>
+        ');
+    }
+
+    static function datetime($name, $label) {
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input name="'.$name.'" class="mdl-textfield__input" type="text" id="'.$name.'" readonly>
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
+        <script>
+            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY HH:mm" });
         </script>
         ');
     }

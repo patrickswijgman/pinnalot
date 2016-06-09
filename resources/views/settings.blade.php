@@ -19,9 +19,8 @@
     {{ link_to('password/reset', ' Change password')}}
     <br/>
 
-    {{ MdlForm::dropdown('country', 'Country:',
-        array('The Netherlands', 'Germany', 'Great Britain', 'Wales'))
-    }}
+
+    {{ MdlForm::dropdown('country', 'Country:', $countries, 300) }}
 
     {{ MdlForm::text('email', 'Email', $user->email ,  'text', 'readonly') }}
 

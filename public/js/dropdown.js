@@ -28,10 +28,10 @@ $.fn.mdlselect = function(options){
             '<button type="button" id="mdl_select_options_' + field[0].id +'" onclick="mdlSelectFieldFocus(this);" class="mdl-button mdl-js-button mdl-button--icon">' +
             '<i id="show_mdl_select_options_icon_' + field[0].id +'" class="material-icons">keyboard_arrow_down</i>' +
             '</button>' +
-            '<ul id="mdl-mdlselect-list-' + field[0].id +'" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-select" for="mdl_select_options_' + field[0].id +'" style="width:300px; padding:1em;">';
+            '<ul id="mdl-mdlselect-list-' + field[0].id +'" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-select" for="mdl_select_options_' + field[0].id +'" style="width:310px; padding:1em;">';
         for (var selectLoop = 0; selectLoop < options.value.length; selectLoop++){
             theHTML +=
-                '<li id="mdl-mdlselect-' + options.value[selectLoop] + '-' + field[0].id + '" class="mdl-mdlselect-hoverable" onclick="updateField(this);">' + options.label[selectLoop] + '</li>';
+                '<li id="mdl-mdlselect-' + options.value[selectLoop] + '-' + field[0].id + '" class="mdl-mdlselect-hoverable" onclick="updateField(this);" style="text-align:left;">' + options.label[selectLoop] + '</li>';
         }
         theHTML += '</ul></div>';
         //

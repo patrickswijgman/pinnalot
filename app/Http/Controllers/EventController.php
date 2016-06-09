@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DateTimeHelper;
 use App\Models\Event;
+use Carbon\Carbon;
+use Date;
+use DateTime;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,8 +19,10 @@ class EventController extends Controller
     }
 
     function create(){
-        $event = Event::create(Input::all());
-        echo $event;
-        return '';
+        $data = Input::all();
+        $data['start'] = DateTimeHelper::dateToIsoString($data['start']);
+        $data['end'] = DateTimeHelper::dateToIsoString($data['end']);
+        $event = Event::create($data);
+        return $event;
     }
 }

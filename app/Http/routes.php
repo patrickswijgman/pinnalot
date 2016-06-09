@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('calendar', 'CalendarController@show');
 
-Route::get('settings/{id}', 'SettingsController@index');
+Route::get('settings/{id}', 'SettingsController@show');
 Route::post('settings/{id}', 'SettingsController@save');
 
 Route::get('/group', 'GroupController@test');

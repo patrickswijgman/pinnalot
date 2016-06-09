@@ -14,7 +14,7 @@ class Event extends Model
      * This URL is used by the calendar when you click on the event
      */
     private function makeUrl(){
-        $this->attributes['url'] = 'event/' . $this->attributes['id'];
+        $this->attributes['url'] = 'calendar';
     }
 
     private function fixBorderColor(){

@@ -1,4 +1,4 @@
-<dialog class="mdl-dialog" style="text-align: center">
+<dialog class="mdl-dialog" style="text-align: center; min-width: 50%;">
     <h4 class="mdl-dialog__title"></h4>
     <hr>
     <div class="mdl-dialog__content">
