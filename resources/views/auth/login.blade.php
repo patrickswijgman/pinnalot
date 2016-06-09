@@ -26,8 +26,6 @@
                 </span>
             @endif
 
-            {{ MdlForm::uploadFile("image", "Profile image") }}
-
             <br>
             {{  MdlForm::submit('login', 'Login') }}
             <br>
