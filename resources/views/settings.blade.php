@@ -61,7 +61,7 @@
         <tr>
 
         <td>E-mail:</td>
-            <td>ditiseenemailadres@hotmail.com</td>
+            <td>{{ $user->email }}</td>
     </tr>
 
     </table>

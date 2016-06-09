@@ -16,7 +16,7 @@
         </tr>
 
         <tr>
-            <td>New Password Again:</td>
+            <td>Repeat New Password:</td>
             <td><input type="password" name="2newpw" value=""</td>
         </tr>
     </table><br><br>
