@@ -13,7 +13,7 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
+                {{  MdlForm::text('email', 'E-mail Address', old('email')) }}
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
