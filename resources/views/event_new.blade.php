@@ -6,6 +6,7 @@
 
     {{ Html::script('js/moment.min.js') }}
     {{ Html::script("js/datetimepicker.js") }}
+    {{ Html::script("js/jscolor.js") }}
 
 @stop
 
@@ -19,6 +20,8 @@
 
     {{ MdlForm::textArea('description', 'Description') }}
     {{ MdlForm::showErrors($errors, 'description') }}
+
+    {{ MdlForm::color('backgroundColor', 'Color', 'AB2567') }}
 
     {{ MdlForm::datetime('start', 'Start date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
     {{ MdlForm::showErrors($errors, 'start') }}

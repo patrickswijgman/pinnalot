@@ -8,7 +8,7 @@
 
     {{ Form::open(array('url' => url('/settings/'.$id), 'files' => 'true')) }}
 
-    <input type="hidden" name="id" value="{{ $id }}" >
+    {{ Form::hidden("id", $id) }}
 
     {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
 
@@ -18,7 +18,6 @@
 
     {{ link_to('password/reset', ' Change password')}}
     <br/>
-
 
     {{ MdlForm::dropdown('country', 'Country:', $countries, 300) }}
 

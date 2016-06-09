@@ -7,11 +7,11 @@ use Illuminate\Support\HtmlString;
 class MdlForm
 {
     
-    static function text($name, $label, $value="", $type="text", $readonly=null, $required=null){
+    static function text($name, $label, $value="", $type="text", $readonly=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$readonly.' '.$required.'>
+                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$readonly.'>
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
@@ -91,6 +91,17 @@ class MdlForm
         <script>
             $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY HH:mm" });
         </script>
+        ');
+    }
+
+    static function color($name, $label, $value=""){
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+                <input name="'.$name.'" class="mdl-textfield__input jscolor" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" readonly>
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
         ');
     }
 
