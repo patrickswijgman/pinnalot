@@ -29,11 +29,6 @@ class SettingsController extends Controller
         ]);
     }
 
-    function changepw(){
-        
-        return view('changepw', ['page'=> 'Change Password']);
-    }
-
     function save($id) {
         if (isset($_FILES['profileimage'])) {
             $aExtraInfo = getimagesize($_FILES['profileimage']['tmp_name']);

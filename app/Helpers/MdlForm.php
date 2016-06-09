@@ -62,7 +62,7 @@ class MdlForm
         ');
     }
 
-    static function dropdown($name, $label, $values=array(), $labels=array()) {
+    static function dropdown($name, $label, $labels=array()) {
         return new HtmlString('
         <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="'.$name.'" name="'.$name.'" readonly />
@@ -70,7 +70,7 @@ class MdlForm
         </div>
         <script>
             $("#'.$name.'").mdlselect({
-                value: '.json_encode($values).',
+                value: '.json_encode($labels).',
                 label: '.json_encode($labels).'
             });
         </script>

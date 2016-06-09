@@ -48,7 +48,7 @@ h3 {
 }
 
 .mdl-mdlselect-hoverable:hover {
-    background-color: lightgray;
+    background-color: #ECECEC;
     cursor: pointer;
 }
 

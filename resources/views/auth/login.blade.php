@@ -29,7 +29,7 @@
             <br>
             {{  MdlForm::submit('login', 'Login') }}
             <br>
-            <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+        {{ link_to('password/reset', ' Forgot your password?')}}
         {{ Form::close() }}
     </div>
 @endsection
