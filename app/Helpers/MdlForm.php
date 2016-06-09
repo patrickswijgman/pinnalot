@@ -94,4 +94,16 @@ class MdlForm
         ');
     }
 
+    static function showErrors($errors, $name) {
+        if ($errors->has($name)) {
+            return new HtmlString('
+                <span class="help-block">
+                    <strong>'.$errors->first($name).'</strong>
+                </span>
+            ');
+        } else {
+            return '';
+        }
+    }
+
 }

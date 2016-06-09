@@ -15,32 +15,16 @@
     {{ Form::open(array('action' => 'EventController@create')) }}
 
     {{ MdlForm::text('title', 'Title') }}
-    @if ($errors->has('title'))
-        <span class="help-block">
-            <strong>{{ $errors->first('title') }}</strong>
-        </span>
-    @endif
+    {{ MdlForm::showErrors($errors, 'title') }}
 
     {{ MdlForm::textArea('description', 'Description') }}
-    @if ($errors->has('description'))
-        <span class="help-block">
-            <strong>{{ $errors->first('description') }}</strong>
-        </span>
-    @endif
+    {{ MdlForm::showErrors($errors, 'description') }}
 
     {{ MdlForm::datetime('start', 'Start date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
-    @if ($errors->has('start'))
-        <span class="help-block">
-            <strong>{{ $errors->first('start') }}</strong>
-        </span>
-    @endif
+    {{ MdlForm::showErrors($errors, 'start') }}
 
     {{ MdlForm::datetime('end', 'End date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
-    @if ($errors->has('end'))
-        <span class="help-block">
-            <strong>{{ $errors->first('end') }}</strong>
-        </span>
-    @endif
+    {{ MdlForm::showErrors($errors, 'end') }}
 
     {{ MdlForm::submit('submit', 'Submit') }}
     {{ Form::close() }}
