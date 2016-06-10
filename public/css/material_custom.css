@@ -87,4 +87,7 @@ h3 {
     color: #DF3A27;
 }
 
+.jscolor:hover {
+    cursor: pointer;
+}
 

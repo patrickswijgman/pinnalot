@@ -979,7 +979,7 @@ var jsc = {
 
 		// General options
 		//
-		this.value = '4F93D6'; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
+		this.value = null; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
 		this.valueElement = targetElement; // element that will be used to display and input the color code
 		this.styleElement = targetElement; // element that will preview the picked color using CSS backgroundColor
 		this.required = true; // whether the associated text <input> can be left empty

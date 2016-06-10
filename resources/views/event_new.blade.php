@@ -21,7 +21,7 @@
     {{ MdlForm::textArea('description', 'Description') }}
     {{ MdlForm::showErrors($errors, 'description') }}
 
-    {{ MdlForm::color('backgroundColor', 'Color', '') }}
+    {{ MdlForm::color('backgroundColor', 'Color', '4F93D6') }}
     {{ MdlForm::showErrors($errors, 'backgroundColor') }}
 
     {{ MdlForm::datetime('start', 'Start date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
