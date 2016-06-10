@@ -53,7 +53,7 @@
             }
         </style>-->
         <main class="mdl-layout__content">
-            <div class="page-content" style="min-height: 100vh; text-align: center;">
+            <div class="page-content">
                 @unless(empty($page))
                     <h3 style="text-align: center">{{$page}}</h3>
                     <hr>
