@@ -34,6 +34,7 @@ Route::get('/group', 'GroupController@test');
 Route::post('event/new', 'EventController@create');
 Route::get('event/new', 'EventController@show');
 
+Route::get('pay/new', 'PayController@show'); 
 
 Route::get('event/{id}', 'EventController@show');
 
