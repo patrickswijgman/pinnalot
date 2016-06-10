@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    
 
     /**
      * Adds a custom attribute: URL, based on ID
@@ -27,7 +28,6 @@ class Event extends Model
             $event->makeUrl();
             $event->fixBorderColor();
         }
-
         return $events;
     }
 
