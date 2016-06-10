@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use Validator;
-use App\Helpers\DateTimeHelper;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -35,8 +35,8 @@ class EventController extends Controller
                 ->withInput();
         }
 
-        $data['start'] = DateTimeHelper::dateToIsoString($data['start']);
-        $data['end'] = DateTimeHelper::dateToIsoString($data['end']);
+        $data['start'] = Helper::dateToISOString($data['start']);
+        $data['end'] = Helper::dateToISOString($data['end']);
         Event::create($data);
         return redirect('calendar');
 

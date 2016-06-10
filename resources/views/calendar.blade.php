@@ -44,5 +44,5 @@
 @stop
 
 @section('footer')
-    {{ Html::script('js/init_fullcalendar.js') }}
+    {{ Html::script('js/fullcalendar_init.js') }}
 @stop

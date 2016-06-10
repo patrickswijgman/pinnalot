@@ -6,7 +6,15 @@ use Illuminate\Support\HtmlString;
 
 class MdlForm
 {
-    
+
+    /**
+     * @param $name
+     * @param $label
+     * @param string $value
+     * @param string $type
+     * @param null $readonly
+     * @return HtmlString
+     */
     static function text($name, $label, $value="", $type="text", $readonly=null){
         return new HtmlString('
         <div>
@@ -18,6 +26,12 @@ class MdlForm
         ');
     }
 
+    /**
+     * @param $name
+     * @param $label
+     * @param string $value
+     * @return HtmlString
+     */
     static function textArea($name, $label, $value="") {
         return new HtmlString('
         <div>  
@@ -27,7 +41,12 @@ class MdlForm
             </div>
         </div>');
     }
-    
+
+    /**
+     * @param $name
+     * @param $label
+     * @return HtmlString
+     */
     static function submit($name, $label) {
         return new HtmlString('
         <br/><br/>
@@ -37,6 +56,11 @@ class MdlForm
         </div>');
     }
 
+    /**
+     * @param $name
+     * @param $label
+     * @return HtmlString
+     */
     static function toggle($name, $label) {
         return new HtmlString('
         <div>
@@ -48,6 +72,11 @@ class MdlForm
         ');
     }
 
+    /**
+     * @param $name
+     * @param $label
+     * @return HtmlString
+     */
     static function uploadFile($name, $label){
         return new HtmlString('
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
@@ -64,7 +93,16 @@ class MdlForm
         ');
     }
 
-    static function dropdown($name, $label, $labels=array(), $maxHeight='null') {
+    /**
+     * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
+     * Requires import of 'dropdown.js'
+     * @param $name
+     * @param $label
+     * @param array $items
+     * @param string $maxHeight
+     * @return HtmlString
+     */
+    static function dropdown($name, $label, $items=array(), $maxHeight='null') {
         return new HtmlString('
         <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="'.$name.'" name="'.$name.'" readonly />
@@ -72,14 +110,22 @@ class MdlForm
         </div>
         <script>
             $("#'.$name.'").mdlselect({
-                value: '.$labels.',
-                label: '.$labels.',
+                value: '.json_encode($items[0]).',
+                label: '.json_encode($items[1]).',
                 fixedHeight: '.$maxHeight.'
             });
         </script>
         ');
     }
 
+    /**
+     * Requires import of 'datetimepicker.js'
+     * @param $name
+     * @param $label
+     * @param string $value
+     * @param null $required
+     * @return HtmlString
+     */
     static function datetime($name, $label, $value="", $required=null) {
         return new HtmlString('
         <div>
@@ -94,6 +140,13 @@ class MdlForm
         ');
     }
 
+    /**
+     * Requires import of 'jscolor.js'
+     * @param $name
+     * @param $label
+     * @param string $value
+     * @return HtmlString
+     */
     static function color($name, $label, $value=""){
         return new HtmlString('
         <div>
@@ -105,6 +158,12 @@ class MdlForm
         ');
     }
 
+    /**
+     * Use this to show (eventual) errors of an input
+     * @param $errors
+     * @param $name
+     * @return HtmlString|string
+     */
     static function showErrors($errors, $name) {
         if ($errors->has($name)) {
             return new HtmlString('
