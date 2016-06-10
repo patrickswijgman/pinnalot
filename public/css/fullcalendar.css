@@ -497,6 +497,10 @@ temporary rendered events).
 	width: 100%; /* hack to force re-sizing this inner element when scrollbars appear/disappear */
 }
 
+.fc-day-grid:hover {
+	cursor: pointer;
+}
+
 
 /* Global Event Styles
 --------------------------------------------------------------------------------------------------*/

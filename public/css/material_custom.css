@@ -15,6 +15,8 @@ h3 {
 .page-content {
     width: 70%;
     margin: auto;
+    min-height: 100vh;
+    text-align: center;
 }
 
 .custom-header .material-icons {
@@ -23,6 +25,10 @@ h3 {
 
 .custom-header .material-icons:hover,
 .custom-header .material-icons:focus {
+    color: rgba(255, 255, 255, 1);
+}
+
+.custom-header .static-icon {
     color: rgba(255, 255, 255, 1);
 }
 
@@ -48,7 +54,7 @@ h3 {
 }
 
 .mdl-mdlselect-hoverable:hover {
-    background-color: lightgray;
+    background-color: #ECECEC;
     cursor: pointer;
 }
 
@@ -72,4 +78,19 @@ h3 {
     right: -32px;
 }
 
+.datetime-field:hover {
+    cursor: pointer;
+}
 
+.help-block {
+    font-weight: bold;
+    color: #DF3A27;
+}
+
+.help-block strong {
+    color: #DF3A27;
+}
+
+.jscolor:hover {
+    cursor: pointer;
+}
