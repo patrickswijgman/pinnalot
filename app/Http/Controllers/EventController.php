@@ -30,7 +30,7 @@ class EventController extends Controller
     function load($id){
         $event = Event::find($id);
         return view('event_new', [
-            'page' => 'Create new event',
+            'page' => 'Edit event',
             'event' => $event,
             'startDate' => Helper::isoToDateString($event->start),
             'endDate' => Helper::isoToDateString($event->end)
@@ -38,7 +38,7 @@ class EventController extends Controller
     }
 
     function save(){
-        $data = Input::except('_token', 'submit');
+        $data = Input::all();
 
         $validator = Validator::make($data, [
             'title' => 'required',

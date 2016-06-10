@@ -94,3 +94,8 @@ h3 {
 .jscolor:hover {
     cursor: pointer;
 }
+
+.mdl-dialog {
+    text-align: center;
+    min-width: 50%;
+}

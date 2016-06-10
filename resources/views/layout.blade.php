@@ -21,10 +21,11 @@
                 </nav>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
+        <div class="mdl-layout__drawer ">
             <span class="mdl-layout-title">
                 {{Html::image('img/fav-blk.png', null, ['width'=>'25px', 'height'=>'25px'])}}
-                Pinnalot</span>
+                Pinnalot
+            </span>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="{{ url('/') }}">
                     Home
@@ -38,10 +39,10 @@
                     Settings
                     <i class="material-icons" style="float:right">settings</i>
                 </a>
-                    <a class="mdl-navigation__link" href="{{ url('/logout') }}">
-                        Logout
-                        <i class="material-icons" style="float:right">power_settings_new</i>
-                    </a>
+                <a class="mdl-navigation__link" href="{{ url('/logout') }}">
+                    Logout
+                    <i class="material-icons" style="float:right">power_settings_new</i>
+                </a>
             </nav>
         </div>
         <!-- Uncomment for sidebar on the right
@@ -56,11 +57,11 @@
             }
         </style>-->
         <main class="mdl-layout__content">
+            @unless(empty($page))
+                <h3 style="text-align: center">{{$page}}</h3>
+                <hr>
+            @endunless
             <div class="page-content">
-                @unless(empty($page))
-                    <h3 style="text-align: center">{{$page}}</h3>
-                    <hr>
-                @endunless
                 @yield('content')
                 <br/>
                 <br/>

@@ -15,7 +15,7 @@
         {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
         {{ MdlForm::showErrors($errors, 'email') }}
 
-        {{  MdlForm::text('password', 'Password', '', 'password') }}
+        {{  MdlForm::password('password', 'Password') }}
         {{ MdlForm::showErrors($errors, 'password') }}
 
         {{  MdlForm::submit('login', 'Login') }}

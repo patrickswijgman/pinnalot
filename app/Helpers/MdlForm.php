@@ -12,20 +12,42 @@ class MdlForm
      * @param $name
      * @param $label
      * @param string $value
-     * @param string $type (text, number, email)
      * @param null $readonly set to 'readonly' to set input to readonly
      * @return HtmlString
      */
-    static function text($name, $label, $value=null, $type="text", $readonly=null){
+    static function text($name, $label, $value=null, $readonly=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', 'type'=>$type, $readonly)).'
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', $readonly)).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
         ');
     }
+
+    static function password($name, $label){
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                '.Form::password($name, array('id' => $name, 'class' => 'mdl-textfield__input', 'type'=>'password')).'
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
+        ');
+    }
+
+    static function email($name, $label, $value=null, $readonly=null){
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                '.Form::email($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', $readonly)).'
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
+        ');
+    }
+
 
     /**
      * @param $name
@@ -56,22 +78,6 @@ class MdlForm
             <input name="'.$name.'" type="submit" value="'.$label.'" 
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
         </div>');
-    }
-
-    /**
-     * @param $name
-     * @param $label
-     * @return HtmlString
-     */
-    static function toggle($name, $label) {
-        return new HtmlString('
-        <div>
-            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="'.$name.'">
-                <input type="checkbox" name="'.$name.'" id="'.$name.'" class="mdl-switch__input">
-                <span class="mdl-switch__label">'.$label.'</span>
-            </label>
-        </div>
-        ');
     }
 
     /**
