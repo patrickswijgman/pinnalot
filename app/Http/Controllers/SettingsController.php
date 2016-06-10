@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Models\Country;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\HtmlString;
@@ -16,7 +17,9 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
-    function show($id){
+    function show(){
+
+        $id = Auth::user()->id;
 
         $user = User::find($id);
         
@@ -31,7 +34,8 @@ class SettingsController extends Controller
         ]);
     }
 
-    function save($id) {
+    function save() {
+        $id = Auth::user()->id;
         if (isset($_FILES['profileimage'])) {
             $aExtraInfo = getimagesize($_FILES['profileimage']['tmp_name']);
             $sImage = "data:" . $aExtraInfo["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['profileimage']['tmp_name']));
