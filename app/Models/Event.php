@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -21,6 +22,14 @@ class Event extends Model
         $this->attributes['borderColor'] = $this->attributes['backgroundColor'];
     }
 
+    private function fixTextColor() {
+        if (Helper::getLabelBrightness($this->attributes['backgroundColor']) > 123) {
+            $this->attributes['textColor'] = 'black';
+        } else {
+            $this->attributes['textColor'] = 'white';
+        }
+    }
+
     static function all($columns = ['*']) {
         $events = parent::all($columns);
 
@@ -28,6 +37,7 @@ class Event extends Model
         foreach($events as $event) {
             $event->makeUrl();
             $event->fixBorderColor();
+            $event->fixTextColor();
         }
 
         return $events;

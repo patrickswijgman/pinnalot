@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Form;
 use Illuminate\Support\HtmlString;
 
 class MdlForm
@@ -15,11 +16,11 @@ class MdlForm
      * @param null $readonly set to 'readonly' to set input to readonly
      * @return HtmlString
      */
-    static function text($name, $label, $value="", $type="text", $readonly=null){
+    static function text($name, $label, $value=null, $type="text", $readonly=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input" type="'.$type.'" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$readonly.'>
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', 'type'=>$type, $readonly)).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
@@ -32,15 +33,16 @@ class MdlForm
      * @param string $value
      * @return HtmlString
      */
-    static function textArea($name, $label, $value="") {
+    static function textArea($name, $label, $value=null) {
         return new HtmlString('
         <div>  
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <textarea name="'.$name.'" class="mdl-textfield__input" rows= "5" id="'.$name.'" >'.(($value != "")? $value: old($name)).'</textarea>
+                '.Form::textarea($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input')).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>');
     }
+    
 
     /**
      * @param $name
@@ -105,7 +107,7 @@ class MdlForm
     static function dropdown($name, $label, $items=array(), $maxHeight='null') {
         return new HtmlString('
         <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="'.$name.'" name="'.$name.'" readonly />
+            '.Form::text($name, null, array('id' => $name, 'class' => 'mdl-textfield__input', 'readonly')).'
             <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
         </div>
         <script>
@@ -126,11 +128,11 @@ class MdlForm
      * @param null $required
      * @return HtmlString
      */
-    static function datetime($name, $label, $value="", $required=null) {
+    static function datetime($name, $label, $value=null) {
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="'.$name.'" class="mdl-textfield__input datetime-field" type="text" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" '.$required.' readonly>
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input datetime-field', 'readonly')).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
@@ -147,11 +149,11 @@ class MdlForm
      * @param string $value
      * @return HtmlString
      */
-    static function color($name, $label, $value=""){
+    static function color($name, $label, $value=null){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
-                <input name="'.$name.'" class="mdl-textfield__input jscolor" id="'.$name.'" value="'.(($value != "")? $value: old($name)).'" readonly>
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input jscolor', 'readonly')).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>

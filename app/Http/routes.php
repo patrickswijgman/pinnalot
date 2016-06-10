@@ -29,8 +29,9 @@ Route::post('settings', 'SettingsController@save');
 Route::get('/group', 'GroupController@test');
 Route::get('/group', 'GroupController@test');
 
-Route::post('event/new', 'EventController@create');
 Route::get('event/new', 'EventController@show');
+Route::get('event/{id}', 'EventController@load');
+Route::post('event/save', 'EventController@save');
 
 Route::auth();
 

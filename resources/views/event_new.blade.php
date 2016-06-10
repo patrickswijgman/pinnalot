@@ -13,7 +13,12 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => 'EventController@create')) }}
+    @if (isset($event))
+        {{ Form::model($event, array('action' => 'EventController@save')) }}
+        {{ Form::hidden('id', $event->id) }}
+    @else
+        {{ Form::open(array('action' => 'EventController@save')) }}
+    @endif
 
     {{ MdlForm::text('title', 'Title') }}
     {{ MdlForm::showErrors($errors, 'title') }}
@@ -21,13 +26,13 @@
     {{ MdlForm::textArea('description', 'Description') }}
     {{ MdlForm::showErrors($errors, 'description') }}
 
-    {{ MdlForm::color('backgroundColor', 'Color', '4F93D6') }}
+    {{ MdlForm::color('backgroundColor', 'Color') }}
     {{ MdlForm::showErrors($errors, 'backgroundColor') }}
 
-    {{ MdlForm::datetime('start', 'Start date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
+    {{ MdlForm::datetime('start', 'Start date and time', $startDate) }}
     {{ MdlForm::showErrors($errors, 'start') }}
 
-    {{ MdlForm::datetime('end', 'End date and time', (isset($_GET['d'])? $_GET['d'].' 00:00': '')) }}
+    {{ MdlForm::datetime('end', 'End date and time', $endDate) }}
     {{ MdlForm::showErrors($errors, 'end') }}
 
     {{ MdlForm::submit('submit', 'Submit') }}

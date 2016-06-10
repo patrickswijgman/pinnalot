@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use DateTime;
 use Validator;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -19,12 +20,25 @@ class EventController extends Controller
     }
     
     function show(){
-        return view('event_new', ['page' => 'Create new event']);
+        return view('event_new', [
+            'page' => 'Create new event',
+            'startDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null),
+            'endDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null)
+        ]);
     }
 
-    function create(){
+    function load($id){
+        $event = Event::find($id);
+        return view('event_new', [
+            'page' => 'Create new event',
+            'event' => $event,
+            'startDate' => Helper::isoToDateString($event->start),
+            'endDate' => Helper::isoToDateString($event->end)
+        ]);
+    }
 
-        $data = Input::all();
+    function save(){
+        $data = Input::except('_token', 'submit');
 
         $validator = Validator::make($data, [
             'title' => 'required',
@@ -42,8 +56,16 @@ class EventController extends Controller
 
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
-        Event::create($data);
-        return redirect('calendar');
 
+        if (isset($data['id'])) {
+            $id = $data['id'];
+            $event = Event::find($id);
+            $event->update($data);
+        } else {
+            $event = new Event($data);
+        }
+
+        $event->save();
+        return redirect('calendar');
     }
 }

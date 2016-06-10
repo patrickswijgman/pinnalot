@@ -8,8 +8,6 @@
 
     {{ Form::open(array('url' => url('/settings'), 'files' => 'true')) }}
 
-    {{ Form::hidden("id", $id) }}
-
     {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
 
     {{ MdlForm::text('name', 'Name', $user->name ,  'text', 'readonly') }}

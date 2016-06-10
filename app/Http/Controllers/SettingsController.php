@@ -18,9 +18,7 @@ class SettingsController extends Controller
     }
 
     function show(){
-
         $id = Auth::user()->id;
-
         $user = User::find($id);
         
         $countryCollection = Country::all('id', 'country_name');
