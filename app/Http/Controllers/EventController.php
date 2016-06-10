@@ -24,6 +24,7 @@ class EventController extends Controller
         $validator = Validator::make($data, [
             'title' => 'required',
             'description' => 'required',
+            'backgroundColor' => 'required',
             'start' => 'required',
             'end' => 'required|date|after:start',
         ]);
@@ -33,7 +34,7 @@ class EventController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         $data['start'] = DateTimeHelper::dateToIsoString($data['start']);
         $data['end'] = DateTimeHelper::dateToIsoString($data['end']);
         Event::create($data);
