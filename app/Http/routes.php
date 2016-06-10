@@ -16,7 +16,7 @@
 });*/
 
 Route::get('/', function(){
-    return view('home');
+    return redirect('/home');
 });
 
 Route::get('/home', 'HomeController@index');

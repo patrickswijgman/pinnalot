@@ -11,8 +11,8 @@ class MdlForm
      * @param $name
      * @param $label
      * @param string $value
-     * @param string $type
-     * @param null $readonly
+     * @param string $type (text, number, email)
+     * @param null $readonly set to 'readonly' to set input to readonly
      * @return HtmlString
      */
     static function text($name, $label, $value="", $type="text", $readonly=null){
@@ -94,8 +94,8 @@ class MdlForm
     }
 
     /**
-     * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
      * Requires import of 'dropdown.js'
+     * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
      * @param $name
      * @param $label
      * @param array $items
@@ -159,7 +159,23 @@ class MdlForm
     }
 
     /**
-     * Use this to show (eventual) errors of an input
+     * @param $label
+     * @param $href
+     * @return HtmlString
+     */
+    static function urlButton($href, $label){
+        return new HtmlString('
+        <div>
+            <a href="'.url($href).'" 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                '.$label.'
+            </a>
+        </div>
+        ');
+    }
+
+    /**
+     * Use this to show (if there are any) errors of an input
      * @param $errors
      * @param $name
      * @return HtmlString|string

@@ -11,13 +11,17 @@ use Illuminate\Support\HtmlString;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     function show($id){
 
         $user = User::find($id);
         
         $countryCollection = Country::all('id', 'country_name');
-        $countries = Helper::makeDropdownItemsFromCollection($countryCollection, 'id', 'country_name');
+        $countries = Helper::makeDropdownItemsFromCollection($countryCollection);
 
         return view('settings', [
             'page' => 'Settings',

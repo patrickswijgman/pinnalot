@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     function show(){
         return view('event_new', ['page' => 'Create new event']);
     }

@@ -18,7 +18,6 @@
         {{  MdlForm::text('password', 'Password', '', 'password') }}
         {{ MdlForm::showErrors($errors, 'password') }}
 
-        <br>
         {{  MdlForm::submit('login', 'Login') }}
         <br>
         {{ link_to('password/reset', ' Forgot your password?')}}

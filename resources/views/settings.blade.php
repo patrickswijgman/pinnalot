@@ -12,16 +12,13 @@
 
     {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
 
-    {{ MdlForm::text('name', 'Name', 'Iris', 'text', 'readonly') }}
+    {{ MdlForm::text('name', 'Name', $user->name ,  'text', 'readonly') }}
 
-    {{ MdlForm::text('username', 'Username', $user->name ,  'text', 'readonly') }}
-
-    {{ link_to('password/reset', ' Change password')}}
-    <br/>
+    {{ MdlForm::text('email', 'Email', $user->email ,  'text', 'readonly') }}
 
     {{ MdlForm::dropdown('country', 'Country:', $countries, 300) }}
 
-    {{ MdlForm::text('email', 'Email', $user->email ,  'text', 'readonly') }}
+    {{ MdlForm::urlButton('password/reset', 'Change password')}}
 
     {{ MdlForm::submit('save', 'Save') }}
     {{ Form::close() }}
