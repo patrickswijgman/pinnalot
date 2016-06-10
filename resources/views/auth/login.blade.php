@@ -35,6 +35,9 @@
                 {{  MdlForm::submit('login', 'Login') }}
                 <br>
                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                <br>
+                <br>
+                <a class="btn btn-link" href="{{ url('/register') }}">If you don't have an account? Click here to register.</a>
             </div>
         {{ Form::close() }}
     </div>

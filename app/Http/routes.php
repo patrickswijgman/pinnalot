@@ -30,3 +30,4 @@ Route::get('event/{id}', 'EventController@show');
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/group', 'GroupController@test');
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
