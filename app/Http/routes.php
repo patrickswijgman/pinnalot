@@ -23,4 +23,4 @@ Route::get('calendar', 'CalendarController@show');
 
 Route::get('event/{id}', 'EventController@show');
 
-Route::get('/group', 'GroupController@test');
+Route::resource('group', 'GroupController');

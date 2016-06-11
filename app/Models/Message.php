@@ -20,7 +20,7 @@ class Message extends NeoEloquent{
         return $this->morphMany('App\Models\NeoUser', 'POSTED');
     }
 
-    public function commentables() {
+    public function group() {
         return $this->morphTo('App\Models\Group', 'ON');
     }
 }
