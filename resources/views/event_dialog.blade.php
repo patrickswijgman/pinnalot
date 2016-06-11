@@ -11,7 +11,7 @@
         <div class="mdl-dialog__end"></div>
     </div>
     <div class="mdl-dialog__actions">
-        <a id="mdl-dialog__url" href="#" class="mdl-button mdl-button--raised mdl-button--accent">Edit</a>
-        <a class="mdl-button mdl-button--raised close">Close</a>
+        <a class="mdl-button close">Close</a>
+        <a id="mdl-dialog__url" href="#" class="mdl-button ">Edit</a>
     </div>
 </dialog>

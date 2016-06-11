@@ -73,7 +73,7 @@ class MdlForm
      */
     static function submit($name, $label) {
         return new HtmlString('
-        <br/><br/>
+        <br/>
         <div>
             <input name="'.$name.'" type="submit" value="'.$label.'" 
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
@@ -87,11 +87,12 @@ class MdlForm
      */
     static function uploadFile($name, $label){
         return new HtmlString('
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-                <input class="mdl-textfield__input" placeholder="'.$label.'" type="text" id="'.$name.'File" readonly/>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield--file">
+                <input class="mdl-textfield__input" placeholder=" " type="text" id="'.$name.'File" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                     <i class="material-icons">attach_file</i><input type="file" id="'.$name.'Btn" name="'.$name.'">
                 </div>
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
             <script>
                 document.getElementById("'.$name.'Btn").onchange = function () {
