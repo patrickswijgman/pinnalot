@@ -8,6 +8,8 @@ class Event extends Model
 {
     
 
+    protected $fillable = array('title', 'description', 'class', 'backgroundColor', 'start', 'end');
+
     /**
      * Adds a custom attribute: URL, based on ID
      * This URL is used by the calendar when you click on the event

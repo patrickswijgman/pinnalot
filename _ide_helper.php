@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.36 on 2016-06-10.
+ * Generated for Laravel 5.2.36 on 2016-06-08.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2670,254 +2670,13 @@ namespace {
         }
         
         /**
-         * Create a new Neo4j client
-         *
-         * @return \Vinelab\NeoEloquent\Everyman\Neo4j\Client 
-         * @static 
-         */
-        public static function createConnection(){
-            return \Vinelab\NeoEloquent\Connection::createConnection();
-        }
-        
-        /**
-         * Get the currenty active database client
-         *
-         * @return \Vinelab\NeoEloquent\Everyman\Neo4j\Client 
-         * @static 
-         */
-        public static function getClient(){
-            return \Vinelab\NeoEloquent\Connection::getClient();
-        }
-        
-        /**
-         * Set the client responsible for the
-         * database communication
-         *
-         * @param \Everyman\Neo4j\Client $client
-         * @static 
-         */
-        public static function setClient($client){
-            return \Vinelab\NeoEloquent\Connection::setClient($client);
-        }
-        
-        /**
-         * Get the connection host
-         *
-         * @return string 
-         * @static 
-         */
-        public static function getHost(){
-            return \Vinelab\NeoEloquent\Connection::getHost();
-        }
-        
-        /**
-         * Get the connection port
-         *
-         * @return int|string 
-         * @static 
-         */
-        public static function getPort(){
-            return \Vinelab\NeoEloquent\Connection::getPort();
-        }
-        
-        /**
-         * Get the connection username
-         *
-         * @return int|string 
-         * @static 
-         */
-        public static function getUsername(){
-            return \Vinelab\NeoEloquent\Connection::getUsername();
-        }
-        
-        /**
-         * Get the connection password
-         *
-         * @return int|\Vinelab\NeoEloquent\strings 
-         * @static 
-         */
-        public static function getPassword(){
-            return \Vinelab\NeoEloquent\Connection::getPassword();
-        }
-        
-        /**
-         * Get an option from the configuration options.
-         *
-         * @param string $option
-         * @param mixed $default
-         * @return mixed 
-         * @static 
-         */
-        public static function getConfig($option, $default = null){
-            return \Vinelab\NeoEloquent\Connection::getConfig($option, $default);
-        }
-        
-        /**
-         * Get the Neo4j driver name.
-         *
-         * @return string 
-         * @static 
-         */
-        public static function getDriverName(){
-            return \Vinelab\NeoEloquent\Connection::getDriverName();
-        }
-        
-        /**
-         * Run a select statement against the database.
-         *
-         * @param string $query
-         * @param array $bindings
-         * @return array 
-         * @static 
-         */
-        public static function select($query, $bindings = array()){
-            return \Vinelab\NeoEloquent\Connection::select($query, $bindings);
-        }
-        
-        /**
-         * Run a Cypher statement and get the number of nodes affected.
-         *
-         * @param string $query
-         * @param array $bindings
-         * @return int 
-         * @static 
-         */
-        public static function affectingStatement($query, $bindings = array()){
-            return \Vinelab\NeoEloquent\Connection::affectingStatement($query, $bindings);
-        }
-        
-        /**
-         * Execute a Cypher statement and return the boolean result.
-         *
-         * @param string $query
-         * @param array $bindings
-         * @return bool|\Everyman\Neo4j\Query\ResultSet When $result is set to true.
-         * @static 
-         */
-        public static function statement($query, $bindings = array(), $rawResults = false){
-            return \Vinelab\NeoEloquent\Connection::statement($query, $bindings, $rawResults);
-        }
-        
-        /**
-         * Make a query out of a Cypher statement
-         * and the bindings values
-         *
-         * @param string $query
-         * @param array $bindings
-         * @static 
-         */
-        public static function getCypherQuery($query, $bindings){
-            return \Vinelab\NeoEloquent\Connection::getCypherQuery($query, $bindings);
-        }
-        
-        /**
-         * Prepare the query bindings for execution.
-         *
-         * @param array $bindings
-         * @return array 
-         * @static 
-         */
-        public static function prepareBindings($bindings){
-            return \Vinelab\NeoEloquent\Connection::prepareBindings($bindings);
-        }
-        
-        /**
-         * Get the query grammar used by the connection.
-         *
-         * @return \Vinelab\NeoEloquent\Query\Grammars\CypherGrammar 
-         * @static 
-         */
-        public static function getQueryGrammar(){
-            return \Vinelab\NeoEloquent\Connection::getQueryGrammar();
-        }
-        
-        /**
-         * A binding should always be in an associative
-         * form of a key=>value, otherwise we will not be able to
-         * consider it a valid binding and replace its values in the query.
-         * 
-         * This function validates whether the binding is valid to be used.
-         *
-         * @param array $binding
-         * @return boolean 
-         * @static 
-         */
-        public static function isBinding($binding){
-            return \Vinelab\NeoEloquent\Connection::isBinding($binding);
-        }
-        
-        /**
-         * Start a new database transaction.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function beginTransaction(){
-            \Vinelab\NeoEloquent\Connection::beginTransaction();
-        }
-        
-        /**
-         * Commit the active database transaction.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function commit(){
-            \Vinelab\NeoEloquent\Connection::commit();
-        }
-        
-        /**
-         * Rollback the active database transaction.
-         *
-         * @return void 
-         * @static 
-         */
-        public static function rollBack(){
-            \Vinelab\NeoEloquent\Connection::rollBack();
-        }
-        
-        /**
-         * Begin a fluent query against a database table.
-         * 
-         * In neo4j's terminologies this is a node.
-         *
-         * @param string $table
-         * @return \Vinelab\NeoEloquent\Query\Builder 
-         * @static 
-         */
-        public static function table($table){
-            return \Vinelab\NeoEloquent\Connection::table($table);
-        }
-        
-        /**
-         * Set the schema grammar used by the connection.
-         *
-         * @param \Illuminate\Database\Schema\Grammars\Grammar
-         * @return void 
-         * @static 
-         */
-        public static function setSchemaGrammar($grammar){
-            \Vinelab\NeoEloquent\Connection::setSchemaGrammar($grammar);
-        }
-        
-        /**
-         * Get the schema grammar used by the connection.
-         *
-         * @return \Illuminate\Database\Query\Grammars\Grammar 
-         * @static 
-         */
-        public static function getSchemaGrammar(){
-            return \Vinelab\NeoEloquent\Connection::getSchemaGrammar();
-        }
-        
-        /**
          * Get a schema builder instance for the connection.
          *
-         * @return \Vinelab\NeoEloquent\Schema\Builder 
+         * @return \Illuminate\Database\Schema\MySqlBuilder 
          * @static 
          */
         public static function getSchemaBuilder(){
-            return \Vinelab\NeoEloquent\Connection::getSchemaBuilder();
+            return \Illuminate\Database\MySqlConnection::getSchemaBuilder();
         }
         
         /**
@@ -2928,7 +2687,7 @@ namespace {
          */
         public static function useDefaultQueryGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::useDefaultQueryGrammar();
+            \Illuminate\Database\MySqlConnection::useDefaultQueryGrammar();
         }
         
         /**
@@ -2939,7 +2698,7 @@ namespace {
          */
         public static function useDefaultSchemaGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::useDefaultSchemaGrammar();
+            \Illuminate\Database\MySqlConnection::useDefaultSchemaGrammar();
         }
         
         /**
@@ -2950,7 +2709,19 @@ namespace {
          */
         public static function useDefaultPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::useDefaultPostProcessor();
+            \Illuminate\Database\MySqlConnection::useDefaultPostProcessor();
+        }
+        
+        /**
+         * Begin a fluent query against a database table.
+         *
+         * @param string $table
+         * @return \Illuminate\Database\Query\Builder 
+         * @static 
+         */
+        public static function table($table){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::table($table);
         }
         
         /**
@@ -2961,7 +2732,7 @@ namespace {
          */
         public static function query(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::query();
+            return \Illuminate\Database\MySqlConnection::query();
         }
         
         /**
@@ -2973,7 +2744,7 @@ namespace {
          */
         public static function raw($value){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::raw($value);
+            return \Illuminate\Database\MySqlConnection::raw($value);
         }
         
         /**
@@ -2986,7 +2757,7 @@ namespace {
          */
         public static function selectOne($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::selectOne($query, $bindings);
+            return \Illuminate\Database\MySqlConnection::selectOne($query, $bindings);
         }
         
         /**
@@ -2999,7 +2770,21 @@ namespace {
          */
         public static function selectFromWriteConnection($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::selectFromWriteConnection($query, $bindings);
+            return \Illuminate\Database\MySqlConnection::selectFromWriteConnection($query, $bindings);
+        }
+        
+        /**
+         * Run a select statement against the database.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @param bool $useReadPdo
+         * @return array 
+         * @static 
+         */
+        public static function select($query, $bindings = array(), $useReadPdo = true){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::select($query, $bindings, $useReadPdo);
         }
         
         /**
@@ -3013,7 +2798,7 @@ namespace {
          */
         public static function cursor($query, $bindings = array(), $useReadPdo = true){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::cursor($query, $bindings, $useReadPdo);
+            return \Illuminate\Database\MySqlConnection::cursor($query, $bindings, $useReadPdo);
         }
         
         /**
@@ -3026,7 +2811,7 @@ namespace {
          */
         public static function insert($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::insert($query, $bindings);
+            return \Illuminate\Database\MySqlConnection::insert($query, $bindings);
         }
         
         /**
@@ -3039,7 +2824,7 @@ namespace {
          */
         public static function update($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::update($query, $bindings);
+            return \Illuminate\Database\MySqlConnection::update($query, $bindings);
         }
         
         /**
@@ -3052,7 +2837,33 @@ namespace {
          */
         public static function delete($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::delete($query, $bindings);
+            return \Illuminate\Database\MySqlConnection::delete($query, $bindings);
+        }
+        
+        /**
+         * Execute an SQL statement and return the boolean result.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return bool 
+         * @static 
+         */
+        public static function statement($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::statement($query, $bindings);
+        }
+        
+        /**
+         * Run an SQL statement and get the number of rows affected.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @return int 
+         * @static 
+         */
+        public static function affectingStatement($query, $bindings = array()){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::affectingStatement($query, $bindings);
         }
         
         /**
@@ -3064,7 +2875,19 @@ namespace {
          */
         public static function unprepared($query){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::unprepared($query);
+            return \Illuminate\Database\MySqlConnection::unprepared($query);
+        }
+        
+        /**
+         * Prepare the query bindings for execution.
+         *
+         * @param array $bindings
+         * @return array 
+         * @static 
+         */
+        public static function prepareBindings($bindings){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::prepareBindings($bindings);
         }
         
         /**
@@ -3077,7 +2900,41 @@ namespace {
          */
         public static function transaction($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::transaction($callback);
+            return \Illuminate\Database\MySqlConnection::transaction($callback);
+        }
+        
+        /**
+         * Start a new database transaction.
+         *
+         * @return void 
+         * @throws Exception
+         * @static 
+         */
+        public static function beginTransaction(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::beginTransaction();
+        }
+        
+        /**
+         * Commit the active database transaction.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function commit(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::commit();
+        }
+        
+        /**
+         * Rollback the active database transaction.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function rollBack(){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::rollBack();
         }
         
         /**
@@ -3088,7 +2945,7 @@ namespace {
          */
         public static function transactionLevel(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::transactionLevel();
+            return \Illuminate\Database\MySqlConnection::transactionLevel();
         }
         
         /**
@@ -3100,7 +2957,7 @@ namespace {
          */
         public static function pretend($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::pretend($callback);
+            return \Illuminate\Database\MySqlConnection::pretend($callback);
         }
         
         /**
@@ -3114,7 +2971,7 @@ namespace {
          */
         public static function logQuery($query, $bindings, $time = null){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::logQuery($query, $bindings, $time);
+            \Illuminate\Database\MySqlConnection::logQuery($query, $bindings, $time);
         }
         
         /**
@@ -3126,7 +2983,7 @@ namespace {
          */
         public static function listen($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::listen($callback);
+            \Illuminate\Database\MySqlConnection::listen($callback);
         }
         
         /**
@@ -3137,7 +2994,7 @@ namespace {
          */
         public static function isDoctrineAvailable(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::isDoctrineAvailable();
+            return \Illuminate\Database\MySqlConnection::isDoctrineAvailable();
         }
         
         /**
@@ -3150,7 +3007,7 @@ namespace {
          */
         public static function getDoctrineColumn($table, $column){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getDoctrineColumn($table, $column);
+            return \Illuminate\Database\MySqlConnection::getDoctrineColumn($table, $column);
         }
         
         /**
@@ -3161,7 +3018,7 @@ namespace {
          */
         public static function getDoctrineSchemaManager(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getDoctrineSchemaManager();
+            return \Illuminate\Database\MySqlConnection::getDoctrineSchemaManager();
         }
         
         /**
@@ -3172,7 +3029,7 @@ namespace {
          */
         public static function getDoctrineConnection(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getDoctrineConnection();
+            return \Illuminate\Database\MySqlConnection::getDoctrineConnection();
         }
         
         /**
@@ -3183,7 +3040,7 @@ namespace {
          */
         public static function getPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getPdo();
+            return \Illuminate\Database\MySqlConnection::getPdo();
         }
         
         /**
@@ -3194,7 +3051,7 @@ namespace {
          */
         public static function getReadPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getReadPdo();
+            return \Illuminate\Database\MySqlConnection::getReadPdo();
         }
         
         /**
@@ -3207,7 +3064,7 @@ namespace {
          */
         public static function setPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::setPdo($pdo);
+            return \Illuminate\Database\MySqlConnection::setPdo($pdo);
         }
         
         /**
@@ -3219,7 +3076,7 @@ namespace {
          */
         public static function setReadPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::setReadPdo($pdo);
+            return \Illuminate\Database\MySqlConnection::setReadPdo($pdo);
         }
         
         /**
@@ -3231,7 +3088,7 @@ namespace {
          */
         public static function setReconnector($reconnector){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::setReconnector($reconnector);
+            return \Illuminate\Database\MySqlConnection::setReconnector($reconnector);
         }
         
         /**
@@ -3242,7 +3099,41 @@ namespace {
          */
         public static function getName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getName();
+            return \Illuminate\Database\MySqlConnection::getName();
+        }
+        
+        /**
+         * Get an option from the configuration options.
+         *
+         * @param string $option
+         * @return mixed 
+         * @static 
+         */
+        public static function getConfig($option){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getConfig($option);
+        }
+        
+        /**
+         * Get the PDO driver name.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDriverName(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getDriverName();
+        }
+        
+        /**
+         * Get the query grammar used by the connection.
+         *
+         * @return \Illuminate\Database\Query\Grammars\Grammar 
+         * @static 
+         */
+        public static function getQueryGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getQueryGrammar();
         }
         
         /**
@@ -3254,7 +3145,30 @@ namespace {
          */
         public static function setQueryGrammar($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::setQueryGrammar($grammar);
+            \Illuminate\Database\MySqlConnection::setQueryGrammar($grammar);
+        }
+        
+        /**
+         * Get the schema grammar used by the connection.
+         *
+         * @return \Illuminate\Database\Schema\Grammars\Grammar 
+         * @static 
+         */
+        public static function getSchemaGrammar(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::getSchemaGrammar();
+        }
+        
+        /**
+         * Set the schema grammar used by the connection.
+         *
+         * @param \Illuminate\Database\Schema\Grammars\Grammar $grammar
+         * @return void 
+         * @static 
+         */
+        public static function setSchemaGrammar($grammar){
+            //Method inherited from \Illuminate\Database\Connection            
+            \Illuminate\Database\MySqlConnection::setSchemaGrammar($grammar);
         }
         
         /**
@@ -3265,7 +3179,7 @@ namespace {
          */
         public static function getPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getPostProcessor();
+            return \Illuminate\Database\MySqlConnection::getPostProcessor();
         }
         
         /**
@@ -3277,7 +3191,7 @@ namespace {
          */
         public static function setPostProcessor($processor){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::setPostProcessor($processor);
+            \Illuminate\Database\MySqlConnection::setPostProcessor($processor);
         }
         
         /**
@@ -3288,7 +3202,7 @@ namespace {
          */
         public static function getEventDispatcher(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getEventDispatcher();
+            return \Illuminate\Database\MySqlConnection::getEventDispatcher();
         }
         
         /**
@@ -3300,7 +3214,7 @@ namespace {
          */
         public static function setEventDispatcher($events){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::setEventDispatcher($events);
+            \Illuminate\Database\MySqlConnection::setEventDispatcher($events);
         }
         
         /**
@@ -3311,7 +3225,7 @@ namespace {
          */
         public static function pretending(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::pretending();
+            return \Illuminate\Database\MySqlConnection::pretending();
         }
         
         /**
@@ -3322,7 +3236,7 @@ namespace {
          */
         public static function getFetchMode(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getFetchMode();
+            return \Illuminate\Database\MySqlConnection::getFetchMode();
         }
         
         /**
@@ -3333,7 +3247,7 @@ namespace {
          */
         public static function getFetchArgument(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getFetchArgument();
+            return \Illuminate\Database\MySqlConnection::getFetchArgument();
         }
         
         /**
@@ -3344,7 +3258,7 @@ namespace {
          */
         public static function getFetchConstructorArgument(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getFetchConstructorArgument();
+            return \Illuminate\Database\MySqlConnection::getFetchConstructorArgument();
         }
         
         /**
@@ -3358,7 +3272,7 @@ namespace {
          */
         public static function setFetchMode($fetchMode, $fetchArgument = null, $fetchConstructorArgument = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::setFetchMode($fetchMode, $fetchArgument, $fetchConstructorArgument);
+            return \Illuminate\Database\MySqlConnection::setFetchMode($fetchMode, $fetchArgument, $fetchConstructorArgument);
         }
         
         /**
@@ -3369,7 +3283,7 @@ namespace {
          */
         public static function getQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getQueryLog();
+            return \Illuminate\Database\MySqlConnection::getQueryLog();
         }
         
         /**
@@ -3380,7 +3294,7 @@ namespace {
          */
         public static function flushQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::flushQueryLog();
+            \Illuminate\Database\MySqlConnection::flushQueryLog();
         }
         
         /**
@@ -3391,7 +3305,7 @@ namespace {
          */
         public static function enableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::enableQueryLog();
+            \Illuminate\Database\MySqlConnection::enableQueryLog();
         }
         
         /**
@@ -3402,7 +3316,7 @@ namespace {
          */
         public static function disableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::disableQueryLog();
+            \Illuminate\Database\MySqlConnection::disableQueryLog();
         }
         
         /**
@@ -3413,7 +3327,7 @@ namespace {
          */
         public static function logging(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::logging();
+            return \Illuminate\Database\MySqlConnection::logging();
         }
         
         /**
@@ -3424,7 +3338,7 @@ namespace {
          */
         public static function getDatabaseName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getDatabaseName();
+            return \Illuminate\Database\MySqlConnection::getDatabaseName();
         }
         
         /**
@@ -3436,7 +3350,7 @@ namespace {
          */
         public static function setDatabaseName($database){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::setDatabaseName($database);
+            return \Illuminate\Database\MySqlConnection::setDatabaseName($database);
         }
         
         /**
@@ -3447,7 +3361,7 @@ namespace {
          */
         public static function getTablePrefix(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::getTablePrefix();
+            return \Illuminate\Database\MySqlConnection::getTablePrefix();
         }
         
         /**
@@ -3459,7 +3373,7 @@ namespace {
          */
         public static function setTablePrefix($prefix){
             //Method inherited from \Illuminate\Database\Connection            
-            \Vinelab\NeoEloquent\Connection::setTablePrefix($prefix);
+            \Illuminate\Database\MySqlConnection::setTablePrefix($prefix);
         }
         
         /**
@@ -3471,7 +3385,7 @@ namespace {
          */
         public static function withTablePrefix($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Vinelab\NeoEloquent\Connection::withTablePrefix($grammar);
+            return \Illuminate\Database\MySqlConnection::withTablePrefix($grammar);
         }
         
     }
@@ -10323,104 +10237,172 @@ namespace {
     class Schema extends \Illuminate\Support\Facades\Schema{
         
         /**
-         * Fallback.
+         * Determine if the given table exists.
          *
-         * @param string $label
-         * @return boolean 
-         * @throws RuntimeException
+         * @param string $table
+         * @return bool 
          * @static 
          */
-        public static function hasTable($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasTable($label);
+        public static function hasTable($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
         }
         
         /**
-         * Create a new data defintion on label schema.
+         * Get the column listing for a given table.
          *
-         * @param string $label
+         * @param string $table
+         * @return array 
+         * @static 
+         */
+        public static function getColumnListing($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
+        }
+        
+        /**
+         * Determine if the given table has a given column.
+         *
+         * @param string $table
+         * @param string $column
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumn($table, $column){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
+        }
+        
+        /**
+         * Determine if the given table has given columns.
+         *
+         * @param string $table
+         * @param array $columns
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumns($table, $columns){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumns($table, $columns);
+        }
+        
+        /**
+         * Get the data type for the given column name.
+         *
+         * @param string $table
+         * @param string $column
+         * @return string 
+         * @static 
+         */
+        public static function getColumnType($table, $column){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::getColumnType($table, $column);
+        }
+        
+        /**
+         * Modify a table on the schema.
+         *
+         * @param string $table
          * @param \Closure $callback
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function label($label, $callback){
-            return \Vinelab\NeoEloquent\Schema\Builder::label($label, $callback);
+        public static function table($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::table($table, $callback);
         }
         
         /**
-         * Drop a label from the schema.
+         * Create a new table on the schema.
          *
-         * @param string $label
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @param string $table
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function drop($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::drop($label);
+        public static function create($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::create($table, $callback);
         }
         
         /**
-         * Drop a label from the schema if it exists.
+         * Drop a table from the schema.
          *
-         * @param string $label
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function dropIfExists($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::dropIfExists($label);
+        public static function drop($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::drop($table);
         }
         
         /**
-         * Determine if the given label exists.
+         * Drop a table from the schema if it exists.
          *
-         * @param string $label
-         * @return bool 
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function hasLabel($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasLabel($label);
+        public static function dropIfExists($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::dropIfExists($table);
         }
         
         /**
-         * Determine if the given relation exists.
-         *
-         * @param string $relation
-         * @return bool 
-         * @static 
-         */
-        public static function hasRelation($relation){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasRelation($relation);
-        }
-        
-        /**
-         * Rename a label.
+         * Rename a table on the schema.
          *
          * @param string $from
          * @param string $to
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint|boolean 
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function renameLabel($from, $to){
-            return \Vinelab\NeoEloquent\Schema\Builder::renameLabel($from, $to);
+        public static function rename($from, $to){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::rename($from, $to);
         }
         
         /**
-         * Set the database connection instance.
+         * Enable foreign key constraints.
          *
-         * @param \Illuminate\Database\ConnectionResolverInterface
-         * @return \Vinelab\NeoEloquent\Schema\Builder 
+         * @return bool 
          * @static 
          */
-        public static function setConnection($connection){
-            return \Vinelab\NeoEloquent\Schema\Builder::setConnection($connection);
+        public static function enableForeignKeyConstraints(){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::enableForeignKeyConstraints();
+        }
+        
+        /**
+         * Disable foreign key constraints.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function disableForeignKeyConstraints(){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::disableForeignKeyConstraints();
         }
         
         /**
          * Get the database connection instance.
          *
-         * @return \Illuminate\Database\ConnectionResolverInterface 
+         * @return \Illuminate\Database\Connection 
          * @static 
          */
         public static function getConnection(){
-            return \Vinelab\NeoEloquent\Schema\Builder::getConnection();
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::getConnection();
+        }
+        
+        /**
+         * Set the database connection instance.
+         *
+         * @param \Illuminate\Database\Connection $connection
+         * @return $this 
+         * @static 
+         */
+        public static function setConnection($connection){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::setConnection($connection);
         }
         
         /**
@@ -10431,7 +10413,8 @@ namespace {
          * @static 
          */
         public static function blueprintResolver($resolver){
-            \Vinelab\NeoEloquent\Schema\Builder::blueprintResolver($resolver);
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            \Illuminate\Database\Schema\MySqlBuilder::blueprintResolver($resolver);
         }
         
     }
@@ -11952,6 +11935,11 @@ namespace {
     }
 
 
+    class MdlForm extends \App\Helpers\MdlForm{
+        
+    }
+
+
     class NeoEloquent extends \Vinelab\NeoEloquent\Eloquent\Model{
         
     }
@@ -11960,104 +11948,172 @@ namespace {
     class Neo4jSchema extends \Vinelab\NeoEloquent\Facade\Neo4jSchema{
         
         /**
-         * Fallback.
+         * Determine if the given table exists.
          *
-         * @param string $label
-         * @return boolean 
-         * @throws RuntimeException
+         * @param string $table
+         * @return bool 
          * @static 
          */
-        public static function hasTable($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasTable($label);
+        public static function hasTable($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
         }
         
         /**
-         * Create a new data defintion on label schema.
+         * Get the column listing for a given table.
          *
-         * @param string $label
+         * @param string $table
+         * @return array 
+         * @static 
+         */
+        public static function getColumnListing($table){
+            return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
+        }
+        
+        /**
+         * Determine if the given table has a given column.
+         *
+         * @param string $table
+         * @param string $column
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumn($table, $column){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
+        }
+        
+        /**
+         * Determine if the given table has given columns.
+         *
+         * @param string $table
+         * @param array $columns
+         * @return bool 
+         * @static 
+         */
+        public static function hasColumns($table, $columns){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::hasColumns($table, $columns);
+        }
+        
+        /**
+         * Get the data type for the given column name.
+         *
+         * @param string $table
+         * @param string $column
+         * @return string 
+         * @static 
+         */
+        public static function getColumnType($table, $column){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::getColumnType($table, $column);
+        }
+        
+        /**
+         * Modify a table on the schema.
+         *
+         * @param string $table
          * @param \Closure $callback
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function label($label, $callback){
-            return \Vinelab\NeoEloquent\Schema\Builder::label($label, $callback);
+        public static function table($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::table($table, $callback);
         }
         
         /**
-         * Drop a label from the schema.
+         * Create a new table on the schema.
          *
-         * @param string $label
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @param string $table
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function drop($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::drop($label);
+        public static function create($table, $callback){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::create($table, $callback);
         }
         
         /**
-         * Drop a label from the schema if it exists.
+         * Drop a table from the schema.
          *
-         * @param string $label
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint 
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function dropIfExists($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::dropIfExists($label);
+        public static function drop($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::drop($table);
         }
         
         /**
-         * Determine if the given label exists.
+         * Drop a table from the schema if it exists.
          *
-         * @param string $label
-         * @return bool 
+         * @param string $table
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function hasLabel($label){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasLabel($label);
+        public static function dropIfExists($table){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::dropIfExists($table);
         }
         
         /**
-         * Determine if the given relation exists.
-         *
-         * @param string $relation
-         * @return bool 
-         * @static 
-         */
-        public static function hasRelation($relation){
-            return \Vinelab\NeoEloquent\Schema\Builder::hasRelation($relation);
-        }
-        
-        /**
-         * Rename a label.
+         * Rename a table on the schema.
          *
          * @param string $from
          * @param string $to
-         * @return \Vinelab\NeoEloquent\Schema\Blueprint|boolean 
+         * @return \Illuminate\Database\Schema\Blueprint 
          * @static 
          */
-        public static function renameLabel($from, $to){
-            return \Vinelab\NeoEloquent\Schema\Builder::renameLabel($from, $to);
+        public static function rename($from, $to){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::rename($from, $to);
         }
         
         /**
-         * Set the database connection instance.
+         * Enable foreign key constraints.
          *
-         * @param \Illuminate\Database\ConnectionResolverInterface
-         * @return \Vinelab\NeoEloquent\Schema\Builder 
+         * @return bool 
          * @static 
          */
-        public static function setConnection($connection){
-            return \Vinelab\NeoEloquent\Schema\Builder::setConnection($connection);
+        public static function enableForeignKeyConstraints(){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::enableForeignKeyConstraints();
+        }
+        
+        /**
+         * Disable foreign key constraints.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function disableForeignKeyConstraints(){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::disableForeignKeyConstraints();
         }
         
         /**
          * Get the database connection instance.
          *
-         * @return \Illuminate\Database\ConnectionResolverInterface 
+         * @return \Illuminate\Database\Connection 
          * @static 
          */
         public static function getConnection(){
-            return \Vinelab\NeoEloquent\Schema\Builder::getConnection();
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::getConnection();
+        }
+        
+        /**
+         * Set the database connection instance.
+         *
+         * @param \Illuminate\Database\Connection $connection
+         * @return $this 
+         * @static 
+         */
+        public static function setConnection($connection){
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            return \Illuminate\Database\Schema\MySqlBuilder::setConnection($connection);
         }
         
         /**
@@ -12068,7 +12124,8 @@ namespace {
          * @static 
          */
         public static function blueprintResolver($resolver){
-            \Vinelab\NeoEloquent\Schema\Builder::blueprintResolver($resolver);
+            //Method inherited from \Illuminate\Database\Schema\Builder            
+            \Illuminate\Database\Schema\MySqlBuilder::blueprintResolver($resolver);
         }
         
     }
