@@ -12,10 +12,10 @@
         {{ Form::open(array('url' => url('/login'))) }}
         {{ csrf_field() }}
 
-        {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
+        {{ MdlForm::email('email', 'E-Mail Address') }}
         {{ MdlForm::showErrors($errors, 'email') }}
 
-        {{  MdlForm::password('password', 'Password') }}
+        {{ MdlForm::password('password', 'Password') }}
         {{ MdlForm::showErrors($errors, 'password') }}
 
         {{  MdlForm::submit('login', 'Login') }}

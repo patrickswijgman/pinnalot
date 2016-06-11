@@ -128,3 +128,7 @@ h3 {
     text-align: center;
     min-width: 50%;
 }
+
+.user-info .material-icons {
+    font-size: 20px;
+}
