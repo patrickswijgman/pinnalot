@@ -22,3 +22,5 @@ Route::get('/', function(){
 Route::get('calendar', 'CalendarController@show');
 
 Route::get('/group', 'GroupController@test');
+
+Route::resource('group', 'GroupController');

@@ -20,4 +20,8 @@ class Group extends NeoEloquent{
     public function neoEvents() {
         return $this->hasMany('App\Models\NeoEvent', 'PLANNED');
     }
+
+    public function users() {
+        return $this->hasMany('App\Models\NeoUser', 'MEMBER_OF');
+    }
 }

@@ -22,6 +22,6 @@ class Invoice extends Eloquent{
     }
 
     public function payment() {
-        return $this->morphTo('App\Models\Payment', 'TO');
+        return $this->morphTo('App\Models\Payment', 'FROM');
     }
 }

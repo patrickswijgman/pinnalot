@@ -10,7 +10,7 @@ namespace App\Models;
 
 
 use NeoEloquent;
-use Vinelab\NeoEloquent\Eloquent\Relations\MorphTo;
+
 
 class NeoUser  extends NeoEloquent{
     protected $connection = 'neo4j';
@@ -18,15 +18,15 @@ class NeoUser  extends NeoEloquent{
     protected $dates = ['created_at', 'updated_at', 'birthday'];
     protected $fillable = ['username', 'birthday', 'country', 'timezone', 'email','image'];
 
-    public function comment($morph = null) {
+    public function comments($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Message', 'POSTED', 'ON');
     }
 
-    public function doubt($morph = null) {
-        return $this->hyperMorph($morph, 'App\Models\Payment', 'DOUBTS', 'TO');
+    public function doubts($morph = null) {
+        return $this->hyperMorph($morph, 'App\Models\Payment', 'DOUBTS', 'FROM');
     }
 
-    public function invite($morph = null) {
+    public function invites($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Invitation', 'INVITED', 'FOR');
     }
 
@@ -34,17 +34,7 @@ class NeoUser  extends NeoEloquent{
         return $this->hyperMorph($morph,'App\Models\Availabillity', 'AVAILABLE', 'AT');
     }
 
-
-
-    public function comments() {
-        return $this->morphMany('App\Models\Message', 'POSTED');
-    }
-
-    public function invites() {
-        return $this->morphMany('App\Models\Invite', 'INVITES');
-    }
-
-    public function doubts() {
-        return $this->morphMany('App\Models\Invoice', 'DOUBTS');
+    public function groups() {
+        return $this->belongsToMany('App\Models\Group', 'MEMBER_OF');
     }
 }

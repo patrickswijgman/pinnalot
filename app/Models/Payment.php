@@ -6,7 +6,7 @@
  * Time: 16:52
  */
 
-namespace app\Models;
+namespace App\Models;
 
 
 use NeoEloquent;
@@ -21,6 +21,6 @@ class Payment extends NeoEloquent{
     }
 
     public function invoices() {
-        return $this->morphMany('App\Models\Invoice','TO');
+        return $this->morphMany('App\Models\Invoice','FROM');
     }
 }
