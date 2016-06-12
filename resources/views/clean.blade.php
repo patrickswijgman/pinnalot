@@ -15,7 +15,6 @@
 
     {{Html::script('https://code.getmdl.io/1.1.3/material.min.js')}}
     {{Html::script('js/jquery.min.js')}}
-    {{Html::script('js/moment.min.js')}}
     {{Html::script('js/helperfunctions.js')}}
 
     @yield('header')
