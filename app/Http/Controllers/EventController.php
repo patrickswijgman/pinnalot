@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\EventFormRequest;
 use DateTime;
 use Validator;
 use App\Models\Event;
@@ -33,22 +34,8 @@ class EventController extends Controller
         ]);
     }
 
-    function save(){
-        $data = Input::all();
-
-        $validator = Validator::make($data, [
-            'title' => 'required',
-            'description' => 'required',
-            'backgroundColor' => 'required',
-            'start' => 'required',
-            'end' => 'required|date|after:start',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('event/new')
-                ->withErrors($validator)
-                ->withInput();
-        }
+    function save(EventFormRequest $request){
+        $data = $request->all();
 
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
