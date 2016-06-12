@@ -13,12 +13,12 @@
 @section('content')
 
     @if(isset($event))
-        {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
-
         {{ Form::open(array('url' => 'event/' . $event->id)) }}
-            {{ Form::hidden('_method', 'DELETE') }}
-            {{ MdlForm::submit('Delete') }}
+        {{ Form::hidden('_method', 'DELETE') }}
+        {{ MdlForm::submit('Delete') }}
         {{ Form::close() }}
+
+        {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
     @else
         {{ Form::open(array('url' => 'event')) }}
     @endif
