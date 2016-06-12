@@ -11,23 +11,22 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Route::get('/', function(){
-    return view('home');
+Route::get('', function(){
+    return redirect('home');
 });
 
-Route::get('calendar', 'CalendarController@show');
-
-Route::post('event/new', 'EventController@create');
-Route::get('event/new', 'EventController@show');
-
-
-Route::get('event/{id}', 'EventController@show');
-
 Route::auth();
-Route::get('/home', 'HomeController@index');
-Route::get('/group', 'GroupController@test');
-Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('home', 'HomeController@show');
+
+    Route::get('calendar', 'CalendarController@show');
+
+    Route::get('settings', 'SettingsController@show');
+    Route::post('settings', 'SettingsController@save');
+
+    Route::get('group', 'GroupController@test');
+
+    Route::resource('event', 'EventController',
+        ['only' => ['create', 'update', 'store', 'edit', 'destroy']]);
+});

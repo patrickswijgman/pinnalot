@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 
-class GroupController extends Controller {
-
+class GroupController extends Controller 
+{
     function test() {
         Group::create(
             [

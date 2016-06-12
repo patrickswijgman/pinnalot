@@ -7,6 +7,6 @@ use App\Http\Requests;
 class LoginController extends Controller
 {
     function show() {
-        return view('/login');
+        return view('login');
     }
 }

@@ -13,6 +13,9 @@
     {{Html::style('https://code.getmdl.io/1.1.3/material.blue_grey-red.min.css')}}
     {{Html::style('css/material_custom.css')}}
 
+    {{Html::script('https://code.getmdl.io/1.1.3/material.min.js')}}
+    {{Html::script('js/jquery.min.js')}}
+    {{Html::script('js/helperfunctions.js')}}
 
     @yield('header')
 
@@ -25,11 +28,6 @@
 
 <!-- use clean content when not extending layout.blade.php -->
 @yield('clean-content')
-
-{{Html::script('https://code.getmdl.io/1.1.3/material.min.js')}}
-{{Html::script('js/jquery.min.js')}}
-{{Html::script('js/moment.min.js')}}
-{{Html::script('js/helperfunctions.js')}}
 
 @yield('footer')
 

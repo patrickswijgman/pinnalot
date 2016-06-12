@@ -10,7 +10,7 @@
         <h3>Login</h3>
         <hr>
         {{ Form::open(array('url' => url('/login'))) }}
-            {{ csrf_field() }}
+        {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 {{  MdlForm::text('email', 'E-mail Address', old('email')) }}
@@ -20,15 +20,9 @@
                     </span>
                 @endif
             </div>
+        {{ MdlForm::showAllErrors($errors) }}
 
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                {{  MdlForm::text('password', 'Password', '', 'password') }}
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
+        {{ MdlForm::email('email', 'E-Mail Address') }}
 
             <div class="form-group">
                 <br>
@@ -39,6 +33,13 @@
                 <br>
                 <a class="btn btn-link" href="{{ url('/register') }}">If you don't have an account? Click here to register.</a>
             </div>
+        {{ MdlForm::password('password', 'Password') }}
+
+        {{  MdlForm::submit('Login') }}
+        <br>
+        {{ link_to('password/reset', ' Forgot your password?')}}
         {{ Form::close() }}
     </div>
 @endsection
+
+
