@@ -12,14 +12,10 @@ use Illuminate\Support\HtmlString;
 
 class SettingsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     function show(){
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $user = Auth::user();
+        $id = $user->id;
         
         $countryCollection = Country::all('id', 'country_name');
         $countries = Helper::makeDropdownItemsFromCollection($countryCollection);
@@ -33,6 +29,7 @@ class SettingsController extends Controller
     }
 
     function save() {
+        //TODO use settings view
         $id = Auth::user()->id;
         if (isset($_FILES['profileimage'])) {
             $aExtraInfo = getimagesize($_FILES['profileimage']['tmp_name']);

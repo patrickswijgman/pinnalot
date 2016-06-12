@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 
-class GroupController extends Controller {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+class GroupController extends Controller 
+{
     function test() {
         Group::create(
             [

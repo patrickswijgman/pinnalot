@@ -14,11 +14,11 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="{{ url('/') }}">
+                    <a class="mdl-navigation__link" href="{{ url('') }}">
                         <i class="material-icons ">account_circle</i>
-                        {{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}
+                        {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
                     </a>
-                    <a class="mdl-navigation__link" href="{{ url('/logout') }}"><i class="material-icons">power_settings_new</i></a>
+                    <a class="mdl-navigation__link" href="{{ url('logout') }}"><i class="material-icons">power_settings_new</i></a>
                 </nav>
             </div>
         </header>
@@ -28,7 +28,6 @@
                     <i class="material-icons profile-icon">account_circle</i>
                     <div style="bottom: 30px; position: relative;">
                         {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
-
                         <button id="user-menu"
                                 class="mdl-button mdl-js-button mdl-button--icon">
                           <i class="material-icons">arrow_drop_down</i>
@@ -36,12 +35,12 @@
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="user-menu">
                             <li class="mdl-menu__item">
-                                <a href="{{ url('/settings') }}" class="mdl-navigation__link">
+                                <a href="{{ url('settings') }}" class="mdl-navigation__link">
                                     <i class="material-icons">settings</i> Settings
                                 </a>
                             </li>
                             <li class="mdl-menu__item">
-                                <a href="{{ url('/logout') }}" class="mdl-navigation__link">
+                                <a href="{{ url('logout') }}" class="mdl-navigation__link">
                                     <i class="material-icons">power_settings_new</i> Logout
                                 </a>
                             </li>
@@ -50,11 +49,11 @@
                 </div>
             </span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="{{ url('/') }}">
+                <a class="mdl-navigation__link" href="{{ url('') }}">
                     Home
                     <i class="material-icons" style="float:right">home</i>
                 </a>
-                <a class="mdl-navigation__link" href="{{ url('/calendar') }}">
+                <a class="mdl-navigation__link" href="{{ url('calendar') }}">
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
