@@ -10,9 +10,13 @@
 
 @stop
 
-@yield('form-open')
-
 @section('content')
+
+    @if(isset($event))
+        {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
+    @else
+        {{ Form::open(array('url' => 'event')) }}
+    @endif
 
     {{ MdlForm::text('title', 'Title') }}
     {{ MdlForm::showErrors($errors, 'title') }}

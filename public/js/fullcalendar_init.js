@@ -21,7 +21,7 @@ $(document).ready(function() {
         dayClick: function(date, jsEvent, view) {
             if (view.name === 'month') {
                 $date = date.format().split('-');
-                window.location.href = 'event/new?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
+                window.location.href = 'event/create?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
             }
         },
         eventClick: function(event) {
