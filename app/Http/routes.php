@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('group', 'GroupController@test');
 
     Route::resource('event', 'EventController',
-        ['only' => ['create', 'update', 'store', 'edit']]);
+        ['only' => ['create', 'update', 'store', 'edit', 'destroy']]);
 });
 

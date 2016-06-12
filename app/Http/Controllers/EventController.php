@@ -7,6 +7,8 @@ use App\Http\Requests\EventFormRequest;
 use App\Models\Event;
 
 use App\Http\Requests;
+use Redirect;
+use Session;
 
 
 class EventController extends Controller
@@ -38,7 +40,7 @@ class EventController extends Controller
         $event = new Event($data);
         $event->save();
 
-        return redirect('calendar');
+        return Redirect::to('calendar');
     }
 
     function update(EventFormRequest $request, Event $event){
@@ -50,6 +52,14 @@ class EventController extends Controller
         $event->update($data);
         $event->save();
 
-        return redirect('calendar');
+        return Redirect::to('calendar');
     }
+
+    public function destroy(Event $event) {
+        $event->delete();
+
+        Session::flash('message', 'Successfully deleted event.');
+        return Redirect::to('calendar');
+    }
+
 }
