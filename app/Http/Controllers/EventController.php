@@ -54,7 +54,7 @@ class EventController extends Controller
         return Redirect::to('calendar');
     }
 
-    public function destroy(Event $event) {
+    function destroy(Event $event) {
         $event->delete();
         return Redirect::to('calendar');
     }
