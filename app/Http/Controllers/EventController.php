@@ -8,7 +8,6 @@ use App\Models\Event;
 
 use App\Http\Requests;
 use Redirect;
-use Session;
 
 
 class EventController extends Controller
@@ -57,8 +56,6 @@ class EventController extends Controller
 
     public function destroy(Event $event) {
         $event->delete();
-
-        Session::flash('message', 'Successfully deleted event.');
         return Redirect::to('calendar');
     }
 
