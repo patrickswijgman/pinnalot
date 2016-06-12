@@ -26,10 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('settings', 'SettingsController@save');
 
     Route::get('group', 'GroupController@test');
-    Route::get('group', 'GroupController@test');
 
-    Route::get('event/new', 'EventController@show');
-    Route::get('event/{event}', 'EventController@load');
-    Route::post('event/save', 'EventController@save');
+    Route::resource('event', 'EventController',
+        ['only' => ['create', 'update', 'store', 'edit']]);
 });
 

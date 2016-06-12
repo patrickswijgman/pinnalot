@@ -10,15 +10,9 @@
 
 @stop
 
+@yield('form-open')
 
 @section('content')
-
-    @if (isset($event))
-        {{ Form::model($event, array('action' => 'EventController@save')) }}
-        {{ Form::hidden('id', $event->id) }}
-    @else
-        {{ Form::open(array('action' => 'EventController@save')) }}
-    @endif
 
     {{ MdlForm::text('title', 'Title') }}
     {{ MdlForm::showErrors($errors, 'title') }}

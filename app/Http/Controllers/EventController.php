@@ -4,28 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
 use App\Http\Requests\EventFormRequest;
-use DateTime;
-use Validator;
 use App\Models\Event;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
 
 
 class EventController extends Controller
 {
-    
-    function show(){
-        return view('event_form', [
+
+    function create(){
+        return view('event_create', [
             'page' => 'Create new event',
             'startDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null),
             'endDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null)
         ]);
     }
 
-    function load(Event $event){
-        return view('event_form', [
+    function edit(Event $event) {
+        return view('event_edit', [
             'page' => 'Edit event',
             'event' => $event,
             'startDate' => Helper::isoToDateString($event->start),
@@ -33,20 +29,27 @@ class EventController extends Controller
         ]);
     }
 
-    function save(EventFormRequest $request){
+    function store(EventFormRequest $request){
         $data = $request->all();
 
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
 
-        if (isset($data['id'])) {
-            $event = Event::find($data['id']);
-            $event->update($data);
-        } else {
-            $event = new Event($data);
-        }
-
+        $event = new Event($data);
         $event->save();
+
+        return redirect('calendar');
+    }
+
+    function update(EventFormRequest $request, Event $event){
+        $data = $request->all();
+
+        $data['start'] = Helper::dateToISOString($data['start']);
+        $data['end'] = Helper::dateToISOString($data['end']);
+
+        $event->update($data);
+        $event->save();
+
         return redirect('calendar');
     }
 }
