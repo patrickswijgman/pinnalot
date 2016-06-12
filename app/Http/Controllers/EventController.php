@@ -30,7 +30,7 @@ class EventController extends Controller
     }
 
     function store(EventFormRequest $request){
-        $data = $request->all();
+        $data = $request->input();
 
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
@@ -42,7 +42,7 @@ class EventController extends Controller
     }
 
     function update(EventFormRequest $request, Event $event){
-        $data = $request->all();
+        $data = $request->input();
 
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
