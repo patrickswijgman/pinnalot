@@ -25,11 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('settings', 'SettingsController@show');
     Route::post('settings', 'SettingsController@save');
 
-    Route::get('/group', 'GroupController@test');
-    Route::get('/group', 'GroupController@test');
+    Route::get('group', 'GroupController@test');
+    Route::get('group', 'GroupController@test');
 
     Route::get('event/new', 'EventController@show');
-    Route::get('event/{id}', 'EventController@load');
+    Route::get('event/{event}', 'EventController@load');
     Route::post('event/save', 'EventController@save');
 });
 

@@ -17,16 +17,15 @@ class EventController extends Controller
 {
     
     function show(){
-        return view('event_new', [
+        return view('event_form', [
             'page' => 'Create new event',
             'startDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null),
             'endDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null)
         ]);
     }
 
-    function load($id){
-        $event = Event::find($id);
-        return view('event_new', [
+    function load(Event $event){
+        return view('event_form', [
             'page' => 'Edit event',
             'event' => $event,
             'startDate' => Helper::isoToDateString($event->start),
@@ -41,8 +40,7 @@ class EventController extends Controller
         $data['end'] = Helper::dateToISOString($data['end']);
 
         if (isset($data['id'])) {
-            $id = $data['id'];
-            $event = Event::find($id);
+            $event = Event::find($data['id']);
             $event->update($data);
         } else {
             $event = new Event($data);

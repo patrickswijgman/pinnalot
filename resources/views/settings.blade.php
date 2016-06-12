@@ -18,7 +18,7 @@
 
     {{ MdlForm::urlButton('password/reset', 'Change password')}}
 
-    {{ MdlForm::submit('save', 'Save') }}
+    {{ MdlForm::submit('Save') }}
     {{ Form::close() }}
 
 @stop

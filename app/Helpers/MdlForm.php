@@ -71,11 +71,11 @@ class MdlForm
      * @param $label
      * @return HtmlString
      */
-    static function submit($name, $label) {
+    static function submit($label) {
         return new HtmlString('
         <br/>
         <div>
-            <input name="'.$name.'" type="submit" value="'.$label.'" 
+            <input name="submit" type="submit" value="'.$label.'" 
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
         </div>');
     }
