@@ -12,11 +12,11 @@
         {{ Form::open(array('url' => url('/login'))) }}
         {{ csrf_field() }}
 
+        {{ MdlForm::showAllErrors($errors) }}
+
         {{ MdlForm::email('email', 'E-Mail Address') }}
-        {{ MdlForm::showErrors($errors, 'email') }}
 
         {{ MdlForm::password('password', 'Password') }}
-        {{ MdlForm::showErrors($errors, 'password') }}
 
         {{  MdlForm::submit('Login') }}
         <br>

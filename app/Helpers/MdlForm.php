@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Form;
 use Illuminate\Support\HtmlString;
+use Session;
 
 class MdlForm
 {
@@ -199,6 +200,17 @@ class MdlForm
         } else {
             return '';
         }
+    }
+
+    static function showAllErrors($errors) {
+        $html = '';
+        foreach($errors->all() as $error) {
+            $html .= '
+                <div class="help-block">
+                    <strong>'.$error.'</strong>
+                </div>';
+        }
+        return new HtmlString($html);
     }
 
 }

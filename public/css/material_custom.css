@@ -112,12 +112,13 @@ h3 {
 }
 
 .help-block {
+    text-align: center;
     font-weight: bold;
-    color: #DF3A27;
-}
-
-.help-block strong {
-    color: #DF3A27;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: #DF3A27;
 }
 
 .jscolor:hover {
