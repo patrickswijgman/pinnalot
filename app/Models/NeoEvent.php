@@ -6,7 +6,7 @@
  * Time: 13:22
  */
 
-namespace app\Models;
+namespace App\Models;
 
 
 use NeoEloquent;

@@ -6,9 +6,9 @@
 
 @section('content')
 
-    {{ Form::open(array('url' => url('/settings/'.$id), 'files' => 'true')) }}
+    {{ Form::open(array('url' => url('/settings/'.$user->id), 'files' => 'true')) }}
 
-    <input type="hidden" name="id" value="{{ $id }}" >
+    <input type="hidden" name="id" value="{{ $user->id }}" >
 
     {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
 

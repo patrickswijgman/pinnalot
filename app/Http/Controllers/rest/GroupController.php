@@ -59,7 +59,7 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group) {
-        if($this->authorized($group)) {
+        if($this->isAuthorized($group)) {
             return view('', compact('group'));
         } else {
 //            Not the right to edit
@@ -76,7 +76,7 @@ class GroupController extends Controller {
      */
     public function update(GroupRequest $request, Group $group) {
 
-        if($this->authorized($group)) {
+        if($this->isAuthorized($group)) {
             $group->fill($request->input())->save();
         }
         return view('', compact('group'));
@@ -91,16 +91,16 @@ class GroupController extends Controller {
      * @internal param int $id
      */
     public function destroy(Group $group) {
-        if($this->authorized($group)) {
+        if($this->isAuthorized($group)) {
             $group->delete();
         }
         return view();
     }
 
-    private function authorized(Group $group) {
+    private function isAuthorized(Group $group) {
         $user = Auth::user()->neoUser;
         if($group->users()->edge($user)->admin) {
-            return $user;
+            return true;
         } else {
             return false;
         }

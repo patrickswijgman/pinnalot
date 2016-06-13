@@ -1,0 +1,40 @@
+
+header.custom-header {
+    /*background:  rgb(18, 99, 146);*/
+}
+
+.page-content {
+    width: 70%;
+    margin: auto;
+}
+
+.custom-header .material-icons {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-header .material-icons:hover,
+.custom-header .material-icons:focus {
+    color: rgba(255, 255, 255, 1);
+}
+
+.custom-header .mdi {
+    color: rgba(255, 255, 255, 1);
+}
+
+.mdl-layout-title {
+    cursor: default;
+}
+
+.mdl-layout__drawer-button:focus {
+    outline:0;
+}
+
+.mdl-navigation__link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.mdl-navigation__link:hover,
+.mdl-navigation__link:focus {
+    color: rgba(255, 255, 255, 1);
+}
+

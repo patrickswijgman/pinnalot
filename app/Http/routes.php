@@ -29,8 +29,6 @@ Route::post('settings/{id}', 'SettingsController@save');
 
 Route::get('changepw', 'SettingsController@changepw');
 
-Route::get('/group', 'GroupController@test');
-
 Route::post('event/new', 'EventController@create');
 Route::get('event/new', 'EventController@show');
 
