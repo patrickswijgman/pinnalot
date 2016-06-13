@@ -1,4 +1,4 @@
-function convertISOtoDateTime(timeString) {
+function convertISOtoFormattedString(timeString) {
     var dateTime = timeString.split("T");
     var date = dateTime[0].split("-");
     var time = dateTime[1].split(":");

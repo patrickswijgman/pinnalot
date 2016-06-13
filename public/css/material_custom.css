@@ -15,16 +15,49 @@ h3 {
 .page-content {
     width: 70%;
     margin: auto;
+    min-height: 100vh;
+    text-align: center;
 }
 
 .custom-header .material-icons {
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    color: inherit;
 }
 
 .custom-header .material-icons:hover,
 .custom-header .material-icons:focus {
+    color: inherit;
+}
+
+.custom-header .static-icon {
     color: rgba(255, 255, 255, 1);
 }
+
+.mdl-layout__drawer {
+    border: none;
+}
+
+.mdl-layout__drawer .mdl-layout-title {
+    padding-left: 0;
+    color: white;
+    background-color: #424242;
+    height: 200px;
+}
+
+.mdl-layout__drawer .mdl-layout-title .profile-icon {
+    margin-top: 20px;
+    font-size: 120px;
+}
+
+.custom-header .mdl-layout__drawer-button {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-header .mdl-layout__drawer-button:hover,
+.custom-header .mdl-layout__drawer-button:focus {
+    color: rgba(255, 255, 255, 1);
+}
+
 
 .custom-header .mdi {
     color: rgba(255, 255, 255, 1);
@@ -39,6 +72,8 @@ h3 {
 }
 
 .mdl-layout__header-row .mdl-navigation__link {
+    font-size: 16px;
+    opacity: 1;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -48,7 +83,7 @@ h3 {
 }
 
 .mdl-mdlselect-hoverable:hover {
-    background-color: lightgray;
+    background-color: #ECECEC;
     cursor: pointer;
 }
 
@@ -72,4 +107,29 @@ h3 {
     right: -32px;
 }
 
+.datetime-field:hover {
+    cursor: pointer;
+}
 
+.help-block {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 2px;
+    background-color: #DF3A27;
+}
+
+.jscolor:hover {
+    cursor: pointer;
+}
+
+.mdl-dialog {
+    text-align: center;
+    min-width: 50%;
+}
+
+.user-info .material-icons {
+    font-size: 20px;
+}

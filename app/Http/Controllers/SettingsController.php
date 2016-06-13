@@ -2,39 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
+use App\Models\Country;
 use App\User;
-use Html;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\HtmlString;
 
 class SettingsController extends Controller
 {
+
     function show(){
-
-        $users = User::all();
-
-        return view('settings', compact('users'));
-        //return view('settings', compact('users'), ['page' => 'Settings']);
-    }
-
-    function index($id){
-
-        $user = User::find($id);
+        $user = Auth::user();
+        $id = $user->id;
+        
+        $countryCollection = Country::all('id', 'country_name');
+        $countries = Helper::makeDropdownItemsFromCollection($countryCollection);
 
         return view('settings', [
             'page' => 'Settings',
             'user' => $user,
-            'id' => $id
+            'id' => $id,
+            'countries' => $countries
         ]);
     }
 
-    function changepw(){
-        
-        return view('changepw', ['page'=> 'Change Password']);
-    }
-
-    function save($id) {
+    function save() {
+        //TODO use settings view
+        $id = Auth::user()->id;
         if (isset($_FILES['profileimage'])) {
             $aExtraInfo = getimagesize($_FILES['profileimage']['tmp_name']);
             $sImage = "data:" . $aExtraInfo["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['profileimage']['tmp_name']));
