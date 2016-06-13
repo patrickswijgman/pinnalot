@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
-use App\Http\Requests\EventFormRequest;
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 
 use App\Http\Requests;
@@ -33,7 +33,7 @@ class EventController extends Controller
         ]);
     }
 
-    function store(EventFormRequest $request){
+    function store(EventRequest $request){
         $data = $request->input();
 
         $data['start'] = Helper::dateToISOString($data['start']);
@@ -48,7 +48,7 @@ class EventController extends Controller
         return Redirect::to('calendar');
     }
 
-    function update(EventFormRequest $request, Event $event){
+    function update(EventRequest $request, Event $event){
         $data = $request->input();
 
         $data['start'] = Helper::dateToISOString($data['start']);
