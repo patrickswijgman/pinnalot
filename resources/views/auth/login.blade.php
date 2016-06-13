@@ -9,7 +9,7 @@
         </div>
         <h3>Login</h3>
         <hr>
-        {{ Form::open(array('url' => url('/login'))) }}
+        {{ Form::open(array('url' => url('login'))) }}
         {{ csrf_field() }}
 
         {{ MdlForm::showAllErrors($errors) }}
@@ -23,7 +23,7 @@
         {{ link_to('password/reset', ' Forgot your password?')}}
         <br>
         <br>
-        {{ link_to('password/register', " If you don't have an account, click here to register to our site!")}}
+        {{ link_to('register', " If you don't have an account, click here to register to our site!")}}
         {{ Form::close() }}
     </div>
 @endsection

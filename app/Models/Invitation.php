@@ -6,12 +6,11 @@
  * Time: 13:50
  */
 
-namespace app\Models;
+namespace App\Models;
 
+use NeoEloquent;
 
-use Eloquent;
-
-class Invitation extends Eloquent{
+class Invitation extends NeoEloquent{
     protected $connection = 'neo4j';
     protected $fillable = ['status','text'];
     protected $label = 'Invitation';
@@ -21,7 +20,7 @@ class Invitation extends Eloquent{
     }
 
     public function event() {
-        return $this->morphTo('App\Models\NeoEvent', 'FOR');
+        return $this->morphTo('App\Models\Event', 'FOR');
     }
 
 }

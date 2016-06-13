@@ -150,6 +150,20 @@ class MdlForm
         ');
     }
 
+    static function date($name, $label, $value=null) {
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input datetime-field', 'readonly')).'
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
+        <script>
+            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY" });
+        </script>
+        ');
+    }
+
     /**
      * Requires import of 'jscolor.js'
      * @param $name

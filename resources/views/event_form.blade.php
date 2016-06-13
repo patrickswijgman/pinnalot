@@ -29,11 +29,13 @@
 
     {{ MdlForm::textArea('description', 'Description') }}
 
+    {{ MdlForm::text('location', 'Location') }}
+
     {{ MdlForm::color('backgroundColor', 'Color') }}
 
-    {{ MdlForm::datetime('start', 'Start date and time', $startDate) }}
+    {{ MdlForm::datetime('start', 'Start date and time', !empty($startDate)? ($startDate): '') }}
 
-    {{ MdlForm::datetime('end', 'End date and time', $endDate) }}
+    {{ MdlForm::datetime('end', 'End date and time', !empty($endDate)? ($endDate): '') }}
 
     {{ MdlForm::submit('Submit') }}
     {{ Form::close() }}

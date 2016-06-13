@@ -3,44 +3,42 @@
 namespace App\Models;
 
 use App\Helpers\Helper;
-use Illuminate\Database\Eloquent\Model;
+use NeoEloquent;
 
-class Event extends Model
+class Event extends NeoEloquent
 {
-    
 
-    protected $fillable = array('title', 'description', 'class', 'backgroundColor', 'start', 'end');
+    protected $connection = 'neo4j';
+    protected $label = 'Event';
+    protected $fillable = array('title', 'description', 'location', 'backgroundColor', 'start', 'end');
+    protected $appends = array('url', 'borderColor', 'textColor');
+
+    public function invitations() {
+        return $this->hasMany('App\Models\Invitation', 'PLANNED');
+    }
+
+    public function timeOptions() {
+        return $this->hasMany('App\Models\TimeOptions', 'OPTIONS');
+    }
 
     /**
      * Adds a custom attribute: URL, based on ID
      * This URL is used by the calendar when you click on the event
      */
-    private function makeUrl(){
-        $this->attributes['url'] = 'event/' . $this->attributes['id'] . '/edit';
+    function getUrlAttribute(){
+        return 'event/' . $this->attributes['id'] . '/edit';
     }
 
-    private function fixBorderColor(){
-        $this->attributes['borderColor'] = $this->attributes['backgroundColor'];
+    function getBorderColorAttribute(){
+        return $this->attributes['backgroundColor'];
     }
 
-    private function fixTextColor() {
+    function getTextColorAttribute() {
         if (Helper::getLabelBrightness($this->attributes['backgroundColor']) > 123) {
-            $this->attributes['textColor'] = 'black';
+            return $this->attributes['textColor'] = 'black';
         } else {
-            $this->attributes['textColor'] = 'white';
+            return $this->attributes['textColor'] = 'white';
         }
-    }
-
-    static function all($columns = ['*']) {
-        $events = parent::all($columns);
-
-        /** @var Event $event */
-        foreach($events as $event) {
-            $event->makeUrl();
-            $event->fixBorderColor();
-            $event->fixTextColor();
-        }
-        return $events;
     }
 
 }

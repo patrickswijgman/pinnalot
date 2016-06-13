@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 
 class EventFormRequest extends Request
 {
@@ -13,7 +14,7 @@ class EventFormRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,11 +25,12 @@ class EventFormRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'backgroundColor' => 'required',
-            'start' => 'required',
-            'end' => 'required|date|after:start'
+            'title'=>['required', 'min:3', 'max:30'],
+            'description'=>['required', 'max:255'],
+            'backgroundColor'=>['required', 'max:255'],
+            'start'=>['required', 'date'],
+            'end'=>['required', 'date', 'after:start'],
+            'location'=>['required', 'min:3', 'max:255']
         ];
     }
 }

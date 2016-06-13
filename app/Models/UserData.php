@@ -12,11 +12,11 @@ namespace App\Models;
 use NeoEloquent;
 
 
-class NeoUser  extends NeoEloquent{
+class UserData  extends NeoEloquent{
     protected $connection = 'neo4j';
-    protected $label = 'NeoUser';
-    protected $dates = ['created_at', 'updated_at', 'birthday'];
-    protected $fillable = ['username', 'birthday', 'country', 'timezone', 'email','image'];
+    protected $label = 'UserData';
+    protected $dates = ['created_at', 'updated_at'];
+    protected $fillable = ['firstname', 'lastname', 'birthday', 'country', 'profileimage'];
 
     public function comments($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Message', 'POSTED', 'ON');

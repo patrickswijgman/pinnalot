@@ -7,6 +7,9 @@ use App\Http\Requests\EventFormRequest;
 use App\Models\Event;
 
 use App\Http\Requests;
+use App\Models\Invitation;
+use Auth;
+use Illuminate\Support\Facades\Input;
 use Redirect;
 
 
@@ -16,8 +19,8 @@ class EventController extends Controller
     function create(){
         return view('event_form', [
             'page' => 'Create new event',
-            'startDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null),
-            'endDate' => (isset($_GET['d'])? $_GET['d'].' 00:00': null)
+            'startDate' => (Input::get('d', null)),
+            'endDate' => (Input::get('d', null))
         ]);
     }
 
@@ -36,8 +39,11 @@ class EventController extends Controller
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
 
-        $event = new Event($data);
-        $event->save();
+        $event = Event::create($data);
+
+        $userdata = Auth::user()->userData;
+        $invitation = new Invitation(['status' => 'owner']);
+        $userdata->invites($event)->save($invitation);
 
         return Redirect::to('calendar');
     }

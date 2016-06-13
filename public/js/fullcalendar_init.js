@@ -31,6 +31,7 @@ $(document).ready(function() {
 
                 $('.mdl-dialog__title').html("").append(event.title);
                 $('.mdl-dialog__desc').html("").append(event.description);
+                $('.mdl-dialog__loc').html("").append(event.location);
                 $('.mdl-dialog__start').html("").append(timeStart);
                 $('.mdl-dialog__end').html("").append(timeEnd);
                 document.getElementById('mdl-dialog__url').href = event.url;

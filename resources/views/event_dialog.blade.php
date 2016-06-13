@@ -2,7 +2,11 @@
     <h4 class="mdl-dialog__title"></h4>
     <hr>
     <div class="mdl-dialog__content">
+        <div><strong>Description</strong></div>
         <div class="mdl-dialog__desc"></div>
+        <br/>
+        <div><strong>Location</strong></div>
+        <div class="mdl-dialog__loc"></div>
         <br/>
         <div><strong>From</strong></div>
         <div class="mdl-dialog__start"></div>
