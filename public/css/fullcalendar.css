@@ -498,7 +498,7 @@ temporary rendered events).
 }
 
 .fc-day-grid:hover {
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 
 

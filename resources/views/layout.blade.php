@@ -8,32 +8,56 @@
                 <!-- Title -->
                 <span class="mdl-layout-title">
                     {{Html::image('img/fav.png', null, ['width'=>'25px', 'height'=>'25px'])}}
-                    Pinnalot</span>
+                    Pinnalot
+                </span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="{{ url('/') }}">
-                        <i class="material-icons static-icon">account_circle</i>
-                        {{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}
+                    <a class="mdl-navigation__link" href="{{ url('') }}">
+                        <i class="material-icons ">account_circle</i>
+                        {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
                     </a>
-                    <a class="mdl-navigation__link" href="{{ url('/logout') }}"><i class="material-icons">power_settings_new</i></a>
+                    <a class="mdl-navigation__link" href="{{ url('logout') }}"><i class="material-icons">power_settings_new</i></a>
                 </nav>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
+        <div class="mdl-layout__drawer ">
             <span class="mdl-layout-title">
-                {{Html::image('img/fav-blk.png', null, ['width'=>'25px', 'height'=>'25px'])}}
-                Pinnalot</span>
+                <div class="user-info" style="text-align: center">
+                    <i class="material-icons profile-icon">account_circle</i>
+                    <div style="bottom: 30px; position: relative;">
+                        {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
+                        <button id="user-menu"
+                                class="mdl-button mdl-js-button mdl-button--icon">
+                          <i class="material-icons">arrow_drop_down</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                            for="user-menu">
+                            <li class="mdl-menu__item">
+                                <a href="{{ url('settings') }}" class="mdl-navigation__link">
+                                    <i class="material-icons">settings</i> Settings
+                                </a>
+                            </li>
+                            <li class="mdl-menu__item">
+                                <a href="{{ url('logout') }}" class="mdl-navigation__link">
+                                    <i class="material-icons">power_settings_new</i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="{{ url('/') }}">
+                <a class="mdl-navigation__link" href="{{ url('') }}">
                     Home
                     <i class="material-icons" style="float:right">home</i>
                 </a>
-                <a class="mdl-navigation__link" href="{{ url('/calendar') }}">
+                <a class="mdl-navigation__link" href="{{ url('calendar') }}">
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
+
                 <a class="mdl-navigation__link" href="{{ url('/settings') }}">
                     Settings
                     <i class="material-icons" style="float:right">settings</i>
@@ -47,6 +71,7 @@
                         Logout
                         <i class="material-icons" style="float:right">power_settings_new</i>
                     </a>
+
             </nav>
         </div>
         <!-- Uncomment for sidebar on the right
@@ -61,11 +86,11 @@
             }
         </style>-->
         <main class="mdl-layout__content">
+            @unless(empty($page))
+                <h3 style="text-align: center">{{$page}}</h3>
+                <hr>
+            @endunless
             <div class="page-content">
-                @unless(empty($page))
-                    <h3 style="text-align: center">{{$page}}</h3>
-                    <hr>
-                @endunless
                 @yield('content')
                 <br/>
                 <br/>

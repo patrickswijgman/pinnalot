@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {{ Form::open(array('url' => url('/settings'), 'files' => 'true')) }}
+    {{ Form::open(array('url' => url('settings'), 'files' => 'true')) }}
 
     {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
 
@@ -18,7 +18,7 @@
 
     {{ MdlForm::urlButton('password/reset', 'Change password')}}
 
-    {{ MdlForm::submit('save', 'Save') }}
+    {{ MdlForm::submit('Save') }}
     {{ Form::close() }}
 
 @stop

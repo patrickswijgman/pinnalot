@@ -12,13 +12,13 @@
         {{ Form::open(array('url' => url('/login'))) }}
         {{ csrf_field() }}
 
-        {{  MdlForm::text('email', 'E-Mail Address', old('email')) }}
-        {{ MdlForm::showErrors($errors, 'email') }}
+        {{ MdlForm::showAllErrors($errors) }}
 
-        {{  MdlForm::text('password', 'Password', '', 'password') }}
-        {{ MdlForm::showErrors($errors, 'password') }}
+        {{ MdlForm::email('email', 'E-Mail Address') }}
 
-        {{  MdlForm::submit('login', 'Login') }}
+        {{ MdlForm::password('password', 'Password') }}
+
+        {{  MdlForm::submit('Login') }}
         <br>
         {{ link_to('password/reset', ' Forgot your password?')}}
         {{ Form::close() }}

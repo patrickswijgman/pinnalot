@@ -66,7 +66,7 @@ $.fn.mdlselect = function(options){
     if (options.firstValueDefault){
         updateDefaultField(options.value[0], options.label[0]);
     }
-    $("#" + field[0].id).click(function(){openListOptions(field[0].id)});
+    /*$("#" + field[0].id).click(function(){openListOptions(field[0].id)});*/
 
     //
     //                    Functions, functions, what's your conjunction?

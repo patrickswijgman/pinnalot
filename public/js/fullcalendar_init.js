@@ -19,8 +19,10 @@ $(document).ready(function() {
             right: ''
         },
         dayClick: function(date, jsEvent, view) {
-            $date = date.format().split('-');
-            window.location.href = 'event/new?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
+            if (view.name === 'month') {
+                $date = date.format().split('-');
+                window.location.href = 'event/create?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
+            }
         },
         eventClick: function(event) {
             if (event.url) {
@@ -31,6 +33,7 @@ $(document).ready(function() {
                 $('.mdl-dialog__desc').html("").append(event.description);
                 $('.mdl-dialog__start').html("").append(timeStart);
                 $('.mdl-dialog__end').html("").append(timeEnd);
+                document.getElementById('mdl-dialog__url').href = event.url;
 
                 if (dialog !== null) {
                     dialog.showModal();

@@ -10,32 +10,32 @@
 
 @stop
 
-
 @section('content')
 
-    @if (isset($event))
-        {{ Form::model($event, array('action' => 'EventController@save')) }}
-        {{ Form::hidden('id', $event->id) }}
+    @if(isset($event))
+        {{ Form::open(array('url' => 'event/' . $event->id)) }}
+        {{ Form::hidden('_method', 'DELETE') }}
+        {{ MdlForm::submit('Delete') }}
+        {{ Form::close() }}
+
+        {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
     @else
-        {{ Form::open(array('action' => 'EventController@save')) }}
+        {{ Form::open(array('url' => 'event')) }}
     @endif
+    
+    {{ MdlForm::showAllErrors($errors) }}
 
     {{ MdlForm::text('title', 'Title') }}
-    {{ MdlForm::showErrors($errors, 'title') }}
 
     {{ MdlForm::textArea('description', 'Description') }}
-    {{ MdlForm::showErrors($errors, 'description') }}
 
     {{ MdlForm::color('backgroundColor', 'Color') }}
-    {{ MdlForm::showErrors($errors, 'backgroundColor') }}
 
     {{ MdlForm::datetime('start', 'Start date and time', $startDate) }}
-    {{ MdlForm::showErrors($errors, 'start') }}
 
     {{ MdlForm::datetime('end', 'End date and time', $endDate) }}
-    {{ MdlForm::showErrors($errors, 'end') }}
 
-    {{ MdlForm::submit('submit', 'Submit') }}
+    {{ MdlForm::submit('Submit') }}
     {{ Form::close() }}
 
 @stop

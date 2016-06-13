@@ -11,32 +11,26 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Route::get('/', function(){
-    return redirect('/home');
+Route::get('', function(){
+    return redirect('home');
 });
-
-Route::get('/home', 'HomeController@index');
-
-Route::get('calendar', 'CalendarController@show');
-
-Route::get('settings', 'SettingsController@show');
-Route::post('settings', 'SettingsController@save');
-
-Route::get('/group', 'GroupController@test');
-Route::get('/group', 'GroupController@test');
-
-Route::get('event/new', 'EventController@show');
-Route::get('event/{id}', 'EventController@load');
-Route::post('event/save', 'EventController@save');
 
 Route::auth();
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('home', 'HomeController@show');
 
 Route::get('pay/new', 'PayController@show'); 
 
+    Route::get('calendar', 'CalendarController@show');
 
+
+    Route::get('settings', 'SettingsController@show');
+    Route::post('settings', 'SettingsController@save');
+
+    Route::get('group', 'GroupController@test');
+
+    Route::resource('event', 'EventController',
+        ['only' => ['create', 'update', 'store', 'edit', 'destroy']]);
+});
 

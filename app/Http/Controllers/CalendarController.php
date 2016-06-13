@@ -11,11 +11,7 @@ use App\Http\Requests;
 
 class CalendarController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
+
     function show(){
 
         $events = Event::all();
