@@ -6,10 +6,11 @@
 
 @section('content')
 
-    {{ Form::open(array('url' => url('settings'), 'files' => 'true')) }}
+    {{ Form::model($settings, array('route' => array('event.update', $settings->id), 'method'=>'PUT')) }}
 
-    {{ MdlForm::uploadFile('profileimage', 'Profile image') }}
+    {{ MdlForm::text('primary_color', 'Primary Color') }}
 
+    {{ MdlForm::text('accent_color', 'Accent Color') }}
 
 
     {{ MdlForm::submit('Save') }}

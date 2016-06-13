@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\SettingsDefault;
+use App\Models\SettingsUser;
 use App\Models\UserData;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -24,6 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    function getSettingsUserAttribute() {
+        return SettingsUser::where('user_id', $this->id)->first();
+    }
+
+    function getPrimaryColorAttribute(){
+        $primaryColor = $this->settingsUser->primary_color;
+        $primaryColorDefault = SettingsDefault::first()->primary_color;
+        return ($primaryColor != "")? $primaryColor : $primaryColorDefault;
+    }
+
+    function getAccentColorAttribute(){
+        $accentColor = $this->settingsUser->accent_color;
+        $accentColorDefault = SettingsDefault::first()->accent_color;
+        return ($accentColor != "")? $accentColor : $accentColorDefault;
+    }
 
     function getUserDataAttribute($userData){
         return UserData::find($userData);
