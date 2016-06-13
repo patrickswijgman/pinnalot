@@ -12,34 +12,18 @@
         {{ Form::open(array('url' => url('/login'))) }}
         {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                {{  MdlForm::text('email', 'E-mail Address', old('email')) }}
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
         {{ MdlForm::showAllErrors($errors) }}
 
         {{ MdlForm::email('email', 'E-Mail Address') }}
 
-            <div class="form-group">
-                <br>
-                {{  MdlForm::submit('login', 'Login') }}
-                <br>
-                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                <br>
-                <br>
-                <a class="btn btn-link" href="{{ url('/register') }}">If you don't have an account? Click here to register.</a>
-            </div>
         {{ MdlForm::password('password', 'Password') }}
 
         {{  MdlForm::submit('Login') }}
         <br>
         {{ link_to('password/reset', ' Forgot your password?')}}
+        <br>
+        <br>
+        {{ link_to('password/register', " If you don't have an account, click here to register to our site!")}}
         {{ Form::close() }}
     </div>
 @endsection
-
-
