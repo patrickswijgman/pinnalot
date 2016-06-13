@@ -20,7 +20,10 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@show');
 
+Route::get('pay/new', 'PayController@show'); 
+
     Route::get('calendar', 'CalendarController@show');
+
 
     Route::get('settings', 'SettingsController@show');
     Route::post('settings', 'SettingsController@save');
