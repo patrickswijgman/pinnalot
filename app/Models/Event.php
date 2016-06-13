@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    
 
     protected $fillable = array('title', 'description', 'class', 'backgroundColor', 'start', 'end');
 
@@ -39,7 +40,6 @@ class Event extends Model
             $event->fixBorderColor();
             $event->fixTextColor();
         }
-
         return $events;
     }
 

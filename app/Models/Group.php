@@ -9,4 +9,19 @@ class Group extends NeoEloquent{
     protected $label = 'Group';
     protected $fillable = ['name', 'description', 'kind'];
 
+    public function comments() {
+        return $this->morphMany('App\Models\Message','ON');
+    }
+
+    public function payments() {
+        return $this->morphMany('App\Models\Payment', 'HAS');
+    }
+
+    public function neoEvents() {
+        return $this->hasMany('App\Models\NeoEvent', 'PLANNED');
+    }
+
+    public function users() {
+        return $this->hasMany('App\Models\NeoUser', 'MEMBER_OF');
+    }
 }
