@@ -24,12 +24,11 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'username'=>['required', 'min:5', 'max:30'],
+            'firstname'=>['required', 'min:5', 'max:30'],
+            'lastname'=>['required', 'min:5', 'max:30'],
             'birthday'=>['required', 'date'],
-            'country'=>'required',
-            'timezone'=>['required', 'timezone'],
-            'email'=>['required', 'email'],
-            'image'=>'image'
+            'country'=>'exists:countries,country_name',
+            'profileimage'=>'image'
         ];
     }
 }

@@ -1,5 +1,12 @@
 @extends('clean')
 
+@section('header')
+    {{ Html::style('css/datetimepicker.css') }}
+
+    {{ Html::script('js/moment.min.js') }}
+    {{ Html::script("js/datetimepicker.js") }}
+@stop
+
 @section('clean-content')
     <div style="text-align: center">
         <div class="mdl-layout__header ">
@@ -21,6 +28,12 @@
         {{ MdlForm::password('password', 'Password') }}
 
         {{ MdlForm::password('password_confirmation', 'Confirm Password') }}
+
+        {{ MdlForm::text('firstname', 'Firstname') }}
+
+        {{ MdlForm::text('lastname', 'Lastname') }}
+
+        {{ MdlForm::date('birthday', 'Birthday') }}
 
         {{  MdlForm::submit('Register') }}
         <br>

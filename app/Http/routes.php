@@ -20,10 +20,9 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@show');
 
-Route::get('pay/new', 'PayController@show'); 
+    Route::get('pay/new', 'PayController@show');
 
     Route::get('calendar', 'CalendarController@show');
-
 
     Route::get('settings', 'SettingsController@show');
     Route::post('settings', 'SettingsController@save');
@@ -34,5 +33,7 @@ Route::get('pay/new', 'PayController@show');
         ['only' => ['create', 'update', 'store', 'edit', 'destroy']]);
 
     Route::resource('group', 'GroupController');
+
+
 });
 

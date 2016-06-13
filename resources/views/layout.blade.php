@@ -16,7 +16,7 @@
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="{{ url('') }}">
                         <i class="material-icons ">account_circle</i>
-                        {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
+                        {{ Auth::user()->firstname }}
                     </a>
                     <a class="mdl-navigation__link" href="{{ url('logout') }}"><i class="material-icons">power_settings_new</i></a>
                 </nav>
@@ -27,7 +27,7 @@
                 <div class="user-info" style="text-align: center">
                     <i class="material-icons profile-icon">account_circle</i>
                     <div style="bottom: 30px; position: relative;">
-                        {{ isset(Auth::user()->name) ? Auth::user()->name : '' }}
+                        {{ Auth::user()->firstname }}
                         <button id="user-menu"
                                 class="mdl-button mdl-js-button mdl-button--icon">
                           <i class="material-icons">arrow_drop_down</i>
@@ -57,21 +57,10 @@
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
-
-                <a class="mdl-navigation__link" href="{{ url('/settings') }}">
-                    Settings
-                    <i class="material-icons" style="float:right">settings</i>
-                </a>
                 <a class="mdl-navigation__link" href="{{ url('/pay/new') }}">
                     Payment
                     <i class="material-icons" style="float:right">attach_money</i>
                 </a>
-
-                    <a class="mdl-navigation__link" href="{{ url('/logout') }}">
-                        Logout
-                        <i class="material-icons" style="float:right">power_settings_new</i>
-                    </a>
-
             </nav>
         </div>
         <!-- Uncomment for sidebar on the right

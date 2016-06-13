@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\UserData;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -12,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'userData'
     ];
 
     /**
@@ -24,5 +25,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    function getUserDataAttribute($userData){
+        return UserData::find($userData);
+    }
+
+    function getFirstnameAttribute(){
+        return $this->userData->firstname;
+    }
+
+    function getLastnameAttribute(){
+        return $this->userData->lastname;
+    }
+
+    function getBirthdayAttribute(){
+        return $this->userData->birthday;
+    }
+
+    function getCountryAttribute(){
+        return $this->userData->country;
+    }
+
+    function getProfileimageAttribute(){
+        return $this->userData->profileimage;
+    }
 
 }
