@@ -86,7 +86,7 @@ $.fn.mdlselect = function(options){
     }
     self.updateField = function(incoming){
         var temp = incoming.id.split("-");
-        $("#" + options['name'] + "_hidden").val(temp[2]);
+        $("#" + temp[3] + "_hidden").val(temp[2]);
         $("#" + temp[3]).val($(incoming).text());
         $(field).parent("div").addClass("is-dirty");
         $("#mdl-mdlselect-list").parent().removeClass("is-visible");
