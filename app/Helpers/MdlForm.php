@@ -120,11 +120,23 @@ class MdlForm
             </div>
         </div>
         <script>
+            var values = '.json_encode($items[0]).';
+            var labels = '.json_encode($items[1]).';
+            var modelValue = document.getElementById("'.$name.'").value;
+            var modelLabel = "";
+            for(var i=0;i<values.length;i++){
+                if (values[i] === modelValue) {
+                    modelLabel = labels[i];
+                    break;
+                }
+            }
             $("#'.$name.'").mdlselect({
                 name: "'.$name.'",                
-                value: '.json_encode($items[0]).',
-                label: '.json_encode($items[1]).',
-                fixedHeight: '.$maxHeight.'
+                value: values,
+                label: labels,
+                fixedHeight: '.$maxHeight.',
+                startValue: modelValue,
+                startLabel: modelLabel
             });
         </script>
         ');
