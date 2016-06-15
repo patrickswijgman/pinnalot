@@ -8,10 +8,10 @@ $.fn.mdlselect = function(options){
         value: [],
         label: [],
         fixedHeight: false,
-        firstValueDefault: true,
-        hoverColor: "#a8a8a8",
+        firstValueDefault: false,
+        hoverColor: "#a8a8a8"
     };
-    var options = $.extend(defaults, options);
+    options = $.extend(defaults, options);
     var field = this;
     var theHTML = "";
 
@@ -23,15 +23,15 @@ $.fn.mdlselect = function(options){
 
     if (options.value.length == options.label.length && options.value.length > 0){
         theHTML =
-            '<div id="mdl-select-container-' + options['name'] + '">' +
-            '<input type="hidden" id="' + options['name'] + '_hidden" name="' + options['name'] + '_hidden" />' +
-            '<button type="button" id="mdl_select_options_' + options['name'] +'" onclick="mdlSelectFieldFocus(this);" class="mdl-button mdl-js-button mdl-button--icon">' +
-            '<i id="show_mdl_select_options_icon_' + options['name'] +'" class="material-icons">keyboard_arrow_down</i>' +
+            '<div id="mdl-select-container-' + options.name + '">' +
+            '<input type="hidden" id="' + options.name + '_hidden" name="' + options.name + '_hidden" />' +
+            '<button type="button" id="mdl_select_options_' + options.name +'" onclick="mdlSelectFieldFocus(this);" class="mdl-button mdl-js-button mdl-button--icon">' +
+            '<i id="show_mdl_select_options_icon_' + options.name +'" class="material-icons">keyboard_arrow_down</i>' +
             '</button>' +
-            '<ul id="mdl-mdlselect-list-' + options['name'] +'" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-select" for="mdl_select_options_' + options['name'] +'" style="width:310px; padding:1em;">';
+            '<ul id="mdl-mdlselect-list-' + options.name +'" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-select" for="mdl_select_options_' + options.name +'" style="width:310px; padding:1em;">';
         for (var selectLoop = 0; selectLoop < options.value.length; selectLoop++){
             theHTML +=
-                '<li id="mdl-mdlselect-' + options.value[selectLoop] + '-' + options['name'] + '" class="mdl-mdlselect-hoverable" onclick="updateField(this);" style="text-align:left;">' + options.label[selectLoop] + '</li>';
+                '<li id="mdl-mdlselect-' + options.value[selectLoop] + '-' + options.name + '" class="mdl-mdlselect-hoverable" onclick="updateField(this);" style="text-align:left;">' + options.label[selectLoop] + '</li>';
         }
         theHTML += '</ul></div>';
         //
@@ -41,7 +41,7 @@ $.fn.mdlselect = function(options){
         content.css({"float": "right", "margin-top": ".75em;"});
         $(field.parent()).append(content);
         if (options.fixedHeight){
-            $("#mdl-mdlselect-list-" + options['name']).css({"height": options.fixedHeight, "overflow-y": "scroll"});
+            $("#mdl-mdlselect-list-" + options.name).css({"height": options.fixedHeight, "overflow-y": "scroll"});
         }
     }
 
@@ -50,8 +50,8 @@ $.fn.mdlselect = function(options){
     //
 
     $("body").click(function(target){ //hides the options when a click happens outside of the select area
-        if ($("#mdl-mdlselect-list-" + options['name']).hasClass("mdl-select-hide") && target.target.id != options['name'] && $.inArray(target.target, autoComplete.find('.mdl-select')) < 0){
-            $("#mdl-mdlselect-list-" + options['name']).removeClass("is-visible");
+        if ($("#mdl-mdlselect-list-" + options.name).hasClass("mdl-select-hide") && target.target.id != options.name && $.inArray(target.target, autoComplete.find('.mdl-select')) < 0){
+            $("#mdl-mdlselect-list-" + options.name).removeClass("is-visible");
         }
     });
 
@@ -65,8 +65,10 @@ $.fn.mdlselect = function(options){
     );
     if (options.firstValueDefault){
         updateDefaultField(options.value[0], options.label[0]);
+    } else {
+        updateDefaultField(options.startValue, options.startLabel);
     }
-    /*$("#" + options['name']).click(function(){openListOptions(options['name'])});*/
+    /*$("#" + options.name).click(function(){openListOptions(options.name)});*/
 
     //
     //                    Functions, functions, what's your conjunction?
@@ -79,7 +81,7 @@ $.fn.mdlselect = function(options){
         }
     }
     function updateDefaultField(value, label){
-        $("#" + options['name'] + "_hidden").val(value);
+        $("#" + options.name + "_hidden").val(value);
         $(field).val(label);
         $(field).parent("div").addClass("is-dirty");
         $("#mdl-mdlselect-list").parent().removeClass("is-visible");

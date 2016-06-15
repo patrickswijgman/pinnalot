@@ -18,29 +18,14 @@ class Helper
         return $date->format('c');
     }
 
+    /**
+     * Convert ISO8601 string to date time format
+     * @param $isoString
+     * @return string
+     */
     static function isoToDateString($isoString){
         $date = new DateTime($isoString);
         return $date->format('d-m-Y H:i');
-    }
-
-    /**
-     * Gets the first 2 columns(attributes) and puts it in a associative array
-     * This array can then be used to populate MdlForm::dropdown()
-     * the first column is the value (e.g. country_id)
-     * the second column is the label (e.g. country_name)
-     * @param $collection
-     * @return array
-     */
-    static function makeDropdownItemsFromCollection($collection){
-        $array = array();
-        foreach($collection as $item) {
-            $index = 0;
-            foreach($item['attributes'] as $attribute) {
-                $array[$index][] = $attribute;
-                $index++;
-            }
-        }
-        return $array;
     }
 
     static function hex2rgb($hex) {
