@@ -23,6 +23,11 @@ class CalendarController extends Controller
                 $events[] = $edge->related()->event;
             }
         }
-        return view('calendar', ['events' => json_encode($events), 'page' => 'Calendar']);
+
+        $calendarEvents = '[]';
+        if (json_encode($events) != '[null]') {
+            $calendarEvents = json_encode($events);
+        }
+        return view('calendar', ['events' => $calendarEvents, 'page' => 'Calendar']);
     }
 }
