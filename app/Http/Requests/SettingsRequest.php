@@ -15,7 +15,7 @@ class SettingsRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -26,7 +26,7 @@ class SettingsRequest extends Request
     public function rules()
     {
         return [
-            //
+            'primary_color' => 'different:accent_color'
         ];
     }
 }

@@ -2,10 +2,13 @@
 
 @section('content')
 
-    {{ Form::model($settings, array('route' => array('event.update', $settings->id), 'method'=>'PUT')) }}
+    {{ Form::model($settings, array('route' => array('settings.update', $settings->id), 'method'=>'PUT')) }}
 
-    {{ MdlForm::dropdown('primary_color', 'Primary Color:', $colors) }}
-    {{ MdlForm::dropdown('accent', 'Accent Color:', $colors) }}
+    {{ MdlForm::showAllErrors($errors) }}
+
+    {{ MdlForm::dropdown('primary_color', 'Primary Color:', $colors, 300) }}
+
+    {{ MdlForm::dropdown('accent_color', 'Accent Color:', $colors, 300) }}
 
 
     {{ MdlForm::submit('Save') }}

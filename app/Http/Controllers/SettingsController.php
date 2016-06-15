@@ -12,7 +12,8 @@ class SettingsController extends Controller
 {
     function edit(SettingsUser $settings) {
         if ($settings->user_id == Auth::user()->id) {
-            $colors = array('deep_orange', 'red', 'pink', 'purple', 'deep_purple', 'indigo', 'blue', 'light blue', 'cyan', 'teal', 'green', 'light_green','lime', 'yellow', 'amber', 'orange');
+            $colors[] = array('deep_orange', 'red', 'pink', 'purple', 'deep_purple', 'indigo', 'blue', 'light blue', 'cyan', 'teal', 'green', 'light_green','lime', 'yellow', 'amber', 'orange');
+            $colors[] = array('Deep Orange', 'Red', 'Pink', 'Purple', 'Deep Purple', 'Indigo', 'Blue', 'Light Blue', 'Cyan', 'Teal', 'Green', 'Light Green','Lime', 'Yellow', 'Amber', 'Orange');
             return view('settings', [
                 'page' => 'Edit settings',
                 'settings' => $settings, 
@@ -23,15 +24,16 @@ class SettingsController extends Controller
         }
     }
 
-    function update(SettingsRequest $request, Event $event){
+    function update(SettingsRequest $request, SettingsUser $settings){
         $data = $request->input();
 
-        $data['start'] = Helper::dateToISOString($data['start']);
-        $data['end'] = Helper::dateToISOString($data['end']);
+        $data['primary_color'] = $data['primary_color_hidden'];
+        $data['accent_color'] = $data['accent_color_hidden'];
 
-        $event->update($data);
-        $event->save();
+        dd($data);
 
+        $settings->update($data);
+        $settings->save();
         return Redirect::to('calendar');
     }
 

@@ -114,16 +114,17 @@ class MdlForm
     static function dropdown($name, $label, $items=array(), $maxHeight='null') {
         return new HtmlString('
         <div>
-            <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <div id="select-container-'.$name.'" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 '.Form::text($name, null, array('id' => $name, 'class' => 'mdl-textfield__input', 'readonly')).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
         <script>
             $("#'.$name.'").mdlselect({
-                value: '.json_encode($items).',
-                label: '.json_encode($items).',
-                fixedHeight: '.$maxHeight.'
+                value: '.json_encode($items[0]).',
+                label: '.json_encode($items[1]).',
+                fixedHeight: '.$maxHeight.',
+                name: "'.$name.'"
             });
         </script>
         ');
