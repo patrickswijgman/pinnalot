@@ -120,8 +120,8 @@ class MdlForm
         </div>
         <script>
             $("#'.$name.'").mdlselect({
-                value: '.json_encode($items[0]).',
-                label: '.json_encode($items[1]).',
+                value: '.json_encode($items).',
+                label: '.json_encode($items).',
                 fixedHeight: '.$maxHeight.'
             });
         </script>
@@ -159,7 +159,7 @@ class MdlForm
             </div>
         </div>
         <script>
-            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY" });
+            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY", time: false });
         </script>
         ');
     }
