@@ -121,10 +121,10 @@ class MdlForm
         </div>
         <script>
             $("#'.$name.'").mdlselect({
+                name: "'.$name.'",                
                 value: '.json_encode($items[0]).',
                 label: '.json_encode($items[1]).',
-                fixedHeight: '.$maxHeight.',
-                name: "'.$name.'"
+                fixedHeight: '.$maxHeight.'
             });
         </script>
         ');

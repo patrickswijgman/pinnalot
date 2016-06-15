@@ -12,8 +12,10 @@ class SettingsController extends Controller
 {
     function edit(SettingsUser $settings) {
         if ($settings->user_id == Auth::user()->id) {
-            $colors[] = array('deep_orange', 'red', 'pink', 'purple', 'deep_purple', 'indigo', 'blue', 'light blue', 'cyan', 'teal', 'green', 'light_green','lime', 'yellow', 'amber', 'orange');
+            $colors[] = array('deep_orange', 'red', 'pink', 'purple', 'deep_purple', 'indigo', 'blue', 'light_blue', 'cyan', 'teal', 'green', 'light_green','lime', 'yellow', 'amber', 'orange');
             $colors[] = array('Deep Orange', 'Red', 'Pink', 'Purple', 'Deep Purple', 'Indigo', 'Blue', 'Light Blue', 'Cyan', 'Teal', 'Green', 'Light Green','Lime', 'Yellow', 'Amber', 'Orange');
+            sort($colors[0]);
+            sort($colors[1]);
             return view('settings', [
                 'page' => 'Edit settings',
                 'settings' => $settings, 
@@ -29,8 +31,6 @@ class SettingsController extends Controller
 
         $data['primary_color'] = $data['primary_color_hidden'];
         $data['accent_color'] = $data['accent_color_hidden'];
-
-        dd($data);
 
         $settings->update($data);
         $settings->save();

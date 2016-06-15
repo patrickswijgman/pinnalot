@@ -34,13 +34,13 @@ class User extends Authenticatable
     function getPrimaryColorAttribute(){
         $primaryColor = $this->settingsUser->primary_color;
         $primaryColorDefault = SettingsDefault::first()->primary_color;
-        return ($primaryColor != "")? $primaryColor : $primaryColorDefault;
+        return (!empty($primaryColor))? $primaryColor : $primaryColorDefault;
     }
 
     function getAccentColorAttribute(){
         $accentColor = $this->settingsUser->accent_color;
         $accentColorDefault = SettingsDefault::first()->accent_color;
-        return ($accentColor != "")? $accentColor : $accentColorDefault;
+        return (!empty($accentColor))? $accentColor : $accentColorDefault;
     }
 
     function getUserDataAttribute($userData){
