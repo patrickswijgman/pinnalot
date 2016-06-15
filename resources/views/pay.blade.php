@@ -1,10 +1,6 @@
 @extends('layout')
 
-
-
 @section('content')
-
-
     <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" algin="center">
         <thead>
         <tr>

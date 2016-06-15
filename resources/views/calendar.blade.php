@@ -1,13 +1,5 @@
 @extends('layout')
 
-@section('header')
-
-    {{ Html::style("css/fullcalendar.css") }}
-    {{ Html::script('js/moment.min.js') }}
-    {{ Html::script("js/fullcalendar.js") }}
-    
-@stop
-
 @section('content')
 
     <!-- navigation and control buttons for the calendar -->

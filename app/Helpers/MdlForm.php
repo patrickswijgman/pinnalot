@@ -104,7 +104,6 @@ class MdlForm
     }
 
     /**
-     * Requires import of 'dropdown.js'
      * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
      * @param $name
      * @param $label
@@ -131,7 +130,6 @@ class MdlForm
     }
 
     /**
-     * Requires import of 'datetimepicker.js'
      * @param $name
      * @param $label
      * @param string $value
@@ -167,7 +165,6 @@ class MdlForm
     }
 
     /**
-     * Requires import of 'jscolor.js'
      * @param $name
      * @param $label
      * @param string $value

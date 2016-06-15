@@ -1,9 +1,5 @@
 @extends('layout')
 
-@section('header')
-    {{ Html::script('js/dropdown.js') }}
-@stop
-
 @section('content')
 
     {{ Form::model($settings, array('route' => array('event.update', $settings->id), 'method'=>'PUT')) }}
