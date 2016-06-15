@@ -130,6 +130,12 @@ class MdlForm
                     break;
                 }
             }
+            for(var j=0;j<values.length;j++){
+                if (labels[j] === modelValue) {
+                    modelLabel = labels[j];
+                    break;
+                }
+            }
             $("#'.$name.'").mdlselect({
                 name: "'.$name.'",                
                 value: values,
