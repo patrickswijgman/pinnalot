@@ -11,7 +11,7 @@
     {{Html::style('http://cdn.materialdesignicons.com/1.6.50/css/materialdesignicons.min.css')}}
     {{Html::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700')}}
 
-    @if (!isset(Auth::user()->id))
+    @if (!isset(Auth::user()->exists))
         {{Html::style('https://code.getmdl.io/1.1.3/material.blue_grey-red.min.css')}}
     @else
         {{Html::style('https://code.getmdl.io/1.1.3/material.'.Auth::user()->primaryColor.'-'.Auth::user()->accentColor.'.min.css')}}
