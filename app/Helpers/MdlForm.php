@@ -159,7 +159,7 @@ class MdlForm
             </div>
         </div>
         <script>
-            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY" });
+            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY", time: false });
         </script>
         ');
     }
