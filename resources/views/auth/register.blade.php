@@ -37,7 +37,7 @@
 
         {{  MdlForm::submit('Register') }}
         <br>
-        {{ link_to('password/login', 'If you already got an account, click here to login.')}}
+        {{ link_to('/login', 'If you already got an account, click here to login.')}}
         {{ Form::close() }}
     </div>
 @endsection

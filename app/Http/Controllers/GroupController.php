@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GroupRequest;
 use App\Models\Group;
+use App\Models\Invitation;
+use App\Models\Type;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,12 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view();
+        $types[0] = Type::all()->pluck('type');
+        $types[1] = $types[0];
+        return view('group_form', [
+                'page' => 'Create new group',
+                'types' => $types
+            ]);
     }
 
     /**
@@ -36,9 +43,10 @@ class GroupController extends Controller {
      */
     public function store(GroupRequest $request) {
         $group = Group::create($request->input());
-        Auth::user()->neoUser
-            ->joins($group)
-            ->create(['admin'=>true]);
+
+        Auth::user()->userData
+            ->joins($group)->save(new Invitation(['status' => 'owner']));
+
         return view('')->with(['group', $group]);
     }
 
