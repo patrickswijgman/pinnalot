@@ -16,7 +16,7 @@ class Member extends NeoEloquent{
     protected $label = 'Member';
 
     public function member() {
-        return $this->morphToMany('App\Models\UserData', 'MEMBER');
+        return $this->morphTo('App\Models\UserData', 'MEMBER');
     }
 
     public function group() {
