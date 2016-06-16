@@ -15,10 +15,6 @@ class Invitation extends NeoEloquent{
     protected $fillable = ['status','text'];
     protected $label = 'Invitation';
 
-    public function NeoUsers() {
-        return $this->morphMany('App\Models\NeoUser', 'INVITED');
-    }
-
     public function event() {
         return $this->morphTo('App\Models\Event', 'FOR');
     }

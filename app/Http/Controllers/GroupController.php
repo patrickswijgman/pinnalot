@@ -12,6 +12,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Redirect;
 
 class GroupController extends Controller {
     /**
@@ -87,15 +88,19 @@ class GroupController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Group $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group) {
+        $types[0] = GroupType::all()->pluck('type');
+        $types[1] = $types[0];
         if($this->isAuthorized($group)) {
-            return view('', compact('group'));
+            return view('group_form', [
+                'group' => $group,
+                'types' => $types
+            ]);
         } else {
-//            Not the right to edit
-            return view();
+            return Redirect::to('group');
         }
     }
 
@@ -130,11 +135,9 @@ class GroupController extends Controller {
     }
 
     private function isAuthorized(Group $group) {
-        $user = Auth::user()->neoUser;
-        if($group->users()->edge($user)->admin) {
-            return true;
-        } else {
-            return false;
+        $user = Auth::user()->userData;
+        foreach($group->members()->edges($user) as $edge) {
+            return($edge->related()->status == 'owner');
         }
     }
 }

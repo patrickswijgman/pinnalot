@@ -23,4 +23,8 @@ class Member extends NeoEloquent{
         return $this->morphTo('App\Models\Group', 'OF');
     }
 
+    public function member() {
+        return $this->morphTo('App\Models\UserData', 'MEMBER');
+    }
+
 }
