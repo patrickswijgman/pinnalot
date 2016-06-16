@@ -104,8 +104,6 @@ class MdlForm
     }
 
     /**
-     * Requires import of 'dropdown.js'
-     * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
      * @param $name
      * @param $label
      * @param array $items
@@ -114,22 +112,40 @@ class MdlForm
      */
     static function dropdown($name, $label, $items=array(), $maxHeight='null') {
         return new HtmlString('
-        <div id="select-container" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            '.Form::text($name, null, array('id' => $name, 'class' => 'mdl-textfield__input', 'readonly')).'
-            <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+        <div>
+            <div id="select-container-'.$name.'" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                '.Form::text($name, null, array('id' => $name, 'class' => 'mdl-textfield__input', 'readonly')).'
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
         </div>
         <script>
+            var values = '.json_encode($items[0]).';
+            var labels = '.json_encode($items[1]).';
+            var modelValue = document.getElementById("'.$name.'").value;
+            var modelLabel = "";
+            for(var i=0;i<values.length;i++){
+                if (values[i] === modelValue) {
+                    modelLabel = labels[i];
+                    break;
+                }
+                if (labels[i] === modelValue) {
+                    modelLabel = labels[i];
+                    break;
+                }
+            }
             $("#'.$name.'").mdlselect({
-                value: '.json_encode($items[0]).',
-                label: '.json_encode($items[1]).',
-                fixedHeight: '.$maxHeight.'
+                name: "'.$name.'",                
+                value: values,
+                label: labels,
+                fixedHeight: '.$maxHeight.',
+                startValue: modelValue,
+                startLabel: modelLabel
             });
         </script>
         ');
     }
 
     /**
-     * Requires import of 'datetimepicker.js'
      * @param $name
      * @param $label
      * @param string $value
@@ -159,13 +175,12 @@ class MdlForm
             </div>
         </div>
         <script>
-            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY" });
+            $("#'.$name.'").bootstrapMaterialDatePicker({ format : "DD-MM-YYYY", time: false });
         </script>
         ');
     }
 
     /**
-     * Requires import of 'jscolor.js'
      * @param $name
      * @param $label
      * @param string $value

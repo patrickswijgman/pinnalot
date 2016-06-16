@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\SettingsUser;
 use App\Models\UserData;
 use App\User;
 use Validator;
@@ -65,11 +66,13 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $userData = UserData::create($data);
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'userData' => $userData->id
         ]);
+        SettingsUser::create(['user_id' => $user->id]);
+        return $user;
     }
 }

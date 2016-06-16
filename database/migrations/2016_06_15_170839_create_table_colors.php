@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsDefaultTable extends Migration
+class CreateTableColors extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateSettingsDefaultTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings_default', function (Blueprint $table) {
+        Schema::create('mdl_colors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('primary_color');
-            $table->string('accent_color');
-            $table->string('landing_page');
+            $table->string('value');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSettingsDefaultTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings_default');
+        Schema::drop('mdl_colors');
     }
 }

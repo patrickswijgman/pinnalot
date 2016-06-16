@@ -29,12 +29,15 @@ class UserData  extends NeoEloquent{
     public function invites($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Invitation', 'INVITED', 'FOR');
     }
+    public function joins($morph = null) {
+        return $this->hyperMorph($morph, 'App\Models\Member', 'MEMBER', 'OF');
+    }
 
     public function availables($morph = null) {
         return $this->hyperMorph($morph,'App\Models\Availabillity', 'AVAILABLE', 'AT');
     }
 
-    public function groups() {
-        return $this->belongsToMany('App\Models\Group', 'MEMBER_OF');
+    public function groups($morph = null) {
+        return $this->hyperMorph($morph, 'App\Models\Group', 'MEMBER', "OF");
     }
 }

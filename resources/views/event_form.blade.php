@@ -1,15 +1,5 @@
 @extends('layout')
 
-@section('header')
-
-    {{ Html::style('css/datetimepicker.css') }}
-
-    {{ Html::script('js/moment.min.js') }}
-    {{ Html::script("js/datetimepicker.js") }}
-    {{ Html::script("js/jscolor.js") }}
-
-@stop
-
 @section('content')
 
     @if(isset($event))

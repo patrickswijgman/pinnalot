@@ -25,12 +25,25 @@ class EventController extends Controller
     }
 
     function edit(Event $event) {
-        return view('event_form', [
-            'page' => 'Edit event',
-            'event' => $event,
-            'startDate' => Helper::isoToDateString($event->start),
-            'endDate' => Helper::isoToDateString($event->end)
-        ]);
+        $userdata = Auth::user()->userData;
+
+        $canEdit = false;
+        foreach($userdata->invites()->edges() as $edge) {
+            if($edge->related()->status=='owner') {
+                $canEdit = true;
+                break;
+            }
+        }
+        if ($canEdit) {
+            return view('event_form', [
+                'page' => 'Edit event',
+                'event' => $event,
+                'startDate' => Helper::isoToDateString($event->start),
+                'endDate' => Helper::isoToDateString($event->end)
+            ]);
+        } else {
+            return Redirect::to('home');
+        }
     }
 
     function store(EventRequest $request){
