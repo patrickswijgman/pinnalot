@@ -71,13 +71,12 @@ class GroupController extends Controller {
      */
     public function show(Group $group) {
         $members = array();
-//        foreach($group->members()->edges() as $edge) {
-//            $members[] = ($edge->related()->member());
-//            dd($edge->related()->member());
-//        }
-//        dd($members);
-
-
+        foreach($group->members()->edges() as $edge) {
+            $memberNode = $edge->related();
+            foreach($memberNode->member()->edges() as $userEdge) {
+                $members[] = ($userEdge->related());
+            };
+        }
         return view('group_info', [
                 'page'=>$group['name'],
                 'group'=>$members

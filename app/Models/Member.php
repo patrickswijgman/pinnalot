@@ -16,15 +16,10 @@ class Member extends NeoEloquent{
     protected $label = 'Member';
 
     public function member() {
-        return $this->morphTo('App\Models\UserData', 'MEMBER');
+        return $this->hasMany('App\Models\UserData', 'MEMBER');
     }
 
     public function group() {
         return $this->morphTo('App\Models\Group', 'OF');
     }
-
-    public function member() {
-        return $this->morphTo('App\Models\UserData', 'MEMBER');
-    }
-
 }
