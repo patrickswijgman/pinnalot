@@ -104,7 +104,6 @@ class MdlForm
     }
 
     /**
-     * Populate the dropdown by using: Helper::makeDropdownItemsFromCollection()
      * @param $name
      * @param $label
      * @param array $items
@@ -129,10 +128,8 @@ class MdlForm
                     modelLabel = labels[i];
                     break;
                 }
-            }
-            for(var j=0;j<values.length;j++){
-                if (labels[j] === modelValue) {
-                    modelLabel = labels[j];
+                if (labels[i] === modelValue) {
+                    modelLabel = labels[i];
                     break;
                 }
             }

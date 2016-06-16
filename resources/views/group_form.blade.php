@@ -20,7 +20,7 @@
 
     {{ MdlForm::textArea('description', 'Description') }}
 
-    {{ MdlForm::dropdown('type', 'Type', $types, 300) }}
+    {{ MdlForm::dropdown('type', 'Type', $types) }}
 
     {{ MdlForm::submit('Submit') }}
     {{ Form::close() }}

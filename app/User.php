@@ -37,6 +37,13 @@ class User extends Authenticatable
         return (!empty($primaryColor))? $primaryColor : $primaryColorDefault;
     }
 
+    function getLandingPageAttribute(){
+        $page = $this->settingsUser->landing_page;
+        $pageDefault = SettingsDefault::first()->landing_page;
+        return (!empty($page))? $page : $pageDefault;
+    }
+
+
     function getAccentColorAttribute(){
         $accentColor = $this->settingsUser->accent_color;
         $accentColorDefault = SettingsDefault::first()->accent_color;

@@ -6,10 +6,11 @@
 
     {{ MdlForm::showAllErrors($errors) }}
 
-    {{ MdlForm::dropdown('primary_color', 'Primary Color:', $colors, 300) }}
+    {{ MdlForm::dropdown('primary_color', 'Primary Color:', $colors, true) }}
 
-    {{ MdlForm::dropdown('accent_color', 'Accent Color:', $colors, 300) }}
+    {{ MdlForm::dropdown('accent_color', 'Accent Color:', $colors, true) }}
 
+    {{ MdlForm::dropdown('landing_page', 'Default page:', $pages) }}
 
     {{ MdlForm::submit('Save') }}
     {{ Form::close() }}

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableGrouptypes extends Migration
+class CreateTableColors extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class CreateTableGrouptypes extends Migration
      */
     public function up()
     {
-        Schema::create('group_type', function (Blueprint $table) {
+        Schema::create('mdl_colors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('value');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTableGrouptypes extends Migration
      */
     public function down()
     {
-        Schema::drop('group_type');
+        Schema::drop('mdl_colors');
     }
 }

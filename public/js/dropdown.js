@@ -41,7 +41,7 @@ $.fn.mdlselect = function(options){
         content.css({"float": "right", "margin-top": ".75em;"});
         $(field.parent()).append(content);
         if (options.fixedHeight){
-            $("#mdl-mdlselect-list-" + options.name).css({"height": options.fixedHeight, "overflow-y": "scroll"});
+            $("#mdl-mdlselect-list-" + options.name).css({"height": '300px', "overflow-y": "scroll"});
         }
     }
 
@@ -84,14 +84,14 @@ $.fn.mdlselect = function(options){
         $("#" + options.name + "_hidden").val(value);
         $(field).val(label);
         $(field).parent("div").addClass("is-dirty");
-        $("#mdl-mdlselect-list").parent().removeClass("is-visible");
+        $("#mdl-mdlselect-list-" + options.name).parent().removeClass("is-visible");
     }
     self.updateField = function(incoming){
         var temp = incoming.id.split("-");
         $("#" + temp[3] + "_hidden").val(temp[2]);
         $("#" + temp[3]).val($(incoming).text());
         $(field).parent("div").addClass("is-dirty");
-        $("#mdl-mdlselect-list").parent().removeClass("is-visible");
+        $("#mdl-mdlselect-list-" + temp[3]).parent().removeClass("is-visible");
     }
     self.openListOptions = function(incoming){
         simulateClick(incoming);
