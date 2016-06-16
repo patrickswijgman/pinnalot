@@ -77,6 +77,10 @@ class GroupController extends Controller {
                 $members[] = ($userEdge->related());
             };
         }
+        /*
+            Auth::user()->userData
+            ->joins($group)->save(new Member(['status' => 'member']));
+         */
         return view('group_info', [
                 'page'=>$group['name'],
                 'group'=>$members
