@@ -21,7 +21,7 @@ class GroupController extends Controller {
     public function index() {
         Group::all();
         return view('group', [
-                'page' => 'GROUP HOMEPAGE'
+                'page' => 'Groups'
             ]
         );
         
