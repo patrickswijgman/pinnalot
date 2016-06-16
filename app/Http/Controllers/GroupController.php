@@ -19,7 +19,12 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Group::all();
+        Group::all();
+        return view('group', [
+                'page' => 'GROUP HOMEPAGE'
+            ]
+        );
+        
     }
 
     /**
