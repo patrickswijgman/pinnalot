@@ -25,25 +25,12 @@ class EventController extends Controller
     }
 
     function edit(Event $event) {
-        $userdata = Auth::user()->userData;
-
-        $canEdit = false;
-        foreach($userdata->invites()->edges() as $edge) {
-            if($edge->related()->status=='owner') {
-                $canEdit = true;
-                break;
-            }
-        }
-        if ($canEdit) {
-            return view('event_form', [
-                'page' => 'Edit event',
-                'event' => $event,
-                'startDate' => Helper::isoToDateString($event->start),
-                'endDate' => Helper::isoToDateString($event->end)
-            ]);
-        } else {
-            return Redirect::to('home');
-        }
+        return view('event_form', [
+            'page' => 'Edit event',
+            'event' => $event,
+            'startDate' => Helper::isoToDateString($event->start),
+            'endDate' => Helper::isoToDateString($event->end)
+        ]);
     }
 
     function store(EventRequest $request){
@@ -74,6 +61,10 @@ class EventController extends Controller
     }
 
     function destroy(Event $event) {
+
+        foreach($event->invitations()->edges() as $edge) {
+            $edge->related()->delete();
+        }
         $event->delete();
         return Redirect::to('calendar');
     }
