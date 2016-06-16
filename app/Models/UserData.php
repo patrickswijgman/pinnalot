@@ -21,23 +21,16 @@ class UserData  extends NeoEloquent{
     public function comments($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Message', 'POSTED', 'ON');
     }
-
     public function doubts($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Payment', 'DOUBTS', 'FROM');
     }
-
     public function invites($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Invitation', 'INVITED', 'FOR');
     }
     public function joins($morph = null) {
         return $this->hyperMorph($morph, 'App\Models\Member', 'MEMBER', 'OF');
     }
-
     public function availables($morph = null) {
         return $this->hyperMorph($morph,'App\Models\Availabillity', 'AVAILABLE', 'AT');
-    }
-
-    public function groups($morph = null) {
-        return $this->hyperMorph($morph, 'App\Models\Group', 'MEMBER', "OF");
     }
 }

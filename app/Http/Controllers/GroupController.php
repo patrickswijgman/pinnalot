@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\Member;
 use App\Models\GroupType;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,14 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        Group::all();
+        $userData = Auth::user()->userData;
+        foreach($userData->joins()->edges() as $edge) {
+            $groups[]=$edge->related()->member;
+        }
+        dd($groups);
         return view('group', [
-                'page' => 'Groups'
+                'page' => 'Groups',
+                'groups' => $groups
             ]
         );
         
