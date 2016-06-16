@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1,10) as $index) {
+        foreach (range(1,10000) as $index) {
             $name = $faker->name;
             $userData = UserData::create(['firstname' => $name]);
             DB::table('users')->insert([
