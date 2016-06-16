@@ -14,7 +14,7 @@ class Event extends NeoEloquent
     protected $appends = array('url', 'borderColor', 'textColor');
 
     public function invitations() {
-        return $this->hasMany('App\Models\Invitation', 'PLANNED');
+        return $this->hasMany('App\Models\Invitation', 'FOR');
     }
 
     public function timeOptions() {
