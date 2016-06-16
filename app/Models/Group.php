@@ -22,6 +22,6 @@ class Group extends NeoEloquent{
     }
 
     public function members() {
-        return $this->hasMany('App\Models\UserData', 'OF');
+        return $this->hasMany('App\Models\Member', 'OF');
     }
 }

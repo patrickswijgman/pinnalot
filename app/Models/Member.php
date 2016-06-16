@@ -15,8 +15,8 @@ class Member extends NeoEloquent{
     protected $fillable = ['status','text'];
     protected $label = 'Member';
 
-    public function users() {
-        return $this->morphMany('App\Models\UserData', 'MEMBER_OF');
+    public function member() {
+        return $this->morphToMany('App\Models\UserData', 'MEMBER');
     }
 
     public function group() {

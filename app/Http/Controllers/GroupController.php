@@ -69,7 +69,19 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Group $group) {
-        return $group;
+        $members = array();
+//        foreach($group->members()->edges() as $edge) {
+//            $members[] = ($edge->related()->member());
+//            dd($edge->related()->member());
+//        }
+//        dd($members);
+
+
+        return view('group_info', [
+                'page'=>$group['name'],
+                'group'=>$members
+        ]
+        );
     }
 
     /**
