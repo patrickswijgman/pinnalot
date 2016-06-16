@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         $this->call(GroupTypeSeeder::class);
         $this->call(MdlColorsSeeder::class);
+        $this->call(SettingsDefaultSeeder::class);
         Model::reguard();
     }
 }
