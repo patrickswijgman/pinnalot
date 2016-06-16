@@ -20,11 +20,11 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $userData = Auth::user()->userData;
-        foreach($userData->joins()->edges() as $edge) {
-            $groups[]=$edge->related()->member;
+        $groups = array();
+        $userdata = Auth::user()->userData;
+        foreach($userdata->joins()->edges() as $edge) {
+            $groups[] = ($edge->related()->group);
         }
-        dd($groups);
         return view('group', [
                 'page' => 'Groups',
                 'groups' => $groups
