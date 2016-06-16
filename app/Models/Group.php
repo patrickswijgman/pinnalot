@@ -7,7 +7,7 @@ use NeoEloquent;
 class Group extends NeoEloquent{
     protected $connection = 'neo4j';
     protected $label = 'Group';
-    protected $fillable = ['name', 'description', 'kind'];
+    protected $fillable = ['name', 'description', 'type'];
 
     public function comments() {
         return $this->morphMany('App\Models\Message','ON');
@@ -17,8 +17,8 @@ class Group extends NeoEloquent{
         return $this->morphMany('App\Models\Payment', 'HAS');
     }
 
-    public function neoEvents() {
-        return $this->hasMany('App\Models\NeoEvent', 'PLANNED');
+    public function events() {
+        return $this->hasMany('App\Models\Event', 'FOR');
     }
 
     public function members() {
