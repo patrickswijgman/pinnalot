@@ -7,12 +7,14 @@ use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\Member;
 use App\Models\GroupType;
+use App\Models\UserData;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Redirect;
+use Vinelab\NeoEloquent\Eloquent\Edges\Edge;
 
 class GroupController extends Controller {
     /**
@@ -23,8 +25,8 @@ class GroupController extends Controller {
     public function index() {
         $groups = array();
         $userdata = Auth::user()->userData;
-        foreach($userdata->joins()->edges() as $edge) {
-            $groups[] = ($edge->related()->group);
+        foreach($userdata->memberOf()->edges() as $edge) {
+            $groups[] = ($edge->related());
         }
         return view('group', [
                 'page' => 'Groups',
@@ -55,12 +57,13 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(GroupRequest $request) {
-        $group = Group::create($request->input());
-
-        Auth::user()->userData
-            ->joins($group)->save(new Member(['status' => 'owner']));
-
-        return view('')->with(['group', $group]);
+        $data = $request->input();
+        $userdata = Auth::user()->userData;
+        $group = Group::create($data);
+        $edge = $group->members()->save($userdata);
+        $edge->status='owner';
+        $edge->save();
+        return Redirect::to('group/' . $group->id);
     }
 
     /**
@@ -72,15 +75,8 @@ class GroupController extends Controller {
     public function show(Group $group) {
         $members = array();
         foreach($group->members()->edges() as $edge) {
-            $memberNode = $edge->related();
-            foreach($memberNode->member()->edges() as $userEdge) {
-                $members[] = ($userEdge->related());
-            };
+            $members[] = $edge->related();
         }
-        /*
-            Auth::user()->userData
-            ->joins($group)->save(new Member(['status' => 'member']));
-         */
         return view('group_info', [
                 'page'=>$group['name'],
                 'group'=>$members
@@ -134,13 +130,27 @@ class GroupController extends Controller {
         if($this->isAuthorized($group)) {
             $group->delete();
         }
-        return view();
+        return Redirect::to('group');
     }
 
+    /**
+     * Returns true of the loggedin user is the owner of the given group
+     * @param Group $group
+     * @return bool
+     */
     private function isAuthorized(Group $group) {
         $user = Auth::user()->userData;
-        foreach($group->members()->edges($user) as $edge) {
-            return($edge->related()->status == 'owner');
-        }
+        $isMember = $this->isMember($group, $user);
+        return (isset($isMember)? ($isMember->status == 'owner') : false);
+    }
+
+    /**
+     * Returns edge if the user is a member of the given group, else returns null
+     * @param Group $group
+     * @param UserData $user
+     * @return Edge
+     */
+    private function isMember(Group $group, UserData $user){
+        return $group->members()->edge($user);
     }
 }

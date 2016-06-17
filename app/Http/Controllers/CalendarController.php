@@ -18,16 +18,9 @@ class CalendarController extends Controller
         $events = array();
         $userdata = Auth::user()->userData;
 
-        foreach($userdata->invites()->edges() as $edge) {
-            if($edge->related()->status=='owner') {
-                $events[] = $edge->related()->event;
-            }
+        foreach($userdata->invitedFor()->edges() as $edge) {
+            $events[] = $edge->related();
         }
-
-        $calendarEvents = '[]';
-        if (json_encode($events) != '[null]') {
-            $calendarEvents = json_encode($events);
-        }
-        return view('calendar', ['events' => $calendarEvents, 'page' => 'Calendar']);
+        return view('calendar', ['events' => json_encode($events), 'page' => 'Calendar']);
     }
 }
