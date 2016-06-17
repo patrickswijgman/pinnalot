@@ -46,8 +46,8 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-            </span>
+                </span>
+            </div>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="{{ url('') }}">
                     Home
@@ -80,6 +80,8 @@
         </style>-->
         <main class="mdl-layout__content">
             @unless(empty($page))
+                @yield('header-button')
+
                 <h3 style="text-align: center">{{$page}}</h3>
                 <hr>
             @endunless
