@@ -11,7 +11,7 @@
         {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
     @else
         @if(isset($group))
-            {{ Form::open(array('url' => 'group/'.$group['id'].'/event')) }}
+            {{ Form::open(array('url' => 'group/'.$group->id.'/event')) }}
         @else
             {{ Form::open(array('url' => 'event')) }}
         @endif

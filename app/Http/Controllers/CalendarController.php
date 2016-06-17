@@ -16,7 +16,6 @@ class CalendarController extends Controller
 
     function show(){
         $events = array();
-        //$groupevents = array();;
         $userdata = Auth::user()->userData;
 
         foreach($userdata->memberOf()->edges() as $edge) {
@@ -29,9 +28,7 @@ class CalendarController extends Controller
         foreach($userdata->invitedFor()->edges() as $edge) {
             $events[] = $edge->related();
         }
-
-
-
+        
         return view('calendar', ['events' => json_encode($events),  'page' => 'Calendar']);
     }
 }
