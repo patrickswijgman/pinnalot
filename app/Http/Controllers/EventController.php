@@ -77,10 +77,9 @@ class EventController extends Controller
     private function isGroupAuthorized(Event $event){
         $userdata = Auth::user()->userData;
         foreach($userdata->memberOf()->edges() as $edge) {
-            /** @var Group $usergroup */
-            $usergroup = ($edge->related());
+            $usergroup = $edge->related();
             $isGroupOwner = $usergroup->members()->edge($userdata);
-            if($isGroupOwner->status == 'owner') {
+            if(!empty($isGroupOwner) && $isGroupOwner->status == 'owner') {
                 return true;
             }
         }
