@@ -16,6 +16,14 @@ class PayController extends Controller
         return view('pay', ['page'=> 'Payment']);
         //return view('settings', compact('users'), ['page' => 'Settings']);
     }
+    
+    function showadd($id){
+
+
+        $user = User::find($id);
+        return view('addpay', ['page' => 'Add Payment', 'user' => $user]);
+        
+    }
 
 }
 

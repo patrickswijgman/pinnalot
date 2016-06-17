@@ -27,6 +27,17 @@ class MdlForm
         ');
     }
 
+    static function number($name, $label, $value=null, $readonly=null){
+        return new HtmlString('
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                '.Form::number($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', $readonly)).'
+                <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
+            </div>
+        </div>
+        ');
+    }
+
     static function password($name, $label){
         return new HtmlString('
         <div>

@@ -10,7 +10,11 @@
 
         {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
     @else
-        {{ Form::open(array('url' => 'event')) }}
+        @if(isset($group))
+            {{ Form::open(array('url' => 'group/'.$group['id'].'/event')) }}
+        @else
+            {{ Form::open(array('url' => 'event')) }}
+        @endif
     @endif
     
     {{ MdlForm::showAllErrors($errors) }}
