@@ -46,7 +46,7 @@ class EventController extends Controller
 
         $userdata = Auth::user()->userData;
         $event = Event::create($data);
-        $edge = $event->invites()->save($userdata);
+        $edge = $userdata->invitation()->save($event);
         $edge->status='owner';
         $edge->save();
 
