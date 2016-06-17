@@ -8,6 +8,7 @@ use App\Models\Event;
 
 use App\Http\Requests;
 use App\Models\Invitation;
+use App\Models\UserData;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Redirect;
@@ -25,16 +26,7 @@ class EventController extends Controller
     }
 
     function edit(Event $event) {
-        $userdata = Auth::user()->userData;
-
-        $canEdit = false;
-        foreach($userdata->invites()->edges() as $edge) {
-            if($edge->related()->status=='owner') {
-                $canEdit = true;
-                break;
-            }
-        }
-        if ($canEdit) {
+        if ($this->isAuthorized($event)) {
             return view('event_form', [
                 'page' => 'Edit event',
                 'event' => $event,
@@ -42,7 +34,7 @@ class EventController extends Controller
                 'endDate' => Helper::isoToDateString($event->end)
             ]);
         } else {
-            return Redirect::to('home');
+            return Redirect::to('calendar');
         }
     }
 
@@ -52,30 +44,43 @@ class EventController extends Controller
         $data['start'] = Helper::dateToISOString($data['start']);
         $data['end'] = Helper::dateToISOString($data['end']);
 
-        $event = Event::create($data);
-
         $userdata = Auth::user()->userData;
-        $invitation = new Invitation(['status' => 'owner']);
-        $userdata->invites($event)->save($invitation);
+        $event = Event::create($data);
+        $edge = $event->invites()->save($userdata);
+        $edge->status='owner';
+        $edge->save();
 
         return Redirect::to('calendar');
     }
 
     function update(EventRequest $request, Event $event){
-        $data = $request->input();
+        if($this->isAuthorized($event)) {
+            $data = $request->input();
 
-        $data['start'] = Helper::dateToISOString($data['start']);
-        $data['end'] = Helper::dateToISOString($data['end']);
+            $data['start'] = Helper::dateToISOString($data['start']);
+            $data['end'] = Helper::dateToISOString($data['end']);
 
-        $event->update($data);
-        $event->save();
+            $event->fill($data)->save();
+        }
 
         return Redirect::to('calendar');
     }
 
     function destroy(Event $event) {
-        $event->delete();
+        if($this->isAuthorized($event)) {
+            $event->delete();
+        }
         return Redirect::to('calendar');
+    }
+
+    private function isAuthorized(Event $event) {
+        $user = Auth::user()->userData;
+        $isInvited = $this->isInvited($event, $user);
+        return (isset($isInvited)? ($isInvited->status == 'owner') : false);
+    }
+
+    private function isInvited(Event $event, UserData $user){
+        return $event->invites()->edge($user);
     }
 
 }

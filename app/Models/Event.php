@@ -13,8 +13,8 @@ class Event extends NeoEloquent
     protected $fillable = array('title', 'description', 'location', 'backgroundColor', 'start', 'end');
     protected $appends = array('url', 'borderColor', 'textColor');
 
-    public function invitations() {
-        return $this->hasMany('App\Models\Invitation', 'PLANNED');
+    public function invites() {
+        return $this->hasMany('App\Models\UserData', 'INVITED_FOR');
     }
 
     public function timeOptions() {

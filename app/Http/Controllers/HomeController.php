@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\Group;
+use App\Models\Member;
 use Auth;
 use Illuminate\Http\Request;
 use Redirect;

@@ -7,10 +7,14 @@ use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\Member;
 use App\Models\GroupType;
+use App\Models\UserData;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Redirect;
+use Vinelab\NeoEloquent\Eloquent\Edges\Edge;
 
 class GroupController extends Controller {
     /**
@@ -19,7 +23,17 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Group::all();
+        $groups = array();
+        $userdata = Auth::user()->userData;
+        foreach($userdata->memberOf()->edges() as $edge) {
+            $groups[] = ($edge->related());
+        }
+        return view('group', [
+                'page' => 'Groups',
+                'groups' => $groups
+            ]
+        );
+        
     }
 
     /**
@@ -43,12 +57,13 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(GroupRequest $request) {
-        $group = Group::create($request->input());
-
-        Auth::user()->userData
-            ->joins($group)->save(new Member(['status' => 'owner']));
-
-        return view('')->with(['group', $group]);
+        $data = $request->input();
+        $userdata = Auth::user()->userData;
+        $group = Group::create($data);
+        $edge = $group->members()->save($userdata);
+        $edge->status='owner';
+        $edge->save();
+        return Redirect::to('group/' . $group->id);
     }
 
     /**
@@ -58,21 +73,33 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Group $group) {
-        return $group;
+        $members = array();
+        foreach($group->members()->edges() as $edge) {
+            $members[] = $edge->related();
+        }
+        return view('group_info', [
+                'page'=>$group['name'],
+                'group'=>$members
+        ]
+        );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Group $group
      * @return \Illuminate\Http\Response
      */
     public function edit(Group $group) {
+        $types[0] = GroupType::all()->pluck('type');
+        $types[1] = $types[0];
         if($this->isAuthorized($group)) {
-            return view('', compact('group'));
+            return view('group_form', [
+                'group' => $group,
+                'types' => $types
+            ]);
         } else {
-//            Not the right to edit
-            return view();
+            return Redirect::to('group');
         }
     }
 
@@ -103,15 +130,27 @@ class GroupController extends Controller {
         if($this->isAuthorized($group)) {
             $group->delete();
         }
-        return view();
+        return Redirect::to('group');
     }
 
+    /**
+     * Returns true of the loggedin user is the owner of the given group
+     * @param Group $group
+     * @return bool
+     */
     private function isAuthorized(Group $group) {
-        $user = Auth::user()->neoUser;
-        if($group->users()->edge($user)->admin) {
-            return true;
-        } else {
-            return false;
-        }
+        $user = Auth::user()->userData;
+        $isMember = $this->isMember($group, $user);
+        return (isset($isMember)? ($isMember->status == 'owner') : false);
+    }
+
+    /**
+     * Returns edge if the user is a member of the given group, else returns null
+     * @param Group $group
+     * @param UserData $user
+     * @return Edge
+     */
+    private function isMember(Group $group, UserData $user){
+        return $group->members()->edge($user);
     }
 }
