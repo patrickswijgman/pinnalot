@@ -9,4 +9,6 @@
         @endforeach
     </div>
 
+    <a href="{{url('group/'.$id.'/event/create')}}"> Add event</a>
+
 @endsection

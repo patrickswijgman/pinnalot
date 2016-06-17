@@ -79,6 +79,7 @@ class GroupController extends Controller {
         }
         return view('group_info', [
                 'page'=>$group['name'],
+                'id' => $group['id'],
                 'group'=>$members
         ]
         );

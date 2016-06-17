@@ -16,11 +16,22 @@ class CalendarController extends Controller
 
     function show(){
         $events = array();
+        //$groupevents = array();;
         $userdata = Auth::user()->userData;
+
+        foreach($userdata->memberOf()->edges() as $edge) {
+            $usergroup = ($edge->related());
+            foreach($usergroup->invitedFor()->edges() as $edge) {
+                $events[] = $edge->related();
+            }
+        }
 
         foreach($userdata->invitedFor()->edges() as $edge) {
             $events[] = $edge->related();
         }
-        return view('calendar', ['events' => json_encode($events), 'page' => 'Calendar']);
+
+
+
+        return view('calendar', ['events' => json_encode($events),  'page' => 'Calendar']);
     }
 }
