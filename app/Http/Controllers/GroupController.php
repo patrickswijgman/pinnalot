@@ -168,4 +168,10 @@ class GroupController extends Controller {
             ]
         );
     }
+    /**
+     *
+     */
+    public function add(UserData $member) {
+
+    }
 }
