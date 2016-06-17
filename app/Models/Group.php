@@ -10,18 +10,18 @@ class Group extends NeoEloquent{
     protected $fillable = ['name', 'description', 'type'];
 
     public function comments() {
-        return $this->morphMany('App\Models\Message','ON');
+        return $this->morphMany('App\Models\Message','COMMENTED_ON');
     }
 
     public function payments() {
-        return $this->morphMany('App\Models\Payment', 'HAS');
+        return $this->morphMany('App\Models\Payment', 'PAYMENT');
     }
 
     public function events() {
-        return $this->hasMany('App\Models\Event', 'FOR');
+        return $this->hasMany('App\Models\Event', 'INVITED_FOR');
     }
 
     public function members() {
-        return $this->hasMany('App\Models\UserData', 'OF');
+        return $this->hasMany('App\Models\UserData', 'MEMBER_OF');
     }
 }

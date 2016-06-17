@@ -1,10 +1,12 @@
 @extends('layout')
 
 @section('content')
-    <div class = group_list>
+    <div class = "group_list">
         @foreach($groups as $group)
-            {{ $group }}
+            <div class = "group_name">
+                <a href="{{ url('group/' . $group['id'] ) }}"> {{ $group['name'] }}
+                </a>
+            </div>
         @endforeach
     </div>
-
 @endsection
