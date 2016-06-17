@@ -20,7 +20,8 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@show');
 
-    Route::get('pay/new', 'PayController@show');
+    Route::get('pay', 'PayController@show');
+    Route::get('pay/add/{id}', 'PayController@showadd');
 
     Route::get('calendar', 'CalendarController@show');
 
