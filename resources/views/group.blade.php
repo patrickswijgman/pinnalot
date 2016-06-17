@@ -20,7 +20,6 @@
         </style>
 
 
-        <table>
         @foreach($groups as $group)
             <div class="group_card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
@@ -36,7 +35,6 @@
                 </div>
             </div>
         @endforeach
-        </table>
     </div>
 
 

@@ -24,4 +24,8 @@ class Group extends NeoEloquent{
     public function members() {
         return $this->hasMany('App\Models\UserData', 'MEMBER_OF');
     }
+
+    public function invitedFor(){
+        return $this->belongsToMany('App\Models\Event', 'INVITED_FOR');
+    }
 }
