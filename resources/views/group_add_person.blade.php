@@ -12,6 +12,10 @@
   @if ($user->isEmpty())
    User not found
   @else
+    {{ Form::open(array('url' => url('/group/'.$group["id"].'/add'))) }}
+    {{ csrf_field() }}
+
+    {{ MdlForm::showAllErrors($errors) }}
     <div class = 'candidates-list'>
     <ul class="demo-list-control mdl-list">
     @foreach($user as $candidate)
@@ -22,7 +26,7 @@
     </span>
       <span class="mdl-list__item-secondary-action">
         <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
-          <input type="radio" id="list-option-1" class="mdl-radio__button" name="options" value="1" checked />
+          <input type="radio" id="list-option-1" class="mdl-radio__button" name="candidate_radio" value="{{$candidate->id}}" checked />
         </label>
     </span>
         </li>
@@ -32,5 +36,6 @@
   @endif
 
   {{MdlForm::submit('Add')}}
+  {{ Form::close() }}
 
 @endsection

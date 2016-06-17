@@ -82,7 +82,8 @@ class GroupController extends Controller {
         return view('group_info', [
                 'page'=>$group['name'],
                 'id' => $group['id'],
-                'group'=>$members
+                'members'=>$members,
+                'group'=>$group
         ]
         );
     }
@@ -164,14 +165,21 @@ class GroupController extends Controller {
 
         return view('group_add_person', [
                 'page'=> 'Add person to group: '.$group->name,
-                'user'=> $user
+                'user'=> $user,
+                'group' => $group
             ]
         );
     }
     /**
      *
      */
-    public function add(UserData $member) {
-
+    public function add(Group $group) {
+        $data = Input::all();
+        //dd($data);
+        $member = UserData::find($data['candidate_radio']);
+        $edge = $member->joins()->save($group);
+        $edge->status='member';
+        $edge->save();
+        return Redirect::to('group/'.$group->id);
     }
 }
