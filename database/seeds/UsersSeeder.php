@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             $userData = UserData::create(['firstname' => $name]);
             DB::table('users')->insert([
                 'name' => $name,
-                'email' => $faker->email,
+                'email' => $faker->unique()->email,
                 'password' => bcrypt('password'),
                 'userData' => $userData->id
             ]);
