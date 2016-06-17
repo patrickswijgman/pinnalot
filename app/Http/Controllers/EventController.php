@@ -7,6 +7,7 @@ use App\Http\Requests\EventRequest;
 use App\Models\Event;
 
 use App\Http\Requests;
+use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\UserData;
 use Auth;
@@ -26,7 +27,7 @@ class EventController extends Controller
     }
 
     function edit(Event $event) {
-        if ($this->isAuthorized($event)) {
+        if ($this->isAuthorized($event) || $this->isGroupAuthorized($event)) {
             return view('event_form', [
                 'page' => 'Edit event',
                 'event' => $event,
@@ -54,7 +55,7 @@ class EventController extends Controller
     }
 
     function update(EventRequest $request, Event $event){
-        if($this->isAuthorized($event)) {
+        if($this->isAuthorized($event) || $this->isGroupAuthorized($event)) {
             $data = $request->input();
 
             $data['start'] = Helper::dateToISOString($data['start']);
@@ -71,6 +72,19 @@ class EventController extends Controller
             $event->delete();
         }
         return Redirect::to('calendar');
+    }
+
+    private function isGroupAuthorized(Event $event){
+        $userdata = Auth::user()->userData;
+        foreach($userdata->memberOf()->edges() as $edge) {
+            /** @var Group $usergroup */
+            $usergroup = ($edge->related());
+            $isGroupOwner = $usergroup->members()->edge($userdata);
+            if($isGroupOwner->status == 'owner') {
+                return true;
+            }
+        }
+        return false;
     }
 
     private function isAuthorized(Event $event) {

@@ -22,6 +22,10 @@ class UserData  extends NeoEloquent{
         return $this->belongsToMany('App\Models\Group', 'MEMBER_OF');
     }
 
+    public function joins() {
+        return $this->hasMany('App\Models\Group', 'MEMBER_OF');
+    }
+
     public function invitedFor(){
         return $this->belongsToMany('App\Models\Event', 'INVITED_FOR');
     }
