@@ -80,9 +80,10 @@
         </style>-->
         <main class="mdl-layout__content">
             @unless(empty($page))
-                @yield('header-button')
-
-                <h3 style="text-align: center">{{$page}}</h3>
+                <h3 style="text-align: center">
+                    @yield('header-button')
+                    {{$page}}
+                </h3>
                 <hr>
             @endunless
             <div class="page-content">

@@ -204,12 +204,12 @@ class MdlForm
      */
     static function urlButton($href, $label){
         return new HtmlString('
-        <div>
+       
             <a href="'.url($href).'" 
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                 '.$label.'
             </a>
-        </div>
+       
         ');
     }
 
