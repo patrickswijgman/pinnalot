@@ -60,7 +60,7 @@ class GroupController extends Controller {
         $data = $request->input();
         $userdata = Auth::user()->userData;
         $group = Group::create($data);
-        $edge = $group->members()->save($userdata);
+        $edge = $userdata->joins()->save($group);
         $edge->status='owner';
         $edge->save();
         return Redirect::to('group/' . $group->id);

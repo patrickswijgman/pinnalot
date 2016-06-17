@@ -9,7 +9,6 @@
         {{ Form::close() }}
 
         {{ Form::model($group, array('route' => array('group.update', $group->id), 'method'=>'PUT')) }}
-        {{ Form::model($group, array('route' => array('group.update', $group->id), 'method'=>'PUT')) }}
     @else
         {{ Form::open(array('url' => 'group')) }}
     @endif
