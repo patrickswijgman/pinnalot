@@ -36,7 +36,7 @@
 
     {{ MdlForm::datetime('end', 'End date and time', !empty($endDate)? ($endDate): '') }}
 
-    {{ MdlForm::submit('Save') }}
+    {{ MdlForm::submit('Submit') }}
     {{ Form::close() }}
 
 @stop
