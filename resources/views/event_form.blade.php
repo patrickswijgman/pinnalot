@@ -25,7 +25,7 @@
 
     {{ MdlForm::text('location', 'Location') }}
 
-    {{ MdlForm::color('backgroundColor', 'Color') }}
+    {{ MdlForm::color('backgroundColor', 'Color', !empty($event->backgroundColor)? ($event->backgroundColor): '#425FFF') }}
 
     {{ MdlForm::datetime('start', 'Start date and time', !empty($startDate)? ($startDate): '') }}
 
