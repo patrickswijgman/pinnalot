@@ -1,13 +1,18 @@
 @extends('layout')
 
-@section('content')
-
+@section('content-right')
     @if(isset($event))
+        <span style="color: gray; font-weight: bold">Other actions</span>
         {{ Form::open(array('url' => 'event/' . $event->id)) }}
         {{ Form::hidden('_method', 'DELETE') }}
         {{ MdlForm::submit('Delete') }}
         {{ Form::close() }}
+    @endif
+@stop
 
+@section('content')
+
+    @if(isset($event))
         {{ Form::model($event, array('route' => array('event.update', $event->id), 'method'=>'PUT')) }}
     @else
         @if(isset($group))

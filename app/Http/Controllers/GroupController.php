@@ -96,6 +96,7 @@ class GroupController extends Controller {
         $types[1] = $types[0];
         if($this->isAuthorized($group)) {
             return view('group_form', [
+                'page' => 'Edit group '.$group->name,
                 'group' => $group,
                 'types' => $types
             ]);
