@@ -77,7 +77,7 @@ class EventController extends Controller
     }
 
     function destroy(Event $event) {
-        if($this->isAuthorized($event)) {
+        if($this->isAuthorized($event) || $this->isGroupAuthorized($event)) {
             $event->delete();
         }
         return Redirect::to('calendar');
