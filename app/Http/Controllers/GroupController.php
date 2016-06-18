@@ -77,9 +77,25 @@ class GroupController extends Controller {
         return view('group_info', [
                 'page'=>$group['name'],
                 'id' => $group['id'],
-                'group'=>$members
+                'members'=>$members,
+                'group'=>$group
         ]
         );
+    }
+
+    /**
+     * Let the current logged in user leave a chosen group.
+     *
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function leave(Group $group) {
+        $user = Auth::user()->userData;
+        $isMember = $this->isMember($group, $user);
+        if (isset($isMember)) {
+            $group->members()->detach($user);
+        }
+        return Redirect::to('group');
     }
 
     /**

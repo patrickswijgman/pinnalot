@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
         ['only' => ['create', 'show', 'store']]);
 
     Route::resource('group', 'GroupController');
+    Route::get('group/{group}/leave', 'GroupController@leave');
 
 
 });

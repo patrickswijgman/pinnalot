@@ -15,7 +15,7 @@
     <span style="color: gray; font-weight: bold">Other actions</span>
     <br/>
     <br/>
-    {{ MdlForm::urlButtonAccent('event/'.$event->id.'/edit', 'Edit') }}
+    {{ MdlForm::urlButton('event/'.$event->id.'/edit', 'Edit') }}
 @stop
 
 @section('content')
