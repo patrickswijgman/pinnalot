@@ -35,6 +35,8 @@
 
         {{ MdlForm::date('birthday', 'Birthday') }}
 
+        {{ MdlForm::dropdown('country', 'Country', $countries, true) }}
+
         {{  MdlForm::submit('Register') }}
         <br>
         {{ link_to('/login', 'If you already got an account, click here to login.')}}

@@ -40,19 +40,9 @@ class SettingsController extends Controller
         $data['primary_color'] = $data['primary_color_hidden'];
         $data['accent_color'] = $data['accent_color_hidden'];
         $data['landing_page'] = $data['landing_page_hidden'];
-
-        $settingsDefault = SettingsDefault::first();
-        $settingsAreDefault =
-            ($data['primary_color'] == $settingsDefault->primary_color) &&
-            ($data['accent_color'] == $settingsDefault->accent_color) &&
-            ($data['landing_page'] == $settingsDefault->landing_page);
-
-        if ($settingsAreDefault) {
-            return Redirect::to('home');
-        } else {
-            $settings->update($data);
-            $settings->save();
-        }
+        
+        $settings->update($data);
+        $settings->save();
         return Redirect::to('home');
     }
 
