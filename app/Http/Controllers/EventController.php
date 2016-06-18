@@ -7,8 +7,6 @@ use App\Http\Requests\EventRequest;
 use App\Models\Event;
 
 use App\Http\Requests;
-use App\Models\Group;
-use App\Models\Invitation;
 use App\Models\UserData;
 use Auth;
 use Illuminate\Support\Facades\Input;

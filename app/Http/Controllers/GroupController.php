@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GroupRequest;
 use App\Models\Group;
-use App\Models\Invitation;
-use App\Models\Member;
 use App\Models\GroupType;
 use App\Models\UserData;
-use App\User;
 use Auth;
 use Illuminate\Http\Request;
 

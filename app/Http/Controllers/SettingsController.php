@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Helper;
 use App\Http\Requests\SettingsRequest;
 use App\Models\MdlColor;
 use App\Models\SettingsDefault;

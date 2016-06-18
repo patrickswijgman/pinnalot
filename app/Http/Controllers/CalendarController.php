@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\UserData;
 use Auth;
-use Carbon\Carbon;
-use DateTime;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
