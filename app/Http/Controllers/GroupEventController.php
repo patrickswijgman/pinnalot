@@ -27,6 +27,10 @@ class GroupEventController extends Controller
         ]);
     }
 
+    function show(Group $group, Event $event) {
+        return '';
+    }
+
     function store(Group $group, EventRequest $request){
         $data = $request->input();
 

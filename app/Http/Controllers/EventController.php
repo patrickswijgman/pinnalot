@@ -26,10 +26,19 @@ class EventController extends Controller
         ]);
     }
 
+    public function show(Event $event) {
+        return view('event_show', [
+            'page' => $event->title,
+            'event' => $event,
+            'startDate' => Helper::isoToDateString($event->start),
+            'endDate' => Helper::isoToDateString($event->end)
+        ]);
+    }
+
     function edit(Event $event) {
         if ($this->isAuthorized($event) || $this->isGroupAuthorized($event)) {
             return view('event_form', [
-                'page' => 'Edit event',
+                'page' => 'Edit event '.$event->title,
                 'event' => $event,
                 'startDate' => Helper::isoToDateString($event->start),
                 'endDate' => Helper::isoToDateString($event->end)
@@ -76,9 +85,9 @@ class EventController extends Controller
 
     private function isGroupAuthorized(Event $event){
         $userdata = Auth::user()->userData;
-        foreach($userdata->memberOf()->edges() as $edge) {
-            $usergroup = $edge->related();
-            $isGroupOwner = $usergroup->members()->edge($userdata);
+        foreach($event->belongsToGroups()->edges() as $edge) {
+            $group = $edge->related();
+            $isGroupOwner = $group->members()->edge($userdata);
             if(!empty($isGroupOwner) && $isGroupOwner->status == 'owner') {
                 return true;
             }

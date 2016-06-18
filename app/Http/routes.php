@@ -29,10 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
         ['only' => ['update', 'edit']]);
 
     Route::resource('event', 'EventController',
-        ['only' => ['create', 'update', 'store', 'edit', 'destroy']]);
+        ['only' => ['create', 'show', 'update', 'store', 'edit', 'destroy']]);
 
     Route::resource('group.event', 'GroupEventController',
-        ['only' => ['create','store']]);
+        ['only' => ['create', 'show', 'store']]);
 
     Route::resource('group', 'GroupController');
 

@@ -17,16 +17,20 @@ class Event extends NeoEloquent
         return $this->hasMany('App\Models\UserData', 'INVITED_FOR');
     }
 
+    public function belongsToGroups(){
+        return $this->belongsToMany('App\Models\Group', 'INVITED_FOR');
+    }
+
     public function timeOptions() {
         return $this->hasMany('App\Models\TimeOptions', 'OPTIONS');
     }
 
-    /**
-     * Adds a custom attribute: URL, based on ID
-     * This URL is used by the calendar when you click on the event
-     */
+    function setUrlAttribute($url){
+        $this->attributes['url'] = $url;
+    }
+
     function getUrlAttribute(){
-        return 'event/' . $this->attributes['id'] . '/edit';
+        return isset($this->attributes['url'])? $this->attributes['url'] : '';
     }
 
     function getBorderColorAttribute(){

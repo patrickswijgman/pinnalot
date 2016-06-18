@@ -18,15 +18,21 @@ class CalendarController extends Controller
         $events = array();
         $userdata = Auth::user()->userData;
 
+        //Group events
         foreach($userdata->memberOf()->edges() as $edge) {
-            $usergroup = ($edge->related());
-            foreach($usergroup->invitedFor()->edges() as $edge) {
-                $events[] = $edge->related();
+            $group = ($edge->related());
+            foreach($group->invitedFor()->edges() as $eventEdge) {
+                $event = $eventEdge->related();
+                $event->url = 'group/'.$group->id.'/event/'.$event->id;
+                $events[] = $event;
             }
         }
 
+        //User events
         foreach($userdata->invitedFor()->edges() as $edge) {
-            $events[] = $edge->related();
+            $event = $edge->related();
+            $event->url = 'event/'.$event->id;
+            $events[] = $event;
         }
         
         return view('calendar', ['events' => json_encode($events),  'page' => 'Calendar']);
