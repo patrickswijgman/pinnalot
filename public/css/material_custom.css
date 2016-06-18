@@ -16,28 +16,30 @@ h3 {
 }
 
 #page-content-left {
-    width: 19%;
+    width: 15%;
     min-height: 100vh;
     margin-bottom: 20px;
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    text-align: center;
 }
 
 #page-content-centre {
     width: 60%;
     min-height: 100vh;
     margin-bottom: 20px;
-    text-align:center;
+    text-align: center;
     display: inline-block;
     vertical-align: top
 }
 
 #page-content-right {
-    width: 19%;
+    width: 15%;
     min-height: 100vh;
     margin-bottom: 20px;
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    text-align: left;
 }
 
 

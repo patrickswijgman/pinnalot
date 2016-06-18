@@ -34,10 +34,15 @@ class GroupEventController extends Controller
         $user = Auth::user()->userData;
         $isMember = $this->isMember($group, $user);
         if (isset($isMember)) {
+            $members = array();
+            foreach($group->members()->edges() as $edge) {
+                $members[] = $edge->related();
+            }
             return view('event_show', [
                 'page' => $event->title,
                 'event' => $event,
                 'group' => $group,
+                'members' => $members,
                 'startDate' => Helper::isoToDateString($event->start),
                 'endDate' => Helper::isoToDateString($event->end)
             ]);
