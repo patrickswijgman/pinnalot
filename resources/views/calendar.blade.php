@@ -35,6 +35,10 @@
 
 @stop
 
+@section('content-right')
+    {{ MdlForm::urlButtonAccent('event/create', 'Create new event') }}
+@stop
+
 @section('footer')
     {{ Html::script('js/fullcalendar_init.js') }}
 @stop

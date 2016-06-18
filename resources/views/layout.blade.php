@@ -79,14 +79,20 @@
             }
         </style>-->
         <main class="mdl-layout__content">
-            @unless(empty($page))
-                <h3 style="text-align: center">{{$page}}</h3>
-                <hr>
-            @endunless
-            <div class="page-content">
-                @yield('content')
-                <br/>
-                <br/>
+            <div id="wrapper" style="text-align: center">
+                @unless(empty($page))
+                    <h3 style="text-align: center">{{$page}}</h3>
+                    <hr>
+                @endunless
+                <div id="page-content-left">
+                    @yield('content-left')
+                </div>
+                <div id="page-content-centre">
+                    @yield('content')
+                </div>
+                <div id="page-content-right">
+                    @yield('content-right')
+                </div>
             </div>
             <div class="mdl-layout-spacer"></div>
             <footer class=" mdl-mini-footer">
