@@ -10,6 +10,10 @@ use App\Http\Requests;
 class CalendarController extends Controller
 {
 
+    /**
+     * Show a interactive full screen javascript calendar with personal and group events
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     function show(){
         $events = array();
         $userdata = Auth::user()->userData;

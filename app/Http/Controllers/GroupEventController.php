@@ -17,6 +17,12 @@ use Redirect;
 class GroupEventController extends Controller
 {
 
+    /**
+     * Show a form to create a new event for the group.
+     *
+     * @param Group $group
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     function create(Group $group){
         if ($this->isAuthorized($group)) {
             return view('event_form', [
@@ -30,6 +36,13 @@ class GroupEventController extends Controller
         }
     }
 
+    /**
+     * Show an event belonging to a group along with the members of said group.
+     *
+     * @param Group $group
+     * @param Event $event
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     function show(Group $group, Event $event) {
         $user = Auth::user()->userData;
         $isMember = $this->isMember($group, $user);
@@ -51,6 +64,13 @@ class GroupEventController extends Controller
         }
     }
 
+    /**
+     * Store a newly created event for the group in the graph database.
+     *
+     * @param Group $group
+     * @param EventRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     function store(Group $group, EventRequest $request){
         if ($this->isAuthorized($group)) {
             $data = $request->input();
@@ -70,7 +90,8 @@ class GroupEventController extends Controller
     }
 
     /**
-     * Returns true of the loggedin user is the owner of the given group
+     * Returns true of the logged in user is the owner of the given group
+     *
      * @param Group $group
      * @return bool
      */
@@ -82,6 +103,7 @@ class GroupEventController extends Controller
 
     /**
      * Returns edge if the user is a member of the given group, else returns null
+     * 
      * @param Group $group
      * @param UserData $user
      * @return Edge

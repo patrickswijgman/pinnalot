@@ -11,6 +11,12 @@ use Redirect;
 
 class SettingsController extends Controller
 {
+    /**
+     * Show a form for the user that they can utilize for changing their personal settings.
+     *
+     * @param SettingsUser $settings
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     function edit(SettingsUser $settings) {
         if ($settings->user_id == Auth::user()->id) {
             $settingsDefault = SettingsDefault::first();
@@ -33,6 +39,13 @@ class SettingsController extends Controller
         }
     }
 
+    /**
+     * Update the users' personal settings in the database.
+     *
+     * @param SettingsRequest $request
+     * @param SettingsUser $settings
+     * @return \Illuminate\Http\RedirectResponse
+     */
     function update(SettingsRequest $request, SettingsUser $settings){
         $data = $request->input();
 

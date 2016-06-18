@@ -148,7 +148,8 @@ class GroupController extends Controller {
     }
 
     /**
-     * Returns true of the loggedin user is the owner of the given group
+     * Returns true of the logged in user is the owner of the given group
+     * 
      * @param Group $group
      * @return bool
      */
@@ -160,6 +161,7 @@ class GroupController extends Controller {
 
     /**
      * Returns edge if the user is a member of the given group, else returns null
+     * 
      * @param Group $group
      * @param UserData $user
      * @return Edge
