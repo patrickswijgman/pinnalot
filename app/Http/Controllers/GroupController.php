@@ -113,11 +113,10 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(GroupRequest $request, Group $group) {
-
         if($this->isAuthorized($group)) {
             $group->fill($request->input())->save();
         }
-        return view('', compact('group'));
+        return Redirect::to('group/'.$group->id);
     }
 
     /**

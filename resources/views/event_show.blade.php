@@ -2,6 +2,8 @@
 
 @section('content-right')
     <span style="color: gray; font-weight: bold">Other actions</span>
+    <br/>
+    <br/>
     {{ MdlForm::urlButtonAccent('event/'.$event->id.'/edit', 'Edit') }}
 @stop
 
