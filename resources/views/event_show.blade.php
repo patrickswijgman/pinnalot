@@ -1,10 +1,13 @@
 @extends('layout')
 
+@section('content-right')
+    <span style="color: gray; font-weight: bold">Other actions</span>
+    {{ MdlForm::urlButtonAccent('event/'.$event->id.'/edit', 'Edit') }}
+@stop
+
 @section('content')
 
     {{ Form::model($event) }}
-
-    {{ MdlForm::urlButtonAccent('event/'.$event->id.'/edit', 'Edit') }}
 
     {{ MdlForm::text('title', 'Title', null, 'readonly') }}
 
