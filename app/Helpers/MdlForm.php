@@ -227,6 +227,17 @@ class MdlForm
         ');
     }
 
+    static function urlButtonAccent($href, $label){
+        return new HtmlString('
+        <div>
+            <a href="'.url($href).'" 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                '.$label.'
+            </a>
+        </div>
+        ');
+    }
+
     /**
      * Use this to show (if there are any) errors of an input
      * @param $errors

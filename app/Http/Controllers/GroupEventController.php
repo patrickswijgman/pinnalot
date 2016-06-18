@@ -28,7 +28,13 @@ class GroupEventController extends Controller
     }
 
     function show(Group $group, Event $event) {
-        return '';
+        return view('event_show', [
+            'page' => $event->title,
+            'event' => $event,
+            'group' => $group,
+            'startDate' => Helper::isoToDateString($event->start),
+            'endDate' => Helper::isoToDateString($event->end)
+        ]);
     }
 
     function store(Group $group, EventRequest $request){
