@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('calendar')
 
 @section('content-right')
     <span style="color: gray; font-weight: bold">Other actions</span>
@@ -30,7 +30,3 @@
         </ul>
     </div>
 @stop
-
-@section('content')
-
-@endsection

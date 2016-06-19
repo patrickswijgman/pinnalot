@@ -16,7 +16,7 @@ h3 {
 }
 
 #page-content-left {
-    width: 15%;
+    width: 19%;
     min-height: 100vh;
     margin-bottom: 20px;
     display: inline-block;
@@ -34,7 +34,7 @@ h3 {
 }
 
 #page-content-right {
-    width: 15%;
+    width: 19%;
     min-height: 100vh;
     margin-bottom: 20px;
     display: inline-block;
@@ -183,6 +183,12 @@ h3 {
     display: inline;
 }
 
+.mdl-list__item-icon {
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
 .mdl-list__item {
     padding: 0;
+    min-height: 32px;
 }

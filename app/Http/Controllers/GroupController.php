@@ -76,10 +76,20 @@ class GroupController extends Controller {
         foreach($group->members()->edges() as $edge) {
             $members[] = $edge->related();
         }
+
+        //Group events
+        $events = array();
+        foreach($group->invitedFor()->edges() as $edge) {
+            $event = $edge->related();
+            $event->url = 'group/'.$group->id.'/event/'.$event->id;
+            $events[] = $event;
+        }
+
         return view('group_info', [
                 'page'=>$group->name,
                 'members'=>$members,
-                'group'=>$group
+                'group'=>$group,
+                'events'=>json_encode($events)
         ]);
     }
 
