@@ -9,8 +9,8 @@
         <!-- Square card -->
         <style>
             .group_card.mdl-card {
-                width: 320px;
-                height: 320px;
+                width: 240px;
+                height: 240px;
             }
             .group_card > .mdl-card__title {
                 color: #fff;

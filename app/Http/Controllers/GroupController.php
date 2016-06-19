@@ -78,6 +78,7 @@ class GroupController extends Controller {
         foreach($group->members()->edges() as $edge) {
             $members[] = $edge->related();
         }
+        User::where(['userData' => 0])->first();
         $user = User::where('name', '=', Input::get('search_person'));
         return view('group_info', [
                 'page'=>$group['name'],
