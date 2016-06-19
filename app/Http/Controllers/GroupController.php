@@ -6,6 +6,7 @@ use App\Http\Requests\GroupRequest;
 use App\Models\Group;
 use App\Models\GroupType;
 use App\Models\UserData;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -151,6 +152,52 @@ class GroupController extends Controller {
     }
 
     /**
+     * Show a form with a search input for a person.
+     *
+     * @param Group $group
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchPerson(Group $group) {
+        return view('group_person_search', [
+                'page'=> 'Add person to '.$group->name,
+                'group' => $group
+            ]
+        );
+    }
+    
+    /**
+     * Show results from given search input
+     *
+     * @param Group $group
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchPersonResult(Group $group) {
+        $results = UserData::where('firstname',Input::get('search_person'))->get();
+        return view('group_person_add', [
+                'page'=> 'Add person to '.$group->name,
+                'users'=> $results,
+                'group' => $group
+            ]
+        );
+    }
+
+    /**
+     * Add a selected person (from a search input) as member to the group
+     *
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function add(Group $group) {
+        $data = Input::all();
+        //dd($data);
+        $member = UserData::find($data['candidate_radio']);
+        $edge = $member->joins()->save($group);
+        $edge->status='member';
+        $edge->save();
+        return Redirect::to('group/'.$group->id);
+    }
+
+    /**
      * Returns true of the logged in user is the owner of the given group
      * 
      * @param Group $group
@@ -173,28 +220,4 @@ class GroupController extends Controller {
         return $group->members()->edge($user);
     }
 
-    public function search(Group $group) {
-        $data = Input::all();
-        $user = UserData::where('firstname',Input::get('search_person'))->get();
-
-
-        return view('group_add_person', [
-                'page'=> 'Add person to group: '.$group->name,
-                'user'=> $user,
-                'group' => $group
-            ]
-        );
-    }
-    /**
-     *
-     */
-    public function add(Group $group) {
-        $data = Input::all();
-        //dd($data);
-        $member = UserData::find($data['candidate_radio']);
-        $edge = $member->joins()->save($group);
-        $edge->status='member';
-        $edge->save();
-        return Redirect::to('group/'.$group->id);
-    }
 }

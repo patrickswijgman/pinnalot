@@ -165,3 +165,25 @@ h3 {
     height: 100%;
     line-height: 48px;
 }
+
+.group_card.mdl-card {
+    width: 240px;
+    height: 240px;
+}
+.group_card > .mdl-card__title {
+    color: #fff;
+    background: #46B6AC;
+}
+
+.mdl-list {
+    margin: 0;
+}
+
+.list-radio {
+    display: inline;
+}
+
+.mdl-list__item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
