@@ -81,7 +81,7 @@ class GroupController extends Controller {
         $events = array();
         foreach($group->invitedFor()->edges() as $edge) {
             $event = $edge->related();
-            $event->url = 'group/'.$group->id.'/event/'.$event->id;
+            $event->url = $group->id.'/event/'.$event->id;
             $events[] = $event;
         }
 
