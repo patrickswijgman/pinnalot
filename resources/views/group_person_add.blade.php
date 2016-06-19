@@ -5,7 +5,7 @@
   @if ($users->isEmpty())
    No users found.
   @else
-    {{ Form::open(array('url' => url('/group/'.$group["id"].'/add'))) }}
+    {{ Form::open(array('url' => url('/group/'.$group->id.'/add'))) }}
     {{ csrf_field() }}
 
     {{ MdlForm::showAllErrors($errors) }}

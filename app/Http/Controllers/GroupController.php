@@ -16,8 +16,9 @@ use Redirect;
 use Vinelab\NeoEloquent\Eloquent\Edges\Edge;
 
 class GroupController extends Controller {
+
     /**
-     * Display a listing of the resource.
+     * Show all the groups where the user is member of said groups.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,13 +31,11 @@ class GroupController extends Controller {
         return view('group', [
                 'page' => 'Groups',
                 'groups' => $groups
-            ]
-        );
-        
+            ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show a form which lets the user create a new group.
      *
      * @return \Illuminate\Http\Response
      */
@@ -50,7 +49,7 @@ class GroupController extends Controller {
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store the newly created group in the graph database.
      *
      * @param GroupRequest|Request $request
      * @return \Illuminate\Http\Response
@@ -66,25 +65,23 @@ class GroupController extends Controller {
     }
 
     /**
-     * Display the specified resource.
+     * Show a specific group with its members and calendar.
      *
-     * @param  int  $id
+     * @param Group $group
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function show(Group $group) {
         $members = array();
         foreach($group->members()->edges() as $edge) {
             $members[] = $edge->related();
         }
-        User::where(['userData' => 0])->first();
-        $user = User::where('name', '=', Input::get('search_person'));
         return view('group_info', [
-                'page'=>$group['name'],
-                'id' => $group['id'],
+                'page'=>$group->name,
+                'id' => $group->id,
                 'members'=>$members,
                 'group'=>$group
-        ]
-        );
+        ]);
     }
 
     /**
@@ -189,7 +186,6 @@ class GroupController extends Controller {
      */
     public function add(Group $group) {
         $data = Input::all();
-        //dd($data);
         $member = UserData::find($data['candidate_radio']);
         $edge = $member->joins()->save($group);
         $edge->status='member';

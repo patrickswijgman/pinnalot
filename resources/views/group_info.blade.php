@@ -28,7 +28,6 @@
                 </li>
             @endforeach
         </ul>
-        {{--TODO: add button  --}}
     </div>
 @stop
 
