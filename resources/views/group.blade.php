@@ -1,5 +1,12 @@
 @extends('layout')
 
+@section('content-right')
+    <span style="color: gray; font-weight: bold">Other actions</span>
+    <br/>
+    <br/>
+    {{ MdlForm::urlButton('group/create', 'Create group') }}
+@stop
+
 @section('content')
     <div class = "group_list">
         @foreach($groups as $group)
