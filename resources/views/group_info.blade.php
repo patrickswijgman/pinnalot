@@ -4,7 +4,7 @@
     <span style="color: gray; font-weight: bold">Other actions</span>
     <br/>
     <br/>
-    {{ MdlForm::urlButton('group/'.$id.'/event/create', 'Create new event') }}
+    {{ MdlForm::urlButton('group/'.$group->id.'/event/create', 'Create new event') }}
     <br/>
     {{ MdlForm::urlButton('group/'.$group->id.'/search', 'Add person') }}
     <br/>
