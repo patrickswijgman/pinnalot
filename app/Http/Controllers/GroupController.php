@@ -10,6 +10,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Redirect;
 use Vinelab\NeoEloquent\Eloquent\Edges\Edge;
 
@@ -74,6 +75,8 @@ class GroupController extends Controller {
         foreach($group->members()->edges() as $edge) {
             $members[] = $edge->related();
         }
+        User::where(['userData' => 0])->first();
+        $user = User::where('name', '=', Input::get('search_person'));
         return view('group_info', [
                 'page'=>$group['name'],
                 'id' => $group['id'],
@@ -168,5 +171,30 @@ class GroupController extends Controller {
      */
     private function isMember(Group $group, UserData $user){
         return $group->members()->edge($user);
+    }
+
+    public function search(Group $group) {
+        $data = Input::all();
+        $user = UserData::where('firstname',Input::get('search_person'))->get();
+
+
+        return view('group_add_person', [
+                'page'=> 'Add person to group: '.$group->name,
+                'user'=> $user,
+                'group' => $group
+            ]
+        );
+    }
+    /**
+     *
+     */
+    public function add(Group $group) {
+        $data = Input::all();
+        //dd($data);
+        $member = UserData::find($data['candidate_radio']);
+        $edge = $member->joins()->save($group);
+        $edge->status='member';
+        $edge->save();
+        return Redirect::to('group/'.$group->id);
     }
 }
