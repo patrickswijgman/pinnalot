@@ -184,6 +184,5 @@ h3 {
 }
 
 .mdl-list__item {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 0;
 }
