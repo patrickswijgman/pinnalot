@@ -166,13 +166,19 @@ h3 {
     line-height: 48px;
 }
 
+.mdl-card__supporting-text {
+    min-height: 50px;
+}
+
 .group_card.mdl-card {
-    width: 240px;
-    height: 240px;
+    max-width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
 }
 .group_card > .mdl-card__title {
     color: #fff;
-    background: #46B6AC;
+    background: #607D8B;
 }
 
 .mdl-list {

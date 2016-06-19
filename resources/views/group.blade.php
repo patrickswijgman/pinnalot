@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <div class = "group_list">
+    <div class = "group_list" style="text-align: left">
         @foreach($groups as $group)
             <div class="group_card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
@@ -18,7 +18,7 @@
                     {{ $group['description'] }}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a href="   {{ url('group/' . $group['id'] ) }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a href="   {{ url('group/' . $group['id'] ) }}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
                         View group
                     </a>
                 </div>
