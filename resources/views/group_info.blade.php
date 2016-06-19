@@ -6,6 +6,9 @@
     <br/>
     {{ MdlForm::urlButton('group/'.$id.'/event/create', 'Create new event') }}
     <br/>
+    {{ MdlForm::urlButton('group/'.$group->id.'/edit', 'Edit group') }}
+    <br/>
+    <br/>
     {{ MdlForm::urlButton('group/'.$group->id.'/leave', 'Leave group') }}
 @stop
 

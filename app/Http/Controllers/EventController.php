@@ -53,7 +53,7 @@ class EventController extends Controller
     function edit(Event $event) {
         if ($this->isAuthorized($event) || $this->isGroupAuthorized($event)) {
             return view('event_form', [
-                'page' => 'Edit event '.$event->title,
+                'page' => 'Edit '.$event->title.' event',
                 'event' => $event,
                 'startDate' => Helper::isoToDateString($event->start),
                 'endDate' => Helper::isoToDateString($event->end)

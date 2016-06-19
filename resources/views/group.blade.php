@@ -4,7 +4,7 @@
     <span style="color: gray; font-weight: bold">Other actions</span>
     <br/>
     <br/>
-    {{ MdlForm::urlButton('group/create', 'Create group') }}
+    {{ MdlForm::urlButton('group/create', 'Create new group') }}
 @stop
 
 @section('content')

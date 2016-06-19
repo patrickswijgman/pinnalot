@@ -22,8 +22,6 @@
 
     {{ Form::model($event) }}
 
-    {{ MdlForm::text('title', 'Title', null, 'readonly') }}
-
     {{ MdlForm::textArea('description', 'Description', null, 'readonly') }}
 
     {{ MdlForm::text('location', 'Location', null, 'readonly') }}

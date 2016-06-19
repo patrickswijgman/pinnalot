@@ -12,7 +12,7 @@ $(document).ready(function() {
     $('#calendar').fullCalendar({
         events: $('#source').data("events"),
         timezone: 'local',
-        timeFormat: 'H(:mm)',
+        timeFormat: 'H:mm',
         weekNumbers: true,
         header: {
             left: '',
