@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Helper;
 use App\Http\Requests\SettingsRequest;
 use App\Models\MdlColor;
 use App\Models\SettingsDefault;
@@ -12,6 +11,12 @@ use Redirect;
 
 class SettingsController extends Controller
 {
+    /**
+     * Show a form for the user that they can utilize for changing their personal settings.
+     *
+     * @param SettingsUser $settings
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     function edit(SettingsUser $settings) {
         if ($settings->user_id == Auth::user()->id) {
             $settingsDefault = SettingsDefault::first();
@@ -34,25 +39,22 @@ class SettingsController extends Controller
         }
     }
 
+    /**
+     * Update the users' personal settings in the database.
+     *
+     * @param SettingsRequest $request
+     * @param SettingsUser $settings
+     * @return \Illuminate\Http\RedirectResponse
+     */
     function update(SettingsRequest $request, SettingsUser $settings){
         $data = $request->input();
 
         $data['primary_color'] = $data['primary_color_hidden'];
         $data['accent_color'] = $data['accent_color_hidden'];
         $data['landing_page'] = $data['landing_page_hidden'];
-
-        $settingsDefault = SettingsDefault::first();
-        $settingsAreDefault =
-            ($data['primary_color'] == $settingsDefault->primary_color) &&
-            ($data['accent_color'] == $settingsDefault->accent_color) &&
-            ($data['landing_page'] == $settingsDefault->landing_page);
-
-        if ($settingsAreDefault) {
-            return Redirect::to('home');
-        } else {
-            $settings->update($data);
-            $settings->save();
-        }
+        
+        $settings->update($data);
+        $settings->save();
         return Redirect::to('home');
     }
 

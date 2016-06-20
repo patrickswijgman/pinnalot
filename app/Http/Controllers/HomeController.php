@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Group;
-use App\Models\Member;
 use Auth;
-use Illuminate\Http\Request;
 use Redirect;
 
 class HomeController extends Controller
 {
+    /**
+     * Show the landing_page the user has chosen in his/her settings
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function show()
     {
         $page = Auth::user()->landingPage;

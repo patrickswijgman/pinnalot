@@ -58,7 +58,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new user instance after a valid registration,
+     * together with a userData node in the graph database and
+     * a settings_user instance in the MySQL database.
      *
      * @param  array  $data
      * @return User

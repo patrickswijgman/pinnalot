@@ -11,8 +11,9 @@ if (dialog !== null) {
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         events: $('#source').data("events"),
-        displayEventTime: false,
         timezone: 'local',
+        timeFormat: 'H:mm',
+        weekNumbers: true,
         header: {
             left: '',
             center: 'title',

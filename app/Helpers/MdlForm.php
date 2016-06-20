@@ -67,11 +67,11 @@ class MdlForm
      * @param string $value
      * @return HtmlString
      */
-    static function textArea($name, $label, $value=null) {
+    static function textArea($name, $label, $value=null, $readonly=null) {
         return new HtmlString('
         <div>  
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                '.Form::textarea($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input')).'
+                '.Form::textarea($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input', $readonly)).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>');
@@ -197,14 +197,17 @@ class MdlForm
      * @param string $value
      * @return HtmlString
      */
-    static function color($name, $label, $value=null){
+    static function color($name, $label, $value=null, $enabled=true){
         return new HtmlString('
         <div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
-                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input jscolor', 'readonly')).'
+                '.Form::text($name, $value, array('id' => $name, 'class' => 'mdl-textfield__input colorpicker', 'readonly')).'
                 <label class="mdl-textfield__label" for="'.$name.'">'.$label.'</label>
             </div>
         </div>
+        <script>
+            var myColor = new jscolor('.$name.', {showOnClick: "'.$enabled.'"})
+        </script>
         ');
     }
 
@@ -217,7 +220,20 @@ class MdlForm
         return new HtmlString('
         <div>
             <a href="'.url($href).'" 
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                style="width: 70%;">
+                '.$label.'
+            </a>
+        </div>
+        ');
+    }
+
+    static function urlButtonAccent($href, $label){
+        return new HtmlString('
+        <div>
+            <a href="'.url($href).'" 
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                style="width: 70%;">
                 '.$label.'
             </a>
         </div>

@@ -16,6 +16,6 @@
     </div>
     <div class="mdl-dialog__actions">
         <a class="mdl-button close">Close</a>
-        <a id="mdl-dialog__url" href="#" class="mdl-button ">Edit</a>
+        <a id="mdl-dialog__url" href="#" class="mdl-button ">View</a>
     </div>
 </dialog>

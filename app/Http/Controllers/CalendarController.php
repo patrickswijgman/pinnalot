@@ -3,35 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\UserData;
 use Auth;
-use Carbon\Carbon;
-use DateTime;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 class CalendarController extends Controller
 {
 
+    /**
+     * Show a interactive full screen javascript calendar with personal and group events
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     function show(){
         $events = array();
-        //$groupevents = array();;
         $userdata = Auth::user()->userData;
 
+        //Group events
         foreach($userdata->memberOf()->edges() as $edge) {
-            $usergroup = ($edge->related());
-            foreach($usergroup->invitedFor()->edges() as $edge) {
-                $events[] = $edge->related();
+            $group = ($edge->related());
+            foreach($group->invitedFor()->edges() as $eventEdge) {
+                $event = $eventEdge->related();
+                $event->url = 'group/'.$group->id.'/event/'.$event->id;
+                $events[] = $event;
             }
         }
 
+        //User events
         foreach($userdata->invitedFor()->edges() as $edge) {
-            $events[] = $edge->related();
+            $event = $edge->related();
+            $event->url = 'event/'.$event->id;
+            $events[] = $event;
         }
-
-
-
+        
         return view('calendar', ['events' => json_encode($events),  'page' => 'Calendar']);
     }
 }

@@ -8,7 +8,8 @@ class Helper
 {
 
     /**
-     * Convert a date time string (e.g. 29-05-1994 23:30) to an ISO8601 string
+     * Convert a date time string (e.g. 29-05-1994 23:30) to an ISO8601 string.
+     *
      * @param $dateString
      * @return string
      */
@@ -19,7 +20,8 @@ class Helper
     }
 
     /**
-     * Convert ISO8601 string to date time format
+     * Convert ISO8601 string to date time format.
+     *
      * @param $isoString
      * @return string
      */
@@ -28,6 +30,12 @@ class Helper
         return $date->format('d-m-Y H:i');
     }
 
+    /**
+     * Convert a HEX value (e.g. #FFF or #FFFFFF) to a RGB(red, green, blue) value.
+     *
+     * @param $hex
+     * @return array ([0] = red, [1] = green, [2] = blue)
+     */
     static function hex2rgb($hex) {
         $hex = str_replace("#", "", $hex);
 
@@ -45,6 +53,12 @@ class Helper
         return $rgb; // returns an array with the rgb values
     }
 
+    /**
+     * Get the brightness (0-255 range) of a RGB color.
+     *
+     * @param $label
+     * @return float
+     */
     static function getLabelBrightness($label){
         $rgb = self::hex2rgb($label);
         return ($rgb[0] * 299 + $rgb[1] * 587 + $rgb[2] * 114) / 1000;

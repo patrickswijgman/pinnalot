@@ -57,13 +57,13 @@
                     Calendar
                     <i class="material-icons" style="float:right">date_range</i>
                 </a>
-                <a class="mdl-navigation__link" href="{{ url('/pay/new') }}">
-                    Payment
-                    <i class="material-icons" style="float:right">attach_money</i>
-                </a>
                 <a class="mdl-navigation__link" href="{{ url('/group') }}">
                     Groups
                     <i class="material-icons" style="float:right">group</i>
+                </a>
+                <a class="mdl-navigation__link" href="{{ url('/pay/new') }}">
+                    Payment
+                    <i class="material-icons" style="float:right">attach_money</i>
                 </a>
             </nav>
         </div>
@@ -79,14 +79,20 @@
             }
         </style>-->
         <main class="mdl-layout__content">
-            @unless(empty($page))
-                <h3 style="text-align: center">{{$page}}</h3>
-                <hr>
-            @endunless
-            <div class="page-content">
-                @yield('content')
-                <br/>
-                <br/>
+            <div id="wrapper" style="text-align: center">
+                @unless(empty($page))
+                    <h3 style="text-align: center">{{$page}}</h3>
+                    <hr>
+                @endunless
+                <div id="page-content-left">
+                    @yield('content-left')
+                </div>
+                <div id="page-content-centre">
+                    @yield('content')
+                </div>
+                <div id="page-content-right">
+                    @yield('content-right')
+                </div>
             </div>
             <div class="mdl-layout-spacer"></div>
             <footer class=" mdl-mini-footer">

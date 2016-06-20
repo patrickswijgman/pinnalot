@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GroupRequest;
 use App\Models\Group;
-use App\Models\Invitation;
-use App\Models\Member;
 use App\Models\GroupType;
 use App\Models\UserData;
-use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -80,9 +77,25 @@ class GroupController extends Controller {
         return view('group_info', [
                 'page'=>$group['name'],
                 'id' => $group['id'],
-                'group'=>$members
+                'members'=>$members,
+                'group'=>$group
         ]
         );
+    }
+
+    /**
+     * Let the current logged in user leave a chosen group.
+     *
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function leave(Group $group) {
+        $user = Auth::user()->userData;
+        $isMember = $this->isMember($group, $user);
+        if (isset($isMember)) {
+            $group->members()->detach($user);
+        }
+        return Redirect::to('group');
     }
 
     /**
@@ -96,6 +109,7 @@ class GroupController extends Controller {
         $types[1] = $types[0];
         if($this->isAuthorized($group)) {
             return view('group_form', [
+                'page' => 'Edit group '.$group->name,
                 'group' => $group,
                 'types' => $types
             ]);
@@ -112,11 +126,10 @@ class GroupController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(GroupRequest $request, Group $group) {
-
         if($this->isAuthorized($group)) {
             $group->fill($request->input())->save();
         }
-        return view('', compact('group'));
+        return Redirect::to('group/'.$group->id);
     }
 
     /**
@@ -135,7 +148,8 @@ class GroupController extends Controller {
     }
 
     /**
-     * Returns true of the loggedin user is the owner of the given group
+     * Returns true of the logged in user is the owner of the given group
+     * 
      * @param Group $group
      * @return bool
      */
@@ -147,6 +161,7 @@ class GroupController extends Controller {
 
     /**
      * Returns edge if the user is a member of the given group, else returns null
+     * 
      * @param Group $group
      * @param UserData $user
      * @return Edge
