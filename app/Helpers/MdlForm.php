@@ -221,7 +221,7 @@ class MdlForm
         <div>
             <a href="'.url($href).'" 
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-                style="width: 70%;">
+                style="width: 60%;">
                 '.$label.'
             </a>
         </div>
@@ -233,10 +233,10 @@ class MdlForm
         <div>
             <a href="'.url($href).'" 
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                style="width: 70%;">
+                style="width: 60%;">
                 '.$label.'
             </a>
-        </div>
+       </div>
         ');
     }
 

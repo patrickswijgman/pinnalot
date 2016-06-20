@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('group', 'GroupController');
     Route::get('group/{group}/leave', 'GroupController@leave');
+    Route::get('group/{group}/search', 'GroupController@searchPerson');
+    Route::post('group/{group}/search', 'GroupController@searchPersonResult');
+    Route::post('group/{group}/add', 'GroupController@add');
 
 
 });

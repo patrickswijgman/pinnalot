@@ -6,16 +6,19 @@ use App\Http\Requests\GroupRequest;
 use App\Models\Group;
 use App\Models\GroupType;
 use App\Models\UserData;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Redirect;
 use Vinelab\NeoEloquent\Eloquent\Edges\Edge;
 
 class GroupController extends Controller {
+
     /**
-     * Display a listing of the resource.
+     * Show all the groups where the user is member of said groups.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,13 +31,11 @@ class GroupController extends Controller {
         return view('group', [
                 'page' => 'Groups',
                 'groups' => $groups
-            ]
-        );
-        
+            ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show a form which lets the user create a new group.
      *
      * @return \Illuminate\Http\Response
      */
@@ -48,7 +49,7 @@ class GroupController extends Controller {
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store the newly created group in the graph database.
      *
      * @param GroupRequest|Request $request
      * @return \Illuminate\Http\Response
@@ -64,23 +65,32 @@ class GroupController extends Controller {
     }
 
     /**
-     * Display the specified resource.
+     * Show a specific group with its members and calendar.
      *
-     * @param  int  $id
+     * @param Group $group
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function show(Group $group) {
         $members = array();
         foreach($group->members()->edges() as $edge) {
             $members[] = $edge->related();
         }
+
+        //Group events
+        $events = array();
+        foreach($group->invitedFor()->edges() as $edge) {
+            $event = $edge->related();
+            $event->url = $group->id.'/event/'.$event->id;
+            $events[] = $event;
+        }
+
         return view('group_info', [
-                'page'=>$group['name'],
-                'id' => $group['id'],
+                'page'=>$group->name,
                 'members'=>$members,
-                'group'=>$group
-        ]
-        );
+                'group'=>$group,
+                'events'=>json_encode($events)
+        ]);
     }
 
     /**
@@ -148,6 +158,51 @@ class GroupController extends Controller {
     }
 
     /**
+     * Show a form with a search input for a person.
+     *
+     * @param Group $group
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchPerson(Group $group) {
+        return view('group_person_search', [
+                'page'=> 'Add person to '.$group->name,
+                'group' => $group
+            ]
+        );
+    }
+    
+    /**
+     * Show results from given search input
+     *
+     * @param Group $group
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchPersonResult(Group $group) {
+        $results = UserData::where('firstname',Input::get('search_person'))->get();
+        return view('group_person_add', [
+                'page'=> 'Add person to '.$group->name,
+                'users'=> $results,
+                'group' => $group
+            ]
+        );
+    }
+
+    /**
+     * Add a selected person (from a search input) as member to the group
+     *
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function add(Group $group) {
+        $data = Input::all();
+        $member = UserData::find($data['candidate_radio']);
+        $edge = $member->joins()->save($group);
+        $edge->status='member';
+        $edge->save();
+        return Redirect::to('group/'.$group->id);
+    }
+
+    /**
      * Returns true of the logged in user is the owner of the given group
      * 
      * @param Group $group
@@ -169,4 +224,5 @@ class GroupController extends Controller {
     private function isMember(Group $group, UserData $user){
         return $group->members()->edge($user);
     }
+
 }

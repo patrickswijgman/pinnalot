@@ -22,7 +22,10 @@ $(document).ready(function() {
         dayClick: function(date, jsEvent, view) {
             if (view.name === 'month') {
                 $date = date.format().split('-');
-                window.location.href = 'event/create?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
+                //TODO make a lot less dirty
+                var url = window.location.href;
+                url = url.replace('/calendar', '');
+                window.location.href = url + '/event/create?d=' + $date[2] + '-' + $date[1] + '-' + $date[0];
             }
         },
         eventClick: function(event) {

@@ -3,11 +3,18 @@
 @section('content-left')
     @if(isset($group))
         <span style="color: gray; font-weight: bold">Members going to this event</span>
-        <br/>
-        <br/>
-        @foreach($members as $member)
-            {{ $member->firstname . ' ' . $member->lastname }} <br/>
-        @endforeach
+        <div class = 'group-list' style = "text-align: left;">
+            <ul class="mdl-list">
+                @foreach($members as $member)
+                    <li class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">person</i>
+                        {{ $member->firstname . ' ' . $member->lastname }}
+                    </span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 @stop
 
