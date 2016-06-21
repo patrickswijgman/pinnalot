@@ -32,20 +32,26 @@ class User extends Authenticatable
     }
 
     function getPrimaryColorAttribute(){
-        $primaryColor = $this->settingsUser->primary_color;
+        if (!empty($this->settingsUser)) {
+            $primaryColor = $this->settingsUser->primary_color;
+        }
         $primaryColorDefault = SettingsDefault::first()->primary_color;
         return (!empty($primaryColor))? $primaryColor : $primaryColorDefault;
     }
 
     function getLandingPageAttribute(){
-        $page = $this->settingsUser->landing_page;
+        if (!empty($this->settingsUser)) {
+            $page = $this->settingsUser->landing_page;
+        }
         $pageDefault = SettingsDefault::first()->landing_page;
         return (!empty($page))? $page : $pageDefault;
     }
 
 
     function getAccentColorAttribute(){
-        $accentColor = $this->settingsUser->accent_color;
+        if (!empty($this->settingsUser)) {
+            $accentColor = $this->settingsUser->accent_color;
+        }
         $accentColorDefault = SettingsDefault::first()->accent_color;
         return (!empty($accentColor))? $accentColor : $accentColorDefault;
     }

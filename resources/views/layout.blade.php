@@ -35,7 +35,7 @@
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="user-menu">
                             <li class="mdl-menu__item">
-                                <a href="{{ url('settings/' . Auth::user()->settingsUser->id . '/edit') }}" class="mdl-navigation__link">
+                                <a href="{{ url('settings/' . ((isset(Auth::user()->settingsUser))? Auth::user()->settingsUser->id : '-1') . '/edit') }}" class="mdl-navigation__link">
                                     <i class="material-icons">settings</i> Settings
                                 </a>
                             </li>
