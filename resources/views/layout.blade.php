@@ -25,8 +25,9 @@
         <div class="mdl-layout__drawer ">
             <span class="mdl-layout-title">
                 <div class="user-info" style="text-align: center">
-                    <i class="material-icons profile-icon">account_circle</i>
-                    <div style="bottom: 30px; position: relative;">
+                    <img src="{{ Gravatar::src(Auth::user()->email, 120) }}"
+                         style="top: 15px; position:relative; border-radius: 50%;">
+                    <div style="top: 10px; position: relative">
                         {{ Auth::user()->firstname }}
                         <button id="user-menu"
                                 class="mdl-button mdl-js-button mdl-button--icon">
