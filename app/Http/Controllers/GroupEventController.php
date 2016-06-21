@@ -83,9 +83,9 @@ class GroupEventController extends Controller
             $edge->status = 'owner';
             $edge->save();
 
-            return Redirect::to('calendar');
+            return Redirect::to('group/' . $group->id);
         } else {
-            return Redirect::to('calendar');
+            return Redirect::to('group/' . $group->id);
         }
     }
 
