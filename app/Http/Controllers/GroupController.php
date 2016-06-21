@@ -155,6 +155,9 @@ class GroupController extends Controller {
      * @internal param int $id
      */
     public function destroy(Group $group) {
+        foreach($group->invitedFor()->edges() as $edge) {
+            $edge->related()->delete();
+        }
         if($this->isAuthorized($group)) {
             $group->delete();
         }
