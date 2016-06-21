@@ -85,11 +85,14 @@ class GroupController extends Controller {
             $events[] = $event;
         }
 
+        $status = $group->members()->edge(Auth::user()->userData)->status;
+
         return view('group_info', [
                 'page'=>$group->name,
                 'members'=>$members,
                 'group'=>$group,
-                'events'=>json_encode($events)
+                'events'=>json_encode($events),
+                'status'=>$status
         ]);
     }
 

@@ -4,13 +4,15 @@
     <span style="color: gray; font-weight: bold">Other actions</span>
     <br/>
     <br/>
-    {{ MdlForm::urlButton('group/'.$group->id.'/event/create', 'Create new event') }}
-    <br/>
-    {{ MdlForm::urlButton('group/'.$group->id.'/search', 'Add person') }}
-    <br/>
-    {{ MdlForm::urlButton('group/'.$group->id.'/edit', 'Edit group') }}
-    <br/>
-    <br/>
+    @if($status == "owner")
+        {{ MdlForm::urlButton('group/'.$group->id.'/event/create', 'Create new event') }}
+        <br/>
+        {{ MdlForm::urlButton('group/'.$group->id.'/search', 'Add person') }}
+        <br/>
+        {{ MdlForm::urlButton('group/'.$group->id.'/edit', 'Edit group') }}
+        <br/>
+        <br/>
+    @endif
     {{ MdlForm::urlButton('group/'.$group->id.'/leave', 'Leave group') }}
 @stop
 
