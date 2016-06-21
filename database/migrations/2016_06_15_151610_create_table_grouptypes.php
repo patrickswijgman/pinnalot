@@ -26,6 +26,6 @@ class CreateTableGrouptypes extends Migration
      */
     public function down()
     {
-        Schema::drop('group_type');
+        Schema::drop('group_types');
     }
 }

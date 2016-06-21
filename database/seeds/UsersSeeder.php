@@ -17,14 +17,18 @@ class UsersSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach (range(1,10000) as $index) {
+            $users = [];
             $name = $faker->name;
+            $password = bcrypt('password');
             $userData = UserData::create(['firstname' => $name]);
-            DB::table('users')->insert([
+            $users[] = [
                 'name' => $name,
                 'email' => $faker->unique()->email,
-                'password' => bcrypt('password'),
+                'password' => $password,
                 'userData' => $userData->id
-            ]);
+            ];
+
+            User::insert($users);
         }
     }
 }
