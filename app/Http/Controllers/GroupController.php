@@ -74,7 +74,8 @@ class GroupController extends Controller {
     public function show(Group $group) {
         $members = array();
         foreach($group->members()->edges() as $edge) {
-            $members[] = $edge->related();
+            $members[0][] = $edge->related();
+            $members[1][] = $edge->status;
         }
 
         //Group events

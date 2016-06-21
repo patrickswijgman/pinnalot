@@ -21,14 +21,18 @@
     <span style="color: gray; font-weight: bold">Members</span>
     <div class = 'group-list' style = "text-align: left;">
         <ul class="mdl-list">
-            @foreach($members as $member)
+            @for ($i = sizeof($members); $i >= 0; $i--)
                 <li class="mdl-list__item">
                     <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">person</i>
-                        {{ $member->firstname . ' ' . $member->lastname }}
+                        @if($members[1][$i] == "owner")
+                            <i class="material-icons mdl-list__item-icon" style="color:orange">star</i>
+                        @else
+                            <i class="material-icons mdl-list__item-icon">person</i>
+                        @endif
+                        {{ $members[0][$i]->firstname . ' ' . $members[0][$i]->lastname }}
                     </span>
                 </li>
-            @endforeach
+            @endfor
         </ul>
     </div>
 @stop
