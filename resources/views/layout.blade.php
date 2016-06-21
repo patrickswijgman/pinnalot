@@ -35,9 +35,15 @@
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                             for="user-menu">
                             <li class="mdl-menu__item">
-                                <a href="{{ url('settings/' . ((isset(Auth::user()->settingsUser))? Auth::user()->settingsUser->id : '-1') . '/edit') }}" class="mdl-navigation__link">
-                                    <i class="material-icons">settings</i> Settings
-                                </a>
+                                @if((isset(Auth::user()->settingsUser)))
+                                    <a href="{{ url('settings/' . Auth::user()->settingsUser->id . '/edit') }}" class="mdl-navigation__link">
+                                        <i class="material-icons">settings</i> Settings
+                                    </a>
+                                @else
+                                    <a href="{{ url('settings/create') }}" class="mdl-navigation__link">
+                                        <i class="material-icons">settings</i> Settings
+                                    </a>
+                                @endif
                             </li>
                             <li class="mdl-menu__item">
                                 <a href="{{ url('logout') }}" class="mdl-navigation__link">

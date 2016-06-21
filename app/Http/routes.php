@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('calendar', 'CalendarController@show');
 
     Route::resource('settings', 'SettingsController',
-        ['only' => ['update', 'edit']]);
+        ['only' => ['create', 'update', 'edit']]);
 
     Route::resource('event', 'EventController',
         ['only' => ['create', 'show', 'update', 'store', 'edit', 'destroy']]);

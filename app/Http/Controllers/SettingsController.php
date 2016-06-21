@@ -11,6 +11,17 @@ use Redirect;
 
 class SettingsController extends Controller
 {
+
+    /**
+     * Create a new settings instance for the user if it does not have one.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    function create(){
+        $settings = SettingsUser::create(['user_id' => Auth::user()->id]);
+        return Redirect::to('settings/' . $settings->id . '/edit');
+    }
+
     /**
      * Show a form for the user that they can utilize for changing their personal settings.
      *
