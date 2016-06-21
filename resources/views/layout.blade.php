@@ -67,10 +67,6 @@
                     Groups
                     <i class="material-icons" style="float:right">group</i>
                 </a>
-                <a class="mdl-navigation__link" href="{{ url('/pay/new') }}">
-                    Payment
-                    <i class="material-icons" style="float:right">attach_money</i>
-                </a>
             </nav>
         </div>
         <!-- Uncomment for sidebar on the right
