@@ -29,6 +29,8 @@
 
         {{ MdlForm::password('password_confirmation', 'Confirm Password') }}
 
+        <hr>
+
         {{ MdlForm::text('firstname', 'Firstname') }}
 
         {{ MdlForm::text('lastname', 'Lastname') }}
@@ -36,8 +38,11 @@
         {{ MdlForm::date('birthday', 'Birthday') }}
 
         {{  MdlForm::submit('Register') }}
-        <br>
+        <br/>
         {{ link_to('/login', 'If you already got an account, click here to login.')}}
         {{ Form::close() }}
+
+        <br/>
+        <br/>
     </div>
 @endsection
