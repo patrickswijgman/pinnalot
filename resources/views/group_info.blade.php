@@ -21,7 +21,7 @@
     <span style="color: gray; font-weight: bold">Members</span>
     <div class = 'group-list' style = "text-align: left;">
         <ul class="mdl-list">
-            @for ($i = sizeof($members); $i >= 0; $i--)
+            @for ($i = (sizeof($members[0])-1); $i >= 0; $i--)
                 <li class="mdl-list__item">
                     <span class="mdl-list__item-primary-content">
                         @if($members[1][$i] == "owner")
