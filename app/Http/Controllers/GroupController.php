@@ -185,17 +185,19 @@ class GroupController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function searchPersonResult(Group $group) {
-        $results = User::where('email',Input::get('search_person'))->first()->userData;
-
-        $user = $group->members()->edge($results);
-            return view('group_person_add', [
-                    'page' => 'Add person to ' . $group->name,
-                    'users' => $results,
-                    'group' => $group,
-                    'member_of' =>$user
-                ]
-            );
+        $user = null;
+        $results = User::where('email', Input::get('search_person'))->first();
+        if (!empty($results)) {
+            $user = $group->members()->edge($results->userData);
         }
+        return view('group_person_add', [
+                'page' => 'Add person to ' . $group->name,
+                'users' => $results,
+                'group' => $group,
+                'member_of' =>$user
+            ]
+        );
+    }
 
     /**
      * Add a selected person (from a search input) as member to the group
