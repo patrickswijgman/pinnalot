@@ -11,6 +11,6 @@ class CountriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::unprepared(file_get_contents('/public/sql/countries.sql', true));
+        DB::unprepared(file_get_contents('public/sql/countries.sql', true));
     }
 }
