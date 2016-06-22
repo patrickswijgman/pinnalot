@@ -171,11 +171,15 @@ class GroupController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function searchPerson(Group $group) {
-        return view('group_person_search', [
-                'page'=> 'Add person to '.$group->name,
-                'group' => $group
-            ]
-        );
+        if ($this->isAuthorized($group)) {
+            return view('group_person_search', [
+                    'page' => 'Add person to ' . $group->name,
+                    'group' => $group
+                ]
+            );
+        } else {
+            return Redirect::to('group/' . $group->id);
+        }
     }
     
     /**
