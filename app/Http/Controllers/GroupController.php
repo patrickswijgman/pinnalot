@@ -74,7 +74,8 @@ class GroupController extends Controller {
     public function show(Group $group) {
         $members = array();
         foreach($group->members()->edges() as $edge) {
-            $members[] = $edge->related();
+            $members[0][] = $edge->related();
+            $members[1][] = $edge->status;
         }
 
         //Group events
@@ -85,11 +86,14 @@ class GroupController extends Controller {
             $events[] = $event;
         }
 
+        $status = $group->members()->edge(Auth::user()->userData)->status;
+
         return view('group_info', [
                 'page'=>$group->name,
                 'members'=>$members,
                 'group'=>$group,
-                'events'=>json_encode($events)
+                'events'=>json_encode($events),
+                'status'=>$status
         ]);
     }
 
@@ -151,6 +155,9 @@ class GroupController extends Controller {
      * @internal param int $id
      */
     public function destroy(Group $group) {
+        foreach($group->invitedFor()->edges() as $edge) {
+            $edge->related()->delete();
+        }
         if($this->isAuthorized($group)) {
             $group->delete();
         }

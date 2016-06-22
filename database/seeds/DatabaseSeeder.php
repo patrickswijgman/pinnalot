@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupTypeSeeder::class);
         $this->call(MdlColorsSeeder::class);
         $this->call(SettingsDefaultSeeder::class);
+        $this->call(CountriesSeeder::class);
 
         $this->call(UsersSeeder::class);
         Model::reguard();

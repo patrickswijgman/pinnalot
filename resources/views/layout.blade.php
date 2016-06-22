@@ -15,7 +15,8 @@
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="{{ url('') }}">
-                        <i class="material-icons ">account_circle</i>
+                        <img src="{{ Gravatar::src(Auth::user()->email, 30) }}"
+                             style="bottom: 2px; position:relative; border-radius: 50%;">
                         {{ Auth::user()->firstname }}
                     </a>
                     <a class="mdl-navigation__link" href="{{ url('logout') }}"><i class="material-icons">power_settings_new</i></a>
@@ -25,8 +26,9 @@
         <div class="mdl-layout__drawer ">
             <span class="mdl-layout-title">
                 <div class="user-info" style="text-align: center">
-                    <i class="material-icons profile-icon">account_circle</i>
-                    <div style="bottom: 30px; position: relative;">
+                    <img src="{{ Gravatar::src(Auth::user()->email, 120) }}"
+                         style="top: 15px; position:relative; border-radius: 50%;">
+                    <div style="top: 10px; position: relative">
                         {{ Auth::user()->firstname }}
                         <button id="user-menu"
                                 class="mdl-button mdl-js-button mdl-button--icon">
@@ -66,10 +68,6 @@
                 <a class="mdl-navigation__link" href="{{ url('/group') }}">
                     Groups
                     <i class="material-icons" style="float:right">group</i>
-                </a>
-                <a class="mdl-navigation__link" href="{{ url('/pay/new') }}">
-                    Payment
-                    <i class="material-icons" style="float:right">attach_money</i>
                 </a>
             </nav>
         </div>
