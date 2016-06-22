@@ -187,8 +187,9 @@ class GroupController extends Controller {
     public function searchPersonResult(Group $group) {
         $user = null;
         $results = User::where('email', Input::get('search_person'))->first();
-        if (!empty($results)) {
-            $user = $group->members()->edge($results->userData);
+        if (isset($results)) {
+            $userData = $results->userData;
+            $user = $group->members()->edge($userData);
         }
         return view('group_person_add', [
                 'page' => 'Add person to ' . $group->name,

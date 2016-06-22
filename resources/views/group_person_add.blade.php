@@ -2,7 +2,7 @@
 
 @section('content')
 
-  @if (!empty($results))
+  @if (isset($users) && !isset($member_of))
       {{ Form::open(array('url' => url('/group/'.$group->id.'/add'))) }}
       {{ csrf_field() }}
 

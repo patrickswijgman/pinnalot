@@ -5,7 +5,7 @@
         {{ csrf_field() }}
 
         {{ MdlForm::showAllErrors($errors) }}
-        {{ MdlForm::text('search_person','Search for a person...') }}
+        {{ MdlForm::email('search_person','Email') }}
         {{ MdlForm::submit('Search') }}
         {{ Form::close() }}
     </div>
