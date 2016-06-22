@@ -18,5 +18,6 @@ class GroupTypeSeeder extends Seeder
         GroupType::create(['type' => 'Project']);
         GroupType::create(['type' => 'Sports']);
         GroupType::create(['type' => 'Music']);
+        GroupType::create(['type' => 'Other']);
     }
 }
