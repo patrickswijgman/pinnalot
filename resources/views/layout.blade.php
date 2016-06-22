@@ -16,7 +16,7 @@
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="{{ url('') }}">
                         <img src="{{ Gravatar::src(Auth::user()->email, 30) }}"
-                             style="bottom: 2px; position:relative; border-radius: 50%;">
+                             style="border-radius: 50%;">
                         {{ Auth::user()->firstname }}
                     </a>
                     <a class="mdl-navigation__link" href="{{ url('logout') }}"><i class="material-icons">power_settings_new</i></a>
