@@ -17,7 +17,7 @@
             </span>
             <span class="mdl-list__item-secondary-action">
               <label class="list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="list-option-1">
-                <input type="radio" id="list-option-1" class="mdl-radio__button" name="candidate_radio" value="{{$users->id}}" checked />
+                <input type="radio" id="list-option-1" class="mdl-radio__button" name="candidate_radio" value="{{ $user_id }}" checked />
               </label>
             </span>
                   </li>

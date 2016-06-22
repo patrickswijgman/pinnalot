@@ -185,17 +185,20 @@ class GroupController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function searchPersonResult(Group $group) {
-        $user = null;
+        $edge = null;
+        $userDataId = null;
         $results = User::where('email', Input::get('search_person'))->first();
         if (isset($results)) {
             $userData = $results->userData;
-            $user = $group->members()->edge($userData);
+            $userDataId = $userData->id;
+            $edge = $group->members()->edge($userData);
         }
         return view('group_person_add', [
                 'page' => 'Add person to ' . $group->name,
                 'users' => $results,
                 'group' => $group,
-                'member_of' =>$user
+                'member_of' =>$edge,
+                'user_id' => $userDataId
             ]
         );
     }
